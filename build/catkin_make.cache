@@ -1,0 +1,2 @@
+meno_matky_za_slobodna
+-DCATKIN_DEVEL_PREFIX=/home/laptop/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/laptop/catkin_ws/install -G Unix Makefiles

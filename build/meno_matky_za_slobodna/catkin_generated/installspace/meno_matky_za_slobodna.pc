@@ -1,0 +1,8 @@
+prefix=/home/laptop/catkin_ws/install
+
+Name: meno_matky_za_slobodna
+Description: Description of meno_matky_za_slobodna
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

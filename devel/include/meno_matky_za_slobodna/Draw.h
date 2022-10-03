@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::meno_matky_za_slobodna::Draw > {
   static const char* value()
   {
-    return "e5eddf88ccd24f8d174671b7bb6a7674";
+    return "ff56ab10127485a25e50efa6f63c433b";
   }
 
   static const char* value(const ::meno_matky_za_slobodna::Draw&) { return value(); }

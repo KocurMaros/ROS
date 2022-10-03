@@ -7,14 +7,9 @@
 ;//! \htmlinclude Draw-request.msg.html
 
 (cl:defclass <Draw-request> (roslisp-msg-protocol:ros-message)
-  ((speed
-    :reader speed
-    :initarg :speed
-    :type cl:integer
-    :initform 0)
-   (angle
-    :reader angle
-    :initarg :angle
+  ((radius
+    :reader radius
+    :initarg :radius
     :type cl:integer
     :initform 0))
 )
@@ -27,28 +22,13 @@
   (cl:unless (cl:typep m 'Draw-request)
     (roslisp-msg-protocol:msg-deprecation-warning "using old message class name meno_matky_za_slobodna-srv:<Draw-request> is deprecated: use meno_matky_za_slobodna-srv:Draw-request instead.")))
 
-(cl:ensure-generic-function 'speed-val :lambda-list '(m))
-(cl:defmethod speed-val ((m <Draw-request>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader meno_matky_za_slobodna-srv:speed-val is deprecated.  Use meno_matky_za_slobodna-srv:speed instead.")
-  (speed m))
-
-(cl:ensure-generic-function 'angle-val :lambda-list '(m))
-(cl:defmethod angle-val ((m <Draw-request>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader meno_matky_za_slobodna-srv:angle-val is deprecated.  Use meno_matky_za_slobodna-srv:angle instead.")
-  (angle m))
+(cl:ensure-generic-function 'radius-val :lambda-list '(m))
+(cl:defmethod radius-val ((m <Draw-request>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader meno_matky_za_slobodna-srv:radius-val is deprecated.  Use meno_matky_za_slobodna-srv:radius instead.")
+  (radius m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <Draw-request>) ostream)
   "Serializes a message object of type '<Draw-request>"
-  (cl:let* ((signed (cl:slot-value msg 'speed)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 18446744073709551616) signed)))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 32) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 40) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 48) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 56) unsigned) ostream)
-    )
-  (cl:let* ((signed (cl:slot-value msg 'angle)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 18446744073709551616) signed)))
+  (cl:let* ((signed (cl:slot-value msg 'radius)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 18446744073709551616) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
@@ -70,17 +50,7 @@
       (cl:setf (cl:ldb (cl:byte 8 40) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 48) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 56) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'speed) (cl:if (cl:< unsigned 9223372036854775808) unsigned (cl:- unsigned 18446744073709551616))))
-    (cl:let ((unsigned 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 32) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 40) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 48) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 56) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'angle) (cl:if (cl:< unsigned 9223372036854775808) unsigned (cl:- unsigned 18446744073709551616))))
+      (cl:setf (cl:slot-value msg 'radius) (cl:if (cl:< unsigned 9223372036854775808) unsigned (cl:- unsigned 18446744073709551616))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<Draw-request>)))
@@ -91,26 +61,24 @@
   "meno_matky_za_slobodna/DrawRequest")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<Draw-request>)))
   "Returns md5sum for a message object of type '<Draw-request>"
-  "e5eddf88ccd24f8d174671b7bb6a7674")
+  "ff56ab10127485a25e50efa6f63c433b")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'Draw-request)))
   "Returns md5sum for a message object of type 'Draw-request"
-  "e5eddf88ccd24f8d174671b7bb6a7674")
+  "ff56ab10127485a25e50efa6f63c433b")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Draw-request>)))
   "Returns full string definition for message of type '<Draw-request>"
-  (cl:format cl:nil "int64 speed~%int64 angle~%~%~%"))
+  (cl:format cl:nil "int64 radius~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Draw-request)))
   "Returns full string definition for message of type 'Draw-request"
-  (cl:format cl:nil "int64 speed~%int64 angle~%~%~%"))
+  (cl:format cl:nil "int64 radius~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Draw-request>))
   (cl:+ 0
-     8
      8
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <Draw-request>))
   "Converts a ROS message object to a list"
   (cl:list 'Draw-request
-    (cl:cons ':speed (speed msg))
-    (cl:cons ':angle (angle msg))
+    (cl:cons ':radius (radius msg))
 ))
 ;//! \htmlinclude Draw-response.msg.html
 
@@ -151,10 +119,10 @@
   "meno_matky_za_slobodna/DrawResponse")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<Draw-response>)))
   "Returns md5sum for a message object of type '<Draw-response>"
-  "e5eddf88ccd24f8d174671b7bb6a7674")
+  "ff56ab10127485a25e50efa6f63c433b")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'Draw-response)))
   "Returns md5sum for a message object of type 'Draw-response"
-  "e5eddf88ccd24f8d174671b7bb6a7674")
+  "ff56ab10127485a25e50efa6f63c433b")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Draw-response>)))
   "Returns full string definition for message of type '<Draw-response>"
   (cl:format cl:nil "bool success~%~%~%"))

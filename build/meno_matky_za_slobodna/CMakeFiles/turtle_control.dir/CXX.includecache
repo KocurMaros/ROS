@@ -19,7 +19,7 @@ string
 -
 vector
 -
-map
+memory
 -
 ros/types.h
 -
@@ -35,7 +35,7 @@ string
 -
 vector
 -
-map
+memory
 -
 ros/types.h
 -
@@ -61,6 +61,10 @@ meno_matky_za_slobodna/Draw.h
 -
 
 /home/laptop/catkin_ws/src/meno_matky_za_slobodna/src/turtle_control.cpp
+meno_matky_za_slobodna/turtle_control.h
+/home/laptop/catkin_ws/src/meno_matky_za_slobodna/src/meno_matky_za_slobodna/turtle_control.h
+
+/home/laptop/catkin_ws/src/meno_matky_za_slobodna/src/turtle_control_node.cpp
 meno_matky_za_slobodna/turtle_control.h
 /home/laptop/catkin_ws/src/meno_matky_za_slobodna/src/meno_matky_za_slobodna/turtle_control.h
 

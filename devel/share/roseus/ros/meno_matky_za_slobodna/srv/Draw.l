@@ -20,81 +20,50 @@
 
 (defclass meno_matky_za_slobodna::DrawRequest
   :super ros::object
-  :slots (_speed _angle ))
+  :slots (_radius ))
 
 (defmethod meno_matky_za_slobodna::DrawRequest
   (:init
    (&key
-    ((:speed __speed) 0)
-    ((:angle __angle) 0)
+    ((:radius __radius) 0)
     )
    (send-super :init)
-   (setq _speed (round __speed))
-   (setq _angle (round __angle))
+   (setq _radius (round __radius))
    self)
-  (:speed
-   (&optional __speed)
-   (if __speed (setq _speed __speed)) _speed)
-  (:angle
-   (&optional __angle)
-   (if __angle (setq _angle __angle)) _angle)
+  (:radius
+   (&optional __radius)
+   (if __radius (setq _radius __radius)) _radius)
   (:serialization-length
    ()
    (+
-    ;; int64 _speed
-    8
-    ;; int64 _angle
+    ;; int64 _radius
     8
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; int64 _speed
+     ;; int64 _radius
 #+(or :alpha :irix6 :x86_64)
-       (progn (sys::poke _speed (send s :buffer) (send s :count) :long) (incf (stream-count s) 8))
+       (progn (sys::poke _radius (send s :buffer) (send s :count) :long) (incf (stream-count s) 8))
 #-(or :alpha :irix6 :x86_64)
-       (cond ((and (class _speed) (= (length (_speed . bv)) 2)) ;; bignum
-              (write-long (ash (elt (_speed . bv) 0) 0) s)
-              (write-long (ash (elt (_speed . bv) 1) -1) s))
-             ((and (class _speed) (= (length (_speed . bv)) 1)) ;; big1
-              (write-long (elt (_speed . bv) 0) s)
-              (write-long (if (>= _speed 0) 0 #xffffffff) s))
+       (cond ((and (class _radius) (= (length (_radius . bv)) 2)) ;; bignum
+              (write-long (ash (elt (_radius . bv) 0) 0) s)
+              (write-long (ash (elt (_radius . bv) 1) -1) s))
+             ((and (class _radius) (= (length (_radius . bv)) 1)) ;; big1
+              (write-long (elt (_radius . bv) 0) s)
+              (write-long (if (>= _radius 0) 0 #xffffffff) s))
              (t                                         ;; integer
-              (write-long _speed s)(write-long (if (>= _speed 0) 0 #xffffffff) s)))
-     ;; int64 _angle
-#+(or :alpha :irix6 :x86_64)
-       (progn (sys::poke _angle (send s :buffer) (send s :count) :long) (incf (stream-count s) 8))
-#-(or :alpha :irix6 :x86_64)
-       (cond ((and (class _angle) (= (length (_angle . bv)) 2)) ;; bignum
-              (write-long (ash (elt (_angle . bv) 0) 0) s)
-              (write-long (ash (elt (_angle . bv) 1) -1) s))
-             ((and (class _angle) (= (length (_angle . bv)) 1)) ;; big1
-              (write-long (elt (_angle . bv) 0) s)
-              (write-long (if (>= _angle 0) 0 #xffffffff) s))
-             (t                                         ;; integer
-              (write-long _angle s)(write-long (if (>= _angle 0) 0 #xffffffff) s)))
+              (write-long _radius s)(write-long (if (>= _radius 0) 0 #xffffffff) s)))
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; int64 _speed
+   ;; int64 _radius
 #+(or :alpha :irix6 :x86_64)
-      (setf _speed (prog1 (sys::peek buf ptr- :long) (incf ptr- 8)))
+      (setf _radius (prog1 (sys::peek buf ptr- :long) (incf ptr- 8)))
 #-(or :alpha :irix6 :x86_64)
-      (setf _speed (let ((b0 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4)))
-                  (b1 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4))))
-              (cond ((= b1 -1) b0)
-                     ((and (= b1  0)
-                           (<= lisp::most-negative-fixnum b0 lisp::most-positive-fixnum))
-                      b0)
-                    ((= b1  0) (make-instance bignum :size 1 :bv (integer-vector b0)))
-                    (t (make-instance bignum :size 2 :bv (integer-vector b0 (ash b1 1)))))))
-   ;; int64 _angle
-#+(or :alpha :irix6 :x86_64)
-      (setf _angle (prog1 (sys::peek buf ptr- :long) (incf ptr- 8)))
-#-(or :alpha :irix6 :x86_64)
-      (setf _angle (let ((b0 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4)))
+      (setf _radius (let ((b0 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4)))
                   (b1 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4))))
               (cond ((= b1 -1) b0)
                      ((and (= b1  0)
@@ -147,7 +116,7 @@
   :super ros::object
   :slots ())
 
-(setf (get meno_matky_za_slobodna::Draw :md5sum-) "e5eddf88ccd24f8d174671b7bb6a7674")
+(setf (get meno_matky_za_slobodna::Draw :md5sum-) "ff56ab10127485a25e50efa6f63c433b")
 (setf (get meno_matky_za_slobodna::Draw :datatype-) "meno_matky_za_slobodna/Draw")
 (setf (get meno_matky_za_slobodna::Draw :request) meno_matky_za_slobodna::DrawRequest)
 (setf (get meno_matky_za_slobodna::Draw :response) meno_matky_za_slobodna::DrawResponse)
@@ -155,26 +124,24 @@
 (defmethod meno_matky_za_slobodna::DrawRequest
   (:response () (instance meno_matky_za_slobodna::DrawResponse :init)))
 
-(setf (get meno_matky_za_slobodna::DrawRequest :md5sum-) "e5eddf88ccd24f8d174671b7bb6a7674")
+(setf (get meno_matky_za_slobodna::DrawRequest :md5sum-) "ff56ab10127485a25e50efa6f63c433b")
 (setf (get meno_matky_za_slobodna::DrawRequest :datatype-) "meno_matky_za_slobodna/DrawRequest")
 (setf (get meno_matky_za_slobodna::DrawRequest :definition-)
-      "int64 speed
-int64 angle
+      "int64 radius
 ---
 bool success
 ")
 
-(setf (get meno_matky_za_slobodna::DrawResponse :md5sum-) "e5eddf88ccd24f8d174671b7bb6a7674")
+(setf (get meno_matky_za_slobodna::DrawResponse :md5sum-) "ff56ab10127485a25e50efa6f63c433b")
 (setf (get meno_matky_za_slobodna::DrawResponse :datatype-) "meno_matky_za_slobodna/DrawResponse")
 (setf (get meno_matky_za_slobodna::DrawResponse :definition-)
-      "int64 speed
-int64 angle
+      "int64 radius
 ---
 bool success
 ")
 
 
 
-(provide :meno_matky_za_slobodna/Draw "e5eddf88ccd24f8d174671b7bb6a7674")
+(provide :meno_matky_za_slobodna/Draw "ff56ab10127485a25e50efa6f63c433b")
 
 

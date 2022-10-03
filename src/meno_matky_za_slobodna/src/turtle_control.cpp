@@ -46,13 +46,14 @@ TurtleControl::TurtleControl(){
 // service server callback for starting the drawing and drawing speed configuration
 bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res)
 {
-    velocity_msg_.linear.x = req.speed;
+    int64_t speed, angle;
+    velocity_msg_.linear.x = speed;
     velocity_msg_.linear.y = 0;
     velocity_msg_.linear.z = 0;
 
     velocity_msg_.angular.x = 0;
     velocity_msg_.angular.y = 0;
-    velocity_msg_.angular.z = 10;
+    velocity_msg_.angular.z = angle;
     this->drawing_status_ = true;
 
     res.success = true;

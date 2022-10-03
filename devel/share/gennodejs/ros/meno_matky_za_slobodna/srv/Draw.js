@@ -21,31 +21,22 @@ class DrawRequest {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.speed = null;
-      this.angle = null;
+      this.radius = null;
     }
     else {
-      if (initObj.hasOwnProperty('speed')) {
-        this.speed = initObj.speed
+      if (initObj.hasOwnProperty('radius')) {
+        this.radius = initObj.radius
       }
       else {
-        this.speed = 0;
-      }
-      if (initObj.hasOwnProperty('angle')) {
-        this.angle = initObj.angle
-      }
-      else {
-        this.angle = 0;
+        this.radius = 0;
       }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type DrawRequest
-    // Serialize message field [speed]
-    bufferOffset = _serializer.int64(obj.speed, buffer, bufferOffset);
-    // Serialize message field [angle]
-    bufferOffset = _serializer.int64(obj.angle, buffer, bufferOffset);
+    // Serialize message field [radius]
+    bufferOffset = _serializer.int64(obj.radius, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -53,15 +44,13 @@ class DrawRequest {
     //deserializes a message object of type DrawRequest
     let len;
     let data = new DrawRequest(null);
-    // Deserialize message field [speed]
-    data.speed = _deserializer.int64(buffer, bufferOffset);
-    // Deserialize message field [angle]
-    data.angle = _deserializer.int64(buffer, bufferOffset);
+    // Deserialize message field [radius]
+    data.radius = _deserializer.int64(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 16;
+    return 8;
   }
 
   static datatype() {
@@ -71,14 +60,13 @@ class DrawRequest {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '7dbf0c6999eb0581666a605aa6b1d8e6';
+    return '6bdc92e8e5111a3d38107be6f1b3b477';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    int64 speed
-    int64 angle
+    int64 radius
     
     `;
   }
@@ -89,18 +77,11 @@ class DrawRequest {
       msg = {};
     }
     const resolved = new DrawRequest(null);
-    if (msg.speed !== undefined) {
-      resolved.speed = msg.speed;
+    if (msg.radius !== undefined) {
+      resolved.radius = msg.radius;
     }
     else {
-      resolved.speed = 0
-    }
-
-    if (msg.angle !== undefined) {
-      resolved.angle = msg.angle;
-    }
-    else {
-      resolved.angle = 0
+      resolved.radius = 0
     }
 
     return resolved;
@@ -181,6 +162,6 @@ class DrawResponse {
 module.exports = {
   Request: DrawRequest,
   Response: DrawResponse,
-  md5sum() { return 'e5eddf88ccd24f8d174671b7bb6a7674'; },
+  md5sum() { return 'ff56ab10127485a25e50efa6f63c433b'; },
   datatype() { return 'meno_matky_za_slobodna/Draw'; }
 };

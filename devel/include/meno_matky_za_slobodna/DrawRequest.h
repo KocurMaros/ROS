@@ -8,7 +8,7 @@
 
 #include <string>
 #include <vector>
-#include <map>
+#include <memory>
 
 #include <ros/types.h>
 #include <ros/serialization.h>
@@ -24,22 +24,17 @@ struct DrawRequest_
   typedef DrawRequest_<ContainerAllocator> Type;
 
   DrawRequest_()
-    : speed(0)
-    , angle(0)  {
+    : radius(0)  {
     }
   DrawRequest_(const ContainerAllocator& _alloc)
-    : speed(0)
-    , angle(0)  {
+    : radius(0)  {
   (void)_alloc;
     }
 
 
 
-   typedef int64_t _speed_type;
-  _speed_type speed;
-
-   typedef int64_t _angle_type;
-  _angle_type angle;
+   typedef int64_t _radius_type;
+  _radius_type radius;
 
 
 
@@ -70,8 +65,7 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator1> & lhs, const ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator2> & rhs)
 {
-  return lhs.speed == rhs.speed &&
-    lhs.angle == rhs.angle;
+  return lhs.radius == rhs.radius;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -128,12 +122,12 @@ struct MD5Sum< ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "7dbf0c6999eb0581666a605aa6b1d8e6";
+    return "6bdc92e8e5111a3d38107be6f1b3b477";
   }
 
   static const char* value(const ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x7dbf0c6999eb0581ULL;
-  static const uint64_t static_value2 = 0x666a605aa6b1d8e6ULL;
+  static const uint64_t static_value1 = 0x6bdc92e8e5111a3dULL;
+  static const uint64_t static_value2 = 0x38107be6f1b3b477ULL;
 };
 
 template<class ContainerAllocator>
@@ -152,8 +146,7 @@ struct Definition< ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int64 speed\n"
-"int64 angle\n"
+    return "int64 radius\n"
 ;
   }
 
@@ -172,8 +165,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.speed);
-      stream.next(m.angle);
+      stream.next(m.radius);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -192,10 +184,8 @@ struct Printer< ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator>& v)
   {
-    s << indent << "speed: ";
-    Printer<int64_t>::stream(s, indent + "  ", v.speed);
-    s << indent << "angle: ";
-    Printer<int64_t>::stream(s, indent + "  ", v.angle);
+    s << indent << "radius: ";
+    Printer<int64_t>::stream(s, indent + "  ", v.radius);
   }
 };
 

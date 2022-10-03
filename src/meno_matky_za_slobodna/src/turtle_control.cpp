@@ -67,11 +67,11 @@ void TurtleControl::poseCallback(const turtlesim::Pose::ConstPtr& msg)
 {
     if ((msg->x >= WINDOW_EDGE)||(msg->y >= WINDOW_EDGE)||(msg->x <= 0)||(msg->y <= 0))
     {
-        ROS_WARN("Hitla som stenu");
         turtlesim::TeleportAbsolute teleport_srv;
         teleport_srv.request.theta = 0;
         teleport_srv.request.x = WINDOW_CENTER;
         teleport_srv.request.y = WINDOW_CENTER;
+        this->drawing_status_ = false;
         teleport_client_.call(teleport_srv);
     }
     this->pose_msg_ = *msg;

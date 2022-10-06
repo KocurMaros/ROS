@@ -23,7 +23,7 @@ TurtleControl::TurtleControl(){
 
     //set default pen width
     int width = 1;
-    uint8_t red,green,blue;
+    int red,green,blue;
 
     // get parameters from server
     n.getParam("/turtle_control/line/width", width);

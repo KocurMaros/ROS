@@ -35,7 +35,7 @@ private:
     const double PUB_RATE = 100.0;
     const double  WINDOW_CENTER = 5.544444561;
     const double WINDOW_EDGE = 11.088889122;
-
+    
     // member variables
     geometry_msgs::Twist velocity_msg_;
     bool drawing_status_;

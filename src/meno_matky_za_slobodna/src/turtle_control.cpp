@@ -46,7 +46,8 @@ TurtleControl::TurtleControl(){
 // service server callback for starting the drawing and drawing speed configuration
 bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res)
 {
-    int64_t speed req.speed, angle;
+    int64_t speed = req.speed;
+    int64_t angle;
     angle = speed/(req.radius);
     // printf("co do pici\n");
     velocity_msg_.linear.x = speed;

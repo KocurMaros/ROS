@@ -36,9 +36,9 @@ TurtleControl::TurtleControl(){
     setpen_client.waitForExistence();
     setpen_srv.request.width = width;
     setpen_srv.request.off = false;
-    setpen_srv.request.red = red;
-    setpen_srv.request.green = green;
-    setpen_srv.request.blue = blue;
+    setpen_srv.request.r = red;
+    setpen_srv.request.g = green;
+    setpen_srv.request.b = blue;
 
     // Call service
     if (setpen_client.call(setpen_srv)){

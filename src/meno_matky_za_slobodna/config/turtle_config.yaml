@@ -1,3 +1,6 @@
 turtle_control:
   line:
     width: 5
+    red: 255
+    green: 128
+    blue: 56

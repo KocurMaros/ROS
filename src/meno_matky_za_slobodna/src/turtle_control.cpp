@@ -23,15 +23,22 @@ TurtleControl::TurtleControl(){
 
     //set default pen width
     int width = 1;
+    uint8_t red,green,blue;
 
     // get parameters from server
     n.getParam("/turtle_control/line/width", width);
+    n.getParam("/turtle_control/line/red", red);
+    n.getParam("/turtle_control/line/green", green);
+    n.getParam("/turtle_control/line/blue", blue);
 
     // Create service message
     turtlesim::SetPen setpen_srv;
     setpen_client.waitForExistence();
     setpen_srv.request.width = width;
     setpen_srv.request.off = false;
+    setpen_srv.request.red = red;
+    setpen_srv.request.green = green;
+    setpen_srv.request.blue = blue;
 
     // Call service
     if (setpen_client.call(setpen_srv)){
@@ -45,7 +52,7 @@ TurtleControl::TurtleControl(){
 
 // service server callback for starting the drawing and drawing speed configuration
 bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res)
-{
+{   
     int64_t speed = req.speed;
     int64_t angle;
     angle = speed/(req.radius);
@@ -53,7 +60,6 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
     velocity_msg_.linear.x = speed;
     velocity_msg_.linear.y = 0;
     velocity_msg_.linear.z = 0;
-
 
     velocity_msg_.angular.x = 0;
     velocity_msg_.angular.y = 0;

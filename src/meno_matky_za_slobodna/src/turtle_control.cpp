@@ -53,6 +53,7 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
     velocity_msg_.linear.y = 0;
     velocity_msg_.linear.z = 0;
 
+
     velocity_msg_.angular.x = 0;
     velocity_msg_.angular.y = 0;
     velocity_msg_.angular.z = angle;

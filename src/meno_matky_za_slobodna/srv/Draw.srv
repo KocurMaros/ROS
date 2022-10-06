@@ -1,4 +1,7 @@
 int64 radius
 int64 speed
+uint8 red
+uint8 green
+uint8 blue
 ---
 bool success

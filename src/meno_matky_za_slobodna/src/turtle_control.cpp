@@ -82,7 +82,7 @@ void TurtleControl::poseCallback(const turtlesim::Pose::ConstPtr& msg)
         velocity_msg_.angular.x = 0;
         velocity_msg_.angular.y = 0;
         velocity_msg_.angular.z = 0;
-        res.success = true;
+        
         this->drawing_status_ = false;
         publish();
         turtlesim::TeleportAbsolute teleport_srv;

@@ -82,8 +82,8 @@ bool TurtleControl::stopCallback(meno_matky_za_slobodna::Stop::Request &req, men
 bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res)
 {   
     speed = req.speed;
-    angle = req.radius;
-    // angle = speed/(req.radius);
+    // angle = req.radius;
+    angle = speed/(req.radius);
     // printf("co do pici\n");
     velocity_msg_.linear.x = speed;
     velocity_msg_.linear.y = 0;
@@ -101,6 +101,8 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
 // topic callback a for listening to the pose message from the turtle
 void TurtleControl::poseCallback(const turtlesim::Pose::ConstPtr& msg)
 {
+    ros::ServiceClient claer_scr = n.serviceClient<turtlesim::Clear>("/turtle_control/clear");
+
     if ((msg->x >= WINDOW_EDGE)||(msg->y >= WINDOW_EDGE)||(msg->x <= 0)||(msg->y <= 0))
     {
         velocity_msg_.linear.x = 0;
@@ -118,6 +120,8 @@ void TurtleControl::poseCallback(const turtlesim::Pose::ConstPtr& msg)
         teleport_srv.request.x = WINDOW_CENTER;
         teleport_srv.request.y = WINDOW_CENTER;
         teleport_client_.call(teleport_srv);
+        claer_scr.clear();
+      
     }
     this->pose_msg_ = *msg;
 

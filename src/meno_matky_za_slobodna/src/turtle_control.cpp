@@ -112,7 +112,6 @@ void TurtleControl::poseCallback(const turtlesim::Pose::ConstPtr& msg)
 
         this->drawing_status_ = false;
         publish();
-        clear();
         turtlesim::TeleportAbsolute teleport_srv;
         teleport_srv.request.theta = 0;
         teleport_srv.request.x = WINDOW_CENTER;

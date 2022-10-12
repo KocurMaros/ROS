@@ -53,9 +53,11 @@ TurtleControl::TurtleControl(){
 }
 bool TurtleControl::startCallback(){
 
+    return true;
 }
 bool TurtleControl::stopCallback(){
     
+    return true;
 }
 // service server callback for starting the drawing and drawing speed configuration
 bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res)

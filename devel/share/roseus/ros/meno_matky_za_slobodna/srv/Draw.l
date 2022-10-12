@@ -20,23 +20,30 @@
 
 (defclass meno_matky_za_slobodna::DrawRequest
   :super ros::object
-  :slots (_radius ))
+  :slots (_radius _speed ))
 
 (defmethod meno_matky_za_slobodna::DrawRequest
   (:init
    (&key
     ((:radius __radius) 0)
+    ((:speed __speed) 0)
     )
    (send-super :init)
    (setq _radius (round __radius))
+   (setq _speed (round __speed))
    self)
   (:radius
    (&optional __radius)
    (if __radius (setq _radius __radius)) _radius)
+  (:speed
+   (&optional __speed)
+   (if __speed (setq _speed __speed)) _speed)
   (:serialization-length
    ()
    (+
     ;; int64 _radius
+    8
+    ;; int64 _speed
     8
     ))
   (:serialize
@@ -55,6 +62,18 @@
               (write-long (if (>= _radius 0) 0 #xffffffff) s))
              (t                                         ;; integer
               (write-long _radius s)(write-long (if (>= _radius 0) 0 #xffffffff) s)))
+     ;; int64 _speed
+#+(or :alpha :irix6 :x86_64)
+       (progn (sys::poke _speed (send s :buffer) (send s :count) :long) (incf (stream-count s) 8))
+#-(or :alpha :irix6 :x86_64)
+       (cond ((and (class _speed) (= (length (_speed . bv)) 2)) ;; bignum
+              (write-long (ash (elt (_speed . bv) 0) 0) s)
+              (write-long (ash (elt (_speed . bv) 1) -1) s))
+             ((and (class _speed) (= (length (_speed . bv)) 1)) ;; big1
+              (write-long (elt (_speed . bv) 0) s)
+              (write-long (if (>= _speed 0) 0 #xffffffff) s))
+             (t                                         ;; integer
+              (write-long _speed s)(write-long (if (>= _speed 0) 0 #xffffffff) s)))
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -64,6 +83,18 @@
       (setf _radius (prog1 (sys::peek buf ptr- :long) (incf ptr- 8)))
 #-(or :alpha :irix6 :x86_64)
       (setf _radius (let ((b0 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4)))
+                  (b1 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4))))
+              (cond ((= b1 -1) b0)
+                     ((and (= b1  0)
+                           (<= lisp::most-negative-fixnum b0 lisp::most-positive-fixnum))
+                      b0)
+                    ((= b1  0) (make-instance bignum :size 1 :bv (integer-vector b0)))
+                    (t (make-instance bignum :size 2 :bv (integer-vector b0 (ash b1 1)))))))
+   ;; int64 _speed
+#+(or :alpha :irix6 :x86_64)
+      (setf _speed (prog1 (sys::peek buf ptr- :long) (incf ptr- 8)))
+#-(or :alpha :irix6 :x86_64)
+      (setf _speed (let ((b0 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4)))
                   (b1 (prog1 (sys::peek buf ptr- :integer) (incf ptr- 4))))
               (cond ((= b1 -1) b0)
                      ((and (= b1  0)
@@ -116,7 +147,7 @@
   :super ros::object
   :slots ())
 
-(setf (get meno_matky_za_slobodna::Draw :md5sum-) "ff56ab10127485a25e50efa6f63c433b")
+(setf (get meno_matky_za_slobodna::Draw :md5sum-) "2ffd6e0fc173594a685f86a9d4366967")
 (setf (get meno_matky_za_slobodna::Draw :datatype-) "meno_matky_za_slobodna/Draw")
 (setf (get meno_matky_za_slobodna::Draw :request) meno_matky_za_slobodna::DrawRequest)
 (setf (get meno_matky_za_slobodna::Draw :response) meno_matky_za_slobodna::DrawResponse)
@@ -124,24 +155,26 @@
 (defmethod meno_matky_za_slobodna::DrawRequest
   (:response () (instance meno_matky_za_slobodna::DrawResponse :init)))
 
-(setf (get meno_matky_za_slobodna::DrawRequest :md5sum-) "ff56ab10127485a25e50efa6f63c433b")
+(setf (get meno_matky_za_slobodna::DrawRequest :md5sum-) "2ffd6e0fc173594a685f86a9d4366967")
 (setf (get meno_matky_za_slobodna::DrawRequest :datatype-) "meno_matky_za_slobodna/DrawRequest")
 (setf (get meno_matky_za_slobodna::DrawRequest :definition-)
       "int64 radius
+int64 speed
 ---
 bool success
 ")
 
-(setf (get meno_matky_za_slobodna::DrawResponse :md5sum-) "ff56ab10127485a25e50efa6f63c433b")
+(setf (get meno_matky_za_slobodna::DrawResponse :md5sum-) "2ffd6e0fc173594a685f86a9d4366967")
 (setf (get meno_matky_za_slobodna::DrawResponse :datatype-) "meno_matky_za_slobodna/DrawResponse")
 (setf (get meno_matky_za_slobodna::DrawResponse :definition-)
       "int64 radius
+int64 speed
 ---
 bool success
 ")
 
 
 
-(provide :meno_matky_za_slobodna/Draw "ff56ab10127485a25e50efa6f63c433b")
+(provide :meno_matky_za_slobodna/Draw "2ffd6e0fc173594a685f86a9d4366967")
 
 

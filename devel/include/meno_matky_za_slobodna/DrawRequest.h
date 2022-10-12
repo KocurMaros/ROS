@@ -24,10 +24,12 @@ struct DrawRequest_
   typedef DrawRequest_<ContainerAllocator> Type;
 
   DrawRequest_()
-    : radius(0)  {
+    : radius(0)
+    , speed(0)  {
     }
   DrawRequest_(const ContainerAllocator& _alloc)
-    : radius(0)  {
+    : radius(0)
+    , speed(0)  {
   (void)_alloc;
     }
 
@@ -35,6 +37,9 @@ struct DrawRequest_
 
    typedef int64_t _radius_type;
   _radius_type radius;
+
+   typedef int64_t _speed_type;
+  _speed_type speed;
 
 
 
@@ -65,7 +70,8 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator1> & lhs, const ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator2> & rhs)
 {
-  return lhs.radius == rhs.radius;
+  return lhs.radius == rhs.radius &&
+    lhs.speed == rhs.speed;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -122,12 +128,12 @@ struct MD5Sum< ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "6bdc92e8e5111a3d38107be6f1b3b477";
+    return "44eba2183011b54eab1ddb142eecafcb";
   }
 
   static const char* value(const ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x6bdc92e8e5111a3dULL;
-  static const uint64_t static_value2 = 0x38107be6f1b3b477ULL;
+  static const uint64_t static_value1 = 0x44eba2183011b54eULL;
+  static const uint64_t static_value2 = 0xab1ddb142eecafcbULL;
 };
 
 template<class ContainerAllocator>
@@ -147,6 +153,7 @@ struct Definition< ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator> >
   static const char* value()
   {
     return "int64 radius\n"
+"int64 speed\n"
 ;
   }
 
@@ -166,6 +173,7 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.radius);
+      stream.next(m.speed);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -186,6 +194,8 @@ struct Printer< ::meno_matky_za_slobodna::DrawRequest_<ContainerAllocator> >
   {
     s << indent << "radius: ";
     Printer<int64_t>::stream(s, indent + "  ", v.radius);
+    s << indent << "speed: ";
+    Printer<int64_t>::stream(s, indent + "  ", v.speed);
   }
 };
 

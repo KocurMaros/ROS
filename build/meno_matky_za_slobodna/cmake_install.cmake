@@ -38,7 +38,10 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/meno_matky_za_slobodna/srv" TYPE FILE FILES "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/meno_matky_za_slobodna/srv" TYPE FILE FILES
+    "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv"
+    "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv"
+    )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

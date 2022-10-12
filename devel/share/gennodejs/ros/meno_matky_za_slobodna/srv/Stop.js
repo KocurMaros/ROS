@@ -17,68 +17,44 @@ const _getByteLength = _ros_msg_utils.getByteLength;
 
 //-----------------------------------------------------------
 
-class DrawRequest {
+class StopRequest {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.radius = null;
-      this.speed = null;
     }
     else {
-      if (initObj.hasOwnProperty('radius')) {
-        this.radius = initObj.radius
-      }
-      else {
-        this.radius = 0;
-      }
-      if (initObj.hasOwnProperty('speed')) {
-        this.speed = initObj.speed
-      }
-      else {
-        this.speed = 0;
-      }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
-    // Serializes a message object of type DrawRequest
-    // Serialize message field [radius]
-    bufferOffset = _serializer.int64(obj.radius, buffer, bufferOffset);
-    // Serialize message field [speed]
-    bufferOffset = _serializer.int64(obj.speed, buffer, bufferOffset);
+    // Serializes a message object of type StopRequest
     return bufferOffset;
   }
 
   static deserialize(buffer, bufferOffset=[0]) {
-    //deserializes a message object of type DrawRequest
+    //deserializes a message object of type StopRequest
     let len;
-    let data = new DrawRequest(null);
-    // Deserialize message field [radius]
-    data.radius = _deserializer.int64(buffer, bufferOffset);
-    // Deserialize message field [speed]
-    data.speed = _deserializer.int64(buffer, bufferOffset);
+    let data = new StopRequest(null);
     return data;
   }
 
   static getMessageSize(object) {
-    return 16;
+    return 0;
   }
 
   static datatype() {
     // Returns string type for a service object
-    return 'meno_matky_za_slobodna/DrawRequest';
+    return 'meno_matky_za_slobodna/StopRequest';
   }
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '44eba2183011b54eab1ddb142eecafcb';
+    return 'd41d8cd98f00b204e9800998ecf8427e';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    int64 radius
-    int64 speed
     
     `;
   }
@@ -88,26 +64,12 @@ class DrawRequest {
     if (typeof msg !== 'object' || msg === null) {
       msg = {};
     }
-    const resolved = new DrawRequest(null);
-    if (msg.radius !== undefined) {
-      resolved.radius = msg.radius;
-    }
-    else {
-      resolved.radius = 0
-    }
-
-    if (msg.speed !== undefined) {
-      resolved.speed = msg.speed;
-    }
-    else {
-      resolved.speed = 0
-    }
-
+    const resolved = new StopRequest(null);
     return resolved;
     }
 };
 
-class DrawResponse {
+class StopResponse {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
@@ -124,16 +86,16 @@ class DrawResponse {
   }
 
   static serialize(obj, buffer, bufferOffset) {
-    // Serializes a message object of type DrawResponse
+    // Serializes a message object of type StopResponse
     // Serialize message field [success]
     bufferOffset = _serializer.bool(obj.success, buffer, bufferOffset);
     return bufferOffset;
   }
 
   static deserialize(buffer, bufferOffset=[0]) {
-    //deserializes a message object of type DrawResponse
+    //deserializes a message object of type StopResponse
     let len;
-    let data = new DrawResponse(null);
+    let data = new StopResponse(null);
     // Deserialize message field [success]
     data.success = _deserializer.bool(buffer, bufferOffset);
     return data;
@@ -145,7 +107,7 @@ class DrawResponse {
 
   static datatype() {
     // Returns string type for a service object
-    return 'meno_matky_za_slobodna/DrawResponse';
+    return 'meno_matky_za_slobodna/StopResponse';
   }
 
   static md5sum() {
@@ -166,7 +128,7 @@ class DrawResponse {
     if (typeof msg !== 'object' || msg === null) {
       msg = {};
     }
-    const resolved = new DrawResponse(null);
+    const resolved = new StopResponse(null);
     if (msg.success !== undefined) {
       resolved.success = msg.success;
     }
@@ -179,8 +141,8 @@ class DrawResponse {
 };
 
 module.exports = {
-  Request: DrawRequest,
-  Response: DrawResponse,
-  md5sum() { return '2ffd6e0fc173594a685f86a9d4366967'; },
-  datatype() { return 'meno_matky_za_slobodna/Draw'; }
+  Request: StopRequest,
+  Response: StopResponse,
+  md5sum() { return '358e233cde0c8a8bcfea4ce193f8fc15'; },
+  datatype() { return 'meno_matky_za_slobodna/Stop'; }
 };

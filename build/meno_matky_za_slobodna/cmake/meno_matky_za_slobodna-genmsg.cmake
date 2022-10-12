@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "meno_matky_za_slobodna: 0 messages, 1 services")
+message(STATUS "meno_matky_za_slobodna: 0 messages, 2 services")
 
 set(MSG_I_FLAGS "-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
 
@@ -22,6 +22,11 @@ add_custom_target(_meno_matky_za_slobodna_generate_messages_check_deps_${_filena
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "meno_matky_za_slobodna" "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv" ""
 )
 
+get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv" NAME_WE)
+add_custom_target(_meno_matky_za_slobodna_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "meno_matky_za_slobodna" "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv" ""
+)
+
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
@@ -32,6 +37,12 @@ add_custom_target(_meno_matky_za_slobodna_generate_messages_check_deps_${_filena
 ### Generating Services
 _generate_srv_cpp(meno_matky_za_slobodna
   "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/meno_matky_za_slobodna
+)
+_generate_srv_cpp(meno_matky_za_slobodna
+  "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/meno_matky_za_slobodna
@@ -51,6 +62,8 @@ add_dependencies(meno_matky_za_slobodna_generate_messages meno_matky_za_slobodna
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv" NAME_WE)
 add_dependencies(meno_matky_za_slobodna_generate_messages_cpp _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv" NAME_WE)
+add_dependencies(meno_matky_za_slobodna_generate_messages_cpp _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(meno_matky_za_slobodna_gencpp)
@@ -65,6 +78,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS meno_matky_za_slobodna_generate_mes
 ### Generating Services
 _generate_srv_eus(meno_matky_za_slobodna
   "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/meno_matky_za_slobodna
+)
+_generate_srv_eus(meno_matky_za_slobodna
+  "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/meno_matky_za_slobodna
@@ -84,6 +103,8 @@ add_dependencies(meno_matky_za_slobodna_generate_messages meno_matky_za_slobodna
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv" NAME_WE)
 add_dependencies(meno_matky_za_slobodna_generate_messages_eus _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv" NAME_WE)
+add_dependencies(meno_matky_za_slobodna_generate_messages_eus _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(meno_matky_za_slobodna_geneus)
@@ -98,6 +119,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS meno_matky_za_slobodna_generate_mes
 ### Generating Services
 _generate_srv_lisp(meno_matky_za_slobodna
   "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/meno_matky_za_slobodna
+)
+_generate_srv_lisp(meno_matky_za_slobodna
+  "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/meno_matky_za_slobodna
@@ -117,6 +144,8 @@ add_dependencies(meno_matky_za_slobodna_generate_messages meno_matky_za_slobodna
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv" NAME_WE)
 add_dependencies(meno_matky_za_slobodna_generate_messages_lisp _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv" NAME_WE)
+add_dependencies(meno_matky_za_slobodna_generate_messages_lisp _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(meno_matky_za_slobodna_genlisp)
@@ -131,6 +160,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS meno_matky_za_slobodna_generate_mes
 ### Generating Services
 _generate_srv_nodejs(meno_matky_za_slobodna
   "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/meno_matky_za_slobodna
+)
+_generate_srv_nodejs(meno_matky_za_slobodna
+  "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/meno_matky_za_slobodna
@@ -150,6 +185,8 @@ add_dependencies(meno_matky_za_slobodna_generate_messages meno_matky_za_slobodna
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv" NAME_WE)
 add_dependencies(meno_matky_za_slobodna_generate_messages_nodejs _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv" NAME_WE)
+add_dependencies(meno_matky_za_slobodna_generate_messages_nodejs _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(meno_matky_za_slobodna_gennodejs)
@@ -168,6 +205,12 @@ _generate_srv_py(meno_matky_za_slobodna
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/meno_matky_za_slobodna
 )
+_generate_srv_py(meno_matky_za_slobodna
+  "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/meno_matky_za_slobodna
+)
 
 ### Generating Module File
 _generate_module_py(meno_matky_za_slobodna
@@ -182,6 +225,8 @@ add_dependencies(meno_matky_za_slobodna_generate_messages meno_matky_za_slobodna
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv" NAME_WE)
+add_dependencies(meno_matky_za_slobodna_generate_messages_py _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv" NAME_WE)
 add_dependencies(meno_matky_za_slobodna_generate_messages_py _meno_matky_za_slobodna_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

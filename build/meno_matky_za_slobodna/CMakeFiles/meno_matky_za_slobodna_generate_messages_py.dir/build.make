@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/laptop/catkin_ws/build
 include meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_py.dir/progress.make
 
 meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_py: /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/_Draw.py
+meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_py: /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/_Stop.py
 meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_py: /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/__init__.py
 
 
@@ -62,13 +63,20 @@ meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_py: /
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code from SRV meno_matky_za_slobodna/Draw"
 	cd /home/laptop/catkin_ws/build/meno_matky_za_slobodna && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p meno_matky_za_slobodna -o /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv
 
+/home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/_Stop.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
+/home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/_Stop.py: /home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python code from SRV meno_matky_za_slobodna/Stop"
+	cd /home/laptop/catkin_ws/build/meno_matky_za_slobodna && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p meno_matky_za_slobodna -o /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv
+
 /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/__init__.py: /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/_Draw.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python srv __init__.py for meno_matky_za_slobodna"
+/home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/__init__.py: /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/_Stop.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python srv __init__.py for meno_matky_za_slobodna"
 	cd /home/laptop/catkin_ws/build/meno_matky_za_slobodna && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv --initpy
 
 meno_matky_za_slobodna_generate_messages_py: meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_py
 meno_matky_za_slobodna_generate_messages_py: /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/_Draw.py
+meno_matky_za_slobodna_generate_messages_py: /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/_Stop.py
 meno_matky_za_slobodna_generate_messages_py: /home/laptop/catkin_ws/devel/lib/python3/dist-packages/meno_matky_za_slobodna/srv/__init__.py
 meno_matky_za_slobodna_generate_messages_py: meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_py.dir/build.make
 

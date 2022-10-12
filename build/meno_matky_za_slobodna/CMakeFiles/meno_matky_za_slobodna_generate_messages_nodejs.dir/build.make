@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/laptop/catkin_ws/build
 include meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_nodejs.dir/progress.make
 
 meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_nodejs: /home/laptop/catkin_ws/devel/share/gennodejs/ros/meno_matky_za_slobodna/srv/Draw.js
+meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_nodejs: /home/laptop/catkin_ws/devel/share/gennodejs/ros/meno_matky_za_slobodna/srv/Stop.js
 
 
 /home/laptop/catkin_ws/devel/share/gennodejs/ros/meno_matky_za_slobodna/srv/Draw.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
@@ -61,8 +62,14 @@ meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_nodej
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from meno_matky_za_slobodna/Draw.srv"
 	cd /home/laptop/catkin_ws/build/meno_matky_za_slobodna && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p meno_matky_za_slobodna -o /home/laptop/catkin_ws/devel/share/gennodejs/ros/meno_matky_za_slobodna/srv
 
+/home/laptop/catkin_ws/devel/share/gennodejs/ros/meno_matky_za_slobodna/srv/Stop.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
+/home/laptop/catkin_ws/devel/share/gennodejs/ros/meno_matky_za_slobodna/srv/Stop.js: /home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from meno_matky_za_slobodna/Stop.srv"
+	cd /home/laptop/catkin_ws/build/meno_matky_za_slobodna && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p meno_matky_za_slobodna -o /home/laptop/catkin_ws/devel/share/gennodejs/ros/meno_matky_za_slobodna/srv
+
 meno_matky_za_slobodna_generate_messages_nodejs: meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_nodejs
 meno_matky_za_slobodna_generate_messages_nodejs: /home/laptop/catkin_ws/devel/share/gennodejs/ros/meno_matky_za_slobodna/srv/Draw.js
+meno_matky_za_slobodna_generate_messages_nodejs: /home/laptop/catkin_ws/devel/share/gennodejs/ros/meno_matky_za_slobodna/srv/Stop.js
 meno_matky_za_slobodna_generate_messages_nodejs: meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_nodejs.dir/build.make
 
 .PHONY : meno_matky_za_slobodna_generate_messages_nodejs

@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/laptop/catkin_ws/build
 include meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_eus.dir/progress.make
 
 meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_eus: /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Draw.l
+meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_eus: /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Stop.l
 meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_eus: /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/manifest.l
 
 
@@ -62,12 +63,18 @@ meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_eus: 
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from meno_matky_za_slobodna/Draw.srv"
 	cd /home/laptop/catkin_ws/build/meno_matky_za_slobodna && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p meno_matky_za_slobodna -o /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv
 
+/home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Stop.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Stop.l: /home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from meno_matky_za_slobodna/Stop.srv"
+	cd /home/laptop/catkin_ws/build/meno_matky_za_slobodna && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p meno_matky_za_slobodna -o /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv
+
 /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for meno_matky_za_slobodna"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/laptop/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for meno_matky_za_slobodna"
 	cd /home/laptop/catkin_ws/build/meno_matky_za_slobodna && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna meno_matky_za_slobodna std_msgs
 
 meno_matky_za_slobodna_generate_messages_eus: meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_eus
 meno_matky_za_slobodna_generate_messages_eus: /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Draw.l
+meno_matky_za_slobodna_generate_messages_eus: /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Stop.l
 meno_matky_za_slobodna_generate_messages_eus: /home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/manifest.l
 meno_matky_za_slobodna_generate_messages_eus: meno_matky_za_slobodna/CMakeFiles/meno_matky_za_slobodna_generate_messages_eus.dir/build.make
 

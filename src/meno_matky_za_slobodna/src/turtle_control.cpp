@@ -101,7 +101,7 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
 // topic callback a for listening to the pose message from the turtle
 void TurtleControl::poseCallback(const turtlesim::Pose::ConstPtr& msg)
 {
-    ros::ServiceClient clearClient = nh.serviceClient<std_srvs::Empty>("/clear");
+    ros::ServiceClient clearClient = n.serviceClient<std_srvs::Empty>("/clear");
     std_srvs::Empty srv;
     if ((msg->x >= WINDOW_EDGE)||(msg->y >= WINDOW_EDGE)||(msg->x <= 0)||(msg->y <= 0))
     {

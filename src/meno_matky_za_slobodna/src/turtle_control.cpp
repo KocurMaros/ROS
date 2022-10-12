@@ -85,7 +85,7 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
     speed = (float)req.speed;
     angle = (float)req.radius/2;
     printf("%f\n",angle);
-    angle = speed/angle);
+    angle = speed/angle;
 
     printf("spe %f ang %f\n",speed,angle);
     velocity_msg_.linear.x = speed;

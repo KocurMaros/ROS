@@ -83,7 +83,7 @@ bool TurtleControl::stopCallback(meno_matky_za_slobodna::Stop::Request &req, men
 bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res)
 {   
     speed = req.speed;
-    angle = speed/(req.radius/2);
+    angle = speed/(float)(req.radius/2);
 
     velocity_msg_.linear.x = speed;
     velocity_msg_.linear.y = 0;

@@ -51,11 +51,11 @@ TurtleControl::TurtleControl(){
     this->drawing_status_ = false;
     this->pose_msg_ = turtlesim::Pose();
 }
-bool TurtleControl::startCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res){
+bool TurtleControl::startCallback(meno_matky_za_slobodna::Start::Request &req, meno_matky_za_slobodna::Start::Response &res){
 
     return true;
 }
-bool TurtleControl::stopCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res){
+bool TurtleControl::stopCallback(meno_matky_za_slobodna::Stop::Request &req, meno_matky_za_slobodna::Stop::Response &res){
     
     return true;
 }

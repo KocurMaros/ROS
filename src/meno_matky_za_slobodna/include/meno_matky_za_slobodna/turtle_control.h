@@ -10,7 +10,8 @@
 #include <turtlesim/TeleportAbsolute.h>
 #include <turtlesim/SetPen.h>
 #include <meno_matky_za_slobodna/Draw.h>
-
+#include <meno_matky_za_slobodna/Start.h>
+#include <meno_matky_za_slobodna/Stop.h>
 
 //main class for turtle control
 class TurtleControl {
@@ -21,8 +22,8 @@ public:
 
     //Callbacks
     bool drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res);
-    bool stopCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res);
-    bool startCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res);
+    bool startCallback(meno_matky_za_slobodna::Start::Request &req, meno_matky_za_slobodna::Start::Response &res);
+    bool stopCallback(meno_matky_za_slobodna::Stop::Request &req, meno_matky_za_slobodna::Stop::Response &res);
     void poseCallback(const turtlesim::Pose::ConstPtr& msg);
 
     // Other public methods

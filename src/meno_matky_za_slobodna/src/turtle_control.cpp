@@ -3,7 +3,7 @@
 TurtleControl::TurtleControl(){
 
     // NodeHandler
-    ros::NodeHandle n;
+    // ros::NodeHandle n;
 
     // Publisher
     velocity_pub_ = n.advertise<geometry_msgs::Twist>("turtle1/cmd_vel", 1);

@@ -86,7 +86,8 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
     // angle = req.radius;
     angle = speed/(req.radius);
     // printf("co do pici\n");
-    velocity_msg_.linear.x = speed;
+    // velocity_msg_.linear.x = speed;
+    velocity_msg_.linear.x = 1;
     velocity_msg_.linear.y = 0;
     velocity_msg_.linear.z = 0;
 

@@ -39,8 +39,8 @@ private:
     const double  WINDOW_CENTER = 5.544444561;
     const double WINDOW_EDGE = 11.088889122;
     
-    int64_t speed;
-    int64_t angle;
+    float speed;
+    float angle;
     // member variables
     geometry_msgs::Twist velocity_msg_;
     bool drawing_status_;

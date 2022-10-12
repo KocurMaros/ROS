@@ -3,7 +3,7 @@
 TurtleControl::TurtleControl(){
 
     // NodeHandler
-    // ros::NodeHandle n;
+    ros::NodeHandle n;
 
     // Publisher
     velocity_pub_ = n.advertise<geometry_msgs::Twist>("turtle1/cmd_vel", 1);
@@ -100,7 +100,8 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
 
 // topic callback a for listening to the pose message from the turtle
 void TurtleControl::poseCallback(const turtlesim::Pose::ConstPtr& msg)
-{
+{    
+    ros::NodeHandle n;
     ros::ServiceClient clearClient = n.serviceClient<std_srvs::Empty>("/clear");
     std_srvs::Empty srv;
     if ((msg->x >= WINDOW_EDGE)||(msg->y >= WINDOW_EDGE)||(msg->x <= 0)||(msg->y <= 0))

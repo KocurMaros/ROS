@@ -38,7 +38,7 @@ private:
     const double PUB_RATE = 100.0;
     const double  WINDOW_CENTER = 5.544444561;
     const double WINDOW_EDGE = 11.088889122;
-
+    
     int64_t speed;
     int64_t angle;
     // member variables
@@ -53,7 +53,7 @@ private:
     ros::ServiceServer stop_service_;
     ros::ServiceServer start_service_;
     ros::ServiceClient teleport_client_;
-    ros::NodeHandle n;
+
 };
 
 

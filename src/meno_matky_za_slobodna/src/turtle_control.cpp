@@ -13,6 +13,8 @@ TurtleControl::TurtleControl(){
 
     // Service server
     square_service_ = n.advertiseService("/turtle_control/draw", &TurtleControl::drawCallback, this);
+    stop_service_ = n.advertiseService("/turtle_control/stop", &TurtleControl::stopCallback, this);
+    start_service_ = n.advertiseService("/turtle_control/start", &TurtleControl::startCallback, this);
 
     // Service client
     teleport_client_ = n.serviceClient<turtlesim::TeleportAbsolute>("/turtle1/teleport_absolute");
@@ -49,7 +51,12 @@ TurtleControl::TurtleControl(){
     this->drawing_status_ = false;
     this->pose_msg_ = turtlesim::Pose();
 }
+bool TurtleControl::startCallback(){
 
+}
+bool TurtleControl::stopCallback(){
+    
+}
 // service server callback for starting the drawing and drawing speed configuration
 bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res)
 {   

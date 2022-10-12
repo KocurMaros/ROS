@@ -21,6 +21,8 @@ public:
 
     //Callbacks
     bool drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res);
+    bool stopCallback();
+    bool startCallback();
     void poseCallback(const turtlesim::Pose::ConstPtr& msg);
 
     // Other public methods

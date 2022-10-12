@@ -59,6 +59,7 @@ find_package(catkin REQUIRED COMPONENTS
    FILES
    Draw.srv
    Stop.srv
+   Start.srv
  )
 
 ## Generate actions in the 'action' folder

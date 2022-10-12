@@ -102,8 +102,8 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
 void TurtleControl::poseCallback(const turtlesim::Pose::ConstPtr& msg)
 {    
     ros::NodeHandle n;
-    ros::ServiceClient clearClient = n.serviceClient<std_srvs::Empty>("/clear");
-    std_srvs::Empty srv;
+    ros::ServiceClient clearClient = n.serviceClient<meno_matky_za_slobodna::Empty>("/clear");
+    meno_matky_za_slobodna::Empty srv;
     if ((msg->x >= WINDOW_EDGE)||(msg->y >= WINDOW_EDGE)||(msg->x <= 0)||(msg->y <= 0))
     {
         velocity_msg_.linear.x = 0;

@@ -95,7 +95,7 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
     velocity_msg_.angular.z = angle;
     this->drawing_status_ = true;
 
-    res.success = false;
+    res.success = true;
     return true;
 }
 

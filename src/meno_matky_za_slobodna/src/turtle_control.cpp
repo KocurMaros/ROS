@@ -83,11 +83,9 @@ bool TurtleControl::stopCallback(meno_matky_za_slobodna::Stop::Request &req, men
 bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res)
 {   
     speed = (float)req.speed;
-    angle = (float)req.radius/2;
-    printf("%f\n",angle);
+    angle = (float)req.radius;
     angle = speed/angle;
 
-    printf("spe %f ang %f\n",speed,angle);
     velocity_msg_.linear.x = speed;
     velocity_msg_.linear.y = 0;
     velocity_msg_.linear.z = 0;
@@ -97,7 +95,7 @@ bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, men
     velocity_msg_.angular.z = angle;
     this->drawing_status_ = true;
 
-    res.success = true;
+    res.success = false;
     return true;
 }
 

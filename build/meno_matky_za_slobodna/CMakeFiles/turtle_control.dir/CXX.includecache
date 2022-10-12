@@ -64,10 +64,6 @@ meno_matky_za_slobodna/Draw.h
 meno_matky_za_slobodna/turtle_control.h
 /home/laptop/catkin_ws/src/meno_matky_za_slobodna/src/meno_matky_za_slobodna/turtle_control.h
 
-/home/laptop/catkin_ws/src/meno_matky_za_slobodna/src/turtle_control_node.cpp
-meno_matky_za_slobodna/turtle_control.h
-/home/laptop/catkin_ws/src/meno_matky_za_slobodna/src/meno_matky_za_slobodna/turtle_control.h
-
 /opt/ros/noetic/include/geometry_msgs/Twist.h
 string
 -

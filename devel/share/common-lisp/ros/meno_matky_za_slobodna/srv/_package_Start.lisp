@@ -1,6 +1,6 @@
 (cl:in-package meno_matky_za_slobodna-srv)
-(cl:export '(STOP-VAL
-          STOP
+(cl:export '(START-VAL
+          START
           SUCCESS-VAL
           SUCCESS
 ))

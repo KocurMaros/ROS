@@ -17,35 +17,35 @@ const _getByteLength = _ros_msg_utils.getByteLength;
 
 //-----------------------------------------------------------
 
-class StopRequest {
+class StartRequest {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.stop = null;
+      this.start = null;
     }
     else {
-      if (initObj.hasOwnProperty('stop')) {
-        this.stop = initObj.stop
+      if (initObj.hasOwnProperty('start')) {
+        this.start = initObj.start
       }
       else {
-        this.stop = false;
+        this.start = false;
       }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
-    // Serializes a message object of type StopRequest
-    // Serialize message field [stop]
-    bufferOffset = _serializer.bool(obj.stop, buffer, bufferOffset);
+    // Serializes a message object of type StartRequest
+    // Serialize message field [start]
+    bufferOffset = _serializer.bool(obj.start, buffer, bufferOffset);
     return bufferOffset;
   }
 
   static deserialize(buffer, bufferOffset=[0]) {
-    //deserializes a message object of type StopRequest
+    //deserializes a message object of type StartRequest
     let len;
-    let data = new StopRequest(null);
-    // Deserialize message field [stop]
-    data.stop = _deserializer.bool(buffer, bufferOffset);
+    let data = new StartRequest(null);
+    // Deserialize message field [start]
+    data.start = _deserializer.bool(buffer, bufferOffset);
     return data;
   }
 
@@ -55,18 +55,18 @@ class StopRequest {
 
   static datatype() {
     // Returns string type for a service object
-    return 'meno_matky_za_slobodna/StopRequest';
+    return 'meno_matky_za_slobodna/StartRequest';
   }
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '71f1172402e56b82716ca71681cded6b';
+    return '676aa7bfb3ec2071e814f2368dfd5fb5';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    bool stop
+    bool start
     
     `;
   }
@@ -76,19 +76,19 @@ class StopRequest {
     if (typeof msg !== 'object' || msg === null) {
       msg = {};
     }
-    const resolved = new StopRequest(null);
-    if (msg.stop !== undefined) {
-      resolved.stop = msg.stop;
+    const resolved = new StartRequest(null);
+    if (msg.start !== undefined) {
+      resolved.start = msg.start;
     }
     else {
-      resolved.stop = false
+      resolved.start = false
     }
 
     return resolved;
     }
 };
 
-class StopResponse {
+class StartResponse {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
@@ -105,16 +105,16 @@ class StopResponse {
   }
 
   static serialize(obj, buffer, bufferOffset) {
-    // Serializes a message object of type StopResponse
+    // Serializes a message object of type StartResponse
     // Serialize message field [success]
     bufferOffset = _serializer.bool(obj.success, buffer, bufferOffset);
     return bufferOffset;
   }
 
   static deserialize(buffer, bufferOffset=[0]) {
-    //deserializes a message object of type StopResponse
+    //deserializes a message object of type StartResponse
     let len;
-    let data = new StopResponse(null);
+    let data = new StartResponse(null);
     // Deserialize message field [success]
     data.success = _deserializer.bool(buffer, bufferOffset);
     return data;
@@ -126,7 +126,7 @@ class StopResponse {
 
   static datatype() {
     // Returns string type for a service object
-    return 'meno_matky_za_slobodna/StopResponse';
+    return 'meno_matky_za_slobodna/StartResponse';
   }
 
   static md5sum() {
@@ -147,7 +147,7 @@ class StopResponse {
     if (typeof msg !== 'object' || msg === null) {
       msg = {};
     }
-    const resolved = new StopResponse(null);
+    const resolved = new StartResponse(null);
     if (msg.success !== undefined) {
       resolved.success = msg.success;
     }
@@ -160,8 +160,8 @@ class StopResponse {
 };
 
 module.exports = {
-  Request: StopRequest,
-  Response: StopResponse,
-  md5sum() { return '5fb7f99d98a30bfd9eeddbb34b138b31'; },
-  datatype() { return 'meno_matky_za_slobodna/Stop'; }
+  Request: StartRequest,
+  Response: StartResponse,
+  md5sum() { return 'bbb7ba84302b6f35af5466a95cd7ac90'; },
+  datatype() { return 'meno_matky_za_slobodna/Start'; }
 };

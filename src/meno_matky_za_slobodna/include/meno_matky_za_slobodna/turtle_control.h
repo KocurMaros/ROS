@@ -45,7 +45,10 @@ private:
     ros::Publisher velocity_pub_;
     ros::Subscriber pose_sub_;
     ros::ServiceServer square_service_;
+    ros::ServiceServer stop_service_;
+    ros::ServiceServer start_service_;
     ros::ServiceClient teleport_client_;
+
 };
 
 

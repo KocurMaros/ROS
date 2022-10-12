@@ -52,18 +52,35 @@ TurtleControl::TurtleControl(){
     this->pose_msg_ = turtlesim::Pose();
 }
 bool TurtleControl::startCallback(meno_matky_za_slobodna::Start::Request &req, meno_matky_za_slobodna::Start::Response &res){
+    velocity_msg_.linear.x = speed;
+    velocity_msg_.linear.y = 0;
+    velocity_msg_.linear.z = 0;
 
+    velocity_msg_.angular.x = 0;
+    velocity_msg_.angular.y = 0;
+    velocity_msg_.angular.z = angle;
+    this->drawing_status_ = true;
+
+    res.success = true;
     return true;
 }
 bool TurtleControl::stopCallback(meno_matky_za_slobodna::Stop::Request &req, meno_matky_za_slobodna::Stop::Response &res){
-    
+    velocity_msg_.linear.x = 0;
+    velocity_msg_.linear.y = 0;
+    velocity_msg_.linear.z = 0;
+
+    velocity_msg_.angular.x = 0;
+    velocity_msg_.angular.y = 0;
+    velocity_msg_.angular.z = 0;
+    this->drawing_status_ = false;
+
+    res.success = true;
     return true;
 }
 // service server callback for starting the drawing and drawing speed configuration
 bool TurtleControl::drawCallback(meno_matky_za_slobodna::Draw::Request &req, meno_matky_za_slobodna::Draw::Response &res)
 {   
-    int64_t speed = req.speed;
-    int64_t angle;
+    speed = req.speed;
     angle = speed/(req.radius);
     // printf("co do pici\n");
     velocity_msg_.linear.x = speed;

@@ -40,7 +40,7 @@ TurtleControl::TurtleControl(){
     setpen_client.waitForExistence();
     
     setpen_srv.request.width = width;
-    setpen_srv.request.off = true;
+    setpen_srv.request.off = false;
     setpen_srv.request.r = red;
     setpen_srv.request.g = green;
     setpen_srv.request.b = blue;

@@ -30,16 +30,17 @@ TurtleControl::TurtleControl(){
 
     // get parameters from server
     n.getParam("/turtle_control/line/width", width);
-    n.getParam("/turtle_control/line/red", red);
-    n.getParam("/turtle_control/line/green", green);
-    n.getParam("/turtle_control/line/blue", blue);
+    
+    n.getParam("/turtle_control/line/color/red", red);
+    n.getParam("/turtle_control/line/color/green", green);
+    n.getParam("/turtle_control/line/color/blue", blue);
 
     // Create service message
     turtlesim::SetPen setpen_srv;
     setpen_client.waitForExistence();
     
     setpen_srv.request.width = width;
-    setpen_srv.request.off = false;
+    setpen_srv.request.off = true;
     setpen_srv.request.r = red;
     setpen_srv.request.g = green;
     setpen_srv.request.b = blue;

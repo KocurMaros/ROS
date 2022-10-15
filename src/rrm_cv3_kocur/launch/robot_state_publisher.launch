@@ -1,7 +1,7 @@
 <launch>
-	<param name="robot_description" textfile="$(find rrm_cv3)/urdf/arm.urdf" />
+	<param name="robot_description" textfile="$(find rrm_cv3_kocur)/urdf/arm.urdf" />
 	<param name="use_gui" value="True"/>
 	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
  	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rrm_cv3)/config/rrm_cv3.rviz" required="true" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rrm_cv3_kocur)/config/rrm_cv3_kocur.rviz" required="true" />
 </launch>

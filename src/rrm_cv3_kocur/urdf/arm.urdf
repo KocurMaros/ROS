@@ -13,53 +13,6 @@
     </visual>
   </link>
 
-  <link name="joint_1">
-    <visual>
-      <geometry>
-       <sphere radius="0.03"/>
-      </geometry>
-      <material name="gray">
-        <color rgba="0.2 0.2 0.2 1"/>
-      </material>
-        <origin xyz="0 0 0" rpy = "0 0 0"/>
-    </visual>
-  </link>
-  
-  <link name="joint_2">
-    <visual>
-      <geometry>
-       <sphere radius="0.03"/>
-      </geometry>  
-      <material name="gray">
-        <color rgba="0.2 0.2 0.2 1"/>
-      </material>
-      <origin xyz="0 0 0" rpy = "0 0 0"/>
-    </visual>
-  </link>
-  <link name="joint_3">
-    <visual>
-      <geometry>
-       <sphere radius="0.03"/>
-      </geometry>  
-      <material name="gray">
-        <color rgba="0.2 0.2 0.2 1"/>
-      </material>
-      <origin xyz="0 0 0" rpy = "0 0 0"/>
-    </visual>
-  </link>
-
-  <link name="joint_4">
-    <visual>
-      <geometry>
-       <sphere radius="0.03"/>
-      </geometry>  
-      <material name="gray">
-        <color rgba="0.2 0.2 0.2 1"/>
-      </material>
-      <origin xyz="0 0 0" rpy = "0 0 0"/>
-    </visual>
-  </link>
-
   <link name="link1">
     <visual>
       <geometry>
@@ -109,6 +62,53 @@
   </link>
 
   <link name="tool0"/>
+
+  <link name="joint_1">
+    <visual>
+      <geometry>
+       <sphere radius="0.03"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+        <origin xyz="0 0 0" rpy = "0 0 0"/>
+    </visual>
+  </link>
+  
+  <link name="joint_2">
+    <visual>
+      <geometry>
+       <sphere radius="0.03"/>
+      </geometry>  
+      <material name="gray">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+      <origin xyz="0 0 0" rpy = "0 0 0"/>
+    </visual>
+  </link>
+  <link name="joint_3">
+    <visual>
+      <geometry>
+       <sphere radius="0.03"/>
+      </geometry>  
+      <material name="gray">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+      <origin xyz="0 0 0" rpy = "0 0 0"/>
+    </visual>
+  </link>
+
+  <link name="joint_4">
+    <visual>
+      <geometry>
+       <sphere radius="0.03"/>
+      </geometry>  
+      <material name="gray">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+      <origin xyz="0 0 0" rpy = "0 0 0"/>
+    </visual>
+  </link>
   
   <!--Joints-->
   <joint name="joint_1" type="revolute">
@@ -165,8 +165,6 @@
     <child link="link4"/>
     <origin xyz="0 0 0.089" rpy = "0 0 0"/>
   </joint>
-
-
 
   <joint name="joint_4_to_tool0" type="fixed">
     <parent link="joint_4"/>

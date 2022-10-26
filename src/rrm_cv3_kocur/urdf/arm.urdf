@@ -60,22 +60,10 @@
     </visual>
   </link>
 
-  <link name="link3">
-     <visual>
+  <link name="link1">
+    <visual>
       <geometry>
-        <cylinder length="0.178" radius = "0.01"/>
-      </geometry>
-      <material name="white">
-        <color rgba="1 1 1 1"/>
-      </material>
-      <origin xyz="0 0 0" rpy = "0 0 0"/>
-    </visual>
-  </link>
-
-  <link name="link4">
-     <visual>
-      <geometry>
-        <cylinder length="0.178" radius = "0.01"/>
+        <cylinder length="0.203" radius = "0.01"/>
       </geometry>
       <material name="white">
         <color rgba="1 1 1 1"/>
@@ -94,12 +82,24 @@
       </material>
       <origin xyz="0 0 0" rpy = "0 0 0"/>
     </visual>
-  </link>
-  
-  <link name="link1">
-    <visual>
+  </link>  
+
+  <link name="link3">
+     <visual>
       <geometry>
-        <cylinder length="0.203" radius = "0.01"/>
+        <cylinder length="0.178" radius = "0.01"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+      <origin xyz="0 0 0" rpy = "0 0 0"/>
+    </visual>
+  </link>
+
+  <link name="link4">
+     <visual>
+      <geometry>
+        <cylinder length="0.178" radius = "0.01"/>
       </geometry>
       <material name="white">
         <color rgba="1 1 1 1"/>
@@ -127,7 +127,7 @@
     <limit effort="1000.0" lower="-0.96" upper="2.182" velocity="0.5"/>
   </joint>
 
-  <joint name="joint_3" type="revolute">
+  <joint name="joint_3" type="continuous">
     <axis xyz="0 0 1"/>
     <parent link="joint_2"/>
     <child link="joint_3"/>
@@ -142,28 +142,28 @@
     <limit effort="1000.0" lower="-1.62" upper="1.62" velocity="0.5"/>
   </joint>
 
-  <joint name="link2_to_joint_2" type="fixed">
-    <parent link="joint_2"/>
-    <child link="link2"/>
-    <origin xyz="0 0 0.089" rpy = "0 0 0"/>
-  </joint>
-  
   <joint name="link1_to_joint_1" type="fixed">
     <parent link="joint_1"/>
     <child link="link1"/>
     <origin xyz="0 0 0.1015" rpy = "0 0 0"/>
   </joint>
 
+  <joint name="link2_to_joint_2" type="fixed">
+    <parent link="joint_2"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0.089" rpy = "0 0 0"/>
+  </joint>
 
  <joint name="link3_to_joint_3" type="fixed">
     <parent link="joint_3"/>
     <child link="link3"/>
-    <origin xyz="0 0 0.1015" rpy = "0 0 0"/>
+    <origin xyz="0 0 0.089" rpy = "0 0 0"/>
   </joint>
-   <joint name="link4_to_joint_4" type="fixed">
+  
+ <joint name="link4_to_joint_4" type="fixed">
     <parent link="joint_4"/>
     <child link="link4"/>
-    <origin xyz="0 0 0.1015" rpy = "0 0 0"/>
+    <origin xyz="0 0 0.089" rpy = "0 0 0"/>
   </joint>
 
 

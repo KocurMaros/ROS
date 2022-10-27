@@ -44,7 +44,7 @@ void ForwardKinematics::broadcastTf(){
     // Calculated forward kinematic tool0 -> base_link
     transform.setOrigin( position_ );
     transform.setRotation(orientation_);
-    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
+    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_1", "tool0"));
 
     // Links
     transform.setOrigin( tf::Vector3(0, 0, 0.1015));

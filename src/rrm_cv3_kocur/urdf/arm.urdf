@@ -2,7 +2,7 @@
 <robot name="arm">
 
   <!--Links-->
-  <!-- <link name="base_link">
+  <link name="base_link">
     <visual>
       <geometry>
         <cylinder length="0.01" radius="0.05"/>
@@ -11,7 +11,7 @@
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
-  </link> -->
+  </link>
 
   <link name="link1">
     <visual>

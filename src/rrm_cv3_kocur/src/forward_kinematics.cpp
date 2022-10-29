@@ -55,15 +55,15 @@ void ForwardKinematics::broadcastTf(){
 
     transform.setOrigin( position1_ );
     transform.setRotation(orientation1_);
-    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_2"));
+    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_3"));
 
     transform.setOrigin( position2_ );
     transform.setRotation(orientation2_);
-    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_3"));
-    
-    transform.setOrigin( position3_ );
-    transform.setRotation(orientation3_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_4"));
+    
+    // transform.setOrigin( position3_ );
+    // transform.setRotation(orientation3_);
+    // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_4"));
     // Links
     transform.setOrigin( tf::Vector3(0, 0, 0.203));
     q.setRPY(0,0,0);
@@ -93,9 +93,9 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     joint_state_ = *msg;
 
     Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]) * createTz(L3)* createRy(joint_state_.position[3]);
-    Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]);
-    Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2);
-    Eigen::MatrixXd J4 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
+    Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2);
+    Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
+    Eigen::MatrixXd J4 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2])* createTz(L3);
     // convert rotation matrix to tf matrix
     tf::Matrix3x3 tf3d;
     tf::Matrix3x3 tf3d_to_joint2;
@@ -113,15 +113,15 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
                   static_cast<double>(J2(1,0)), static_cast<double>(J2(1,1)), static_cast<double>(J2(1,2)),
                   static_cast<double>(J2(2,0)), static_cast<double>(J2(2,1)), static_cast<double>(J2(2,2)));
 
-    tf3d_to_joint4.setValue(static_cast<double>(J4(0,0)), static_cast<double>(J4(0,1)), static_cast<double>(J4(0,2)),
-                  static_cast<double>(J4(1,0)), static_cast<double>(J4(1,1)), static_cast<double>(J4(1,2)),
-                  static_cast<double>(J4(2,0)), static_cast<double>(J4(2,1)), static_cast<double>(J4(2,2)));
+    // tf3d_to_joint4.setValue(static_cast<double>(J4(0,0)), static_cast<double>(J4(0,1)), static_cast<double>(J4(0,2)),
+    //               static_cast<double>(J4(1,0)), static_cast<double>(J4(1,1)), static_cast<double>(J4(1,2)),
+    //               static_cast<double>(J4(2,0)), static_cast<double>(J4(2,1)), static_cast<double>(J4(2,2)));
 
     // Convert to quternion
     tf3d.getRotation(orientation_);
     tf3d_to_joint2.getRotation(orientation1_);
     tf3d_to_joint3.getRotation(orientation2_);
-    tf3d_to_joint4.getRotation(orientation3_);
+    // tf3d_to_joint4.getRotation(orientation3_);
     // Calculate position
     Eigen::MatrixXd p1(4,1);
     p1(0,0) = 0;
@@ -158,8 +158,8 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     position2_.setY(result(1,0));
     position2_.setZ(result(2,0));
 
-    result = J4 * p4;
-    position3_.setX(result(0,0));
-    position3_.setY(result(1,0));
-    position3_.setZ(result(2,0));
+    // result = J4 * p4;
+    // position3_.setX(result(0,0));
+    // position3_.setY(result(1,0));
+    // position3_.setZ(result(2,0));
 }

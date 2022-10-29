@@ -44,7 +44,14 @@ void ForwardKinematics::broadcastTf(){
     transform.setOrigin( position_ );
     transform.setRotation(orientation_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
+
+    transform.setOrigin( position_ );
+    transform.setRotation(orientation_);
+    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_2"));
     
+    transform.setOrigin( position_ );
+    transform.setRotation(orientation_);
+    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_3"));
     // Links
     transform.setOrigin( tf::Vector3(0, 0, 0.1015));
     q.setRPY(0,0,0);
@@ -74,6 +81,10 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     joint_state_ = *msg;
 
     Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]) * createTz(L3)* createRy(joint_state_.position[3]);
+    Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]);
+    Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
+
+    
     // Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createRy(joint_state_.position[2]) * createTz(L3)* createRy(joint_state_.position[3]);
 
     //* (createRy(joint_state_.position[1]))* (createRy(joint_state_.position[2]));
@@ -82,20 +93,52 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
 
     // convert rotation matrix to tf matrix
     tf::Matrix3x3 tf3d;
+    tf::Matrix3x3 tf3d_to_joint2;
+    tf::Matrix3x3 tf3d_to_joint3;
+
     tf3d.setValue(static_cast<double>(T0(0,0)), static_cast<double>(T0(0,1)), static_cast<double>(T0(0,2)),
                   static_cast<double>(T0(1,0)), static_cast<double>(T0(1,1)), static_cast<double>(T0(1,2)),
                   static_cast<double>(T0(2,0)), static_cast<double>(T0(2,1)), static_cast<double>(T0(2,2)));
 
+    tf3d_to_joint2.setValue(static_cast<double>(J2(0,0)), static_cast<double>(J2(0,1)), static_cast<double>(J2(0,2)),
+                  static_cast<double>(J2(1,0)), static_cast<double>(J2(1,1)), static_cast<double>(J2(1,2)),
+                  static_cast<double>(J2(2,0)), static_cast<double>(J2(2,1)), static_cast<double>(J2(2,2)));
+
+    tf3d_to_joint3.setValue(static_cast<double>(J3(0,0)), static_cast<double>(J3(0,1)), static_cast<double>(J3(0,2)),
+                  static_cast<double>(J3(1,0)), static_cast<double>(J3(1,1)), static_cast<double>(J3(1,2)),
+                  static_cast<double>(J3(2,0)), static_cast<double>(J3(2,1)), static_cast<double>(J3(2,2)));
+
     // Convert to quternion
     tf3d.getRotation(orientation_);
-
+    tf3d_to_joint2.getRotation(orientation_);
+    tf3d_to_joint3.getRotation(orientation_);
     // Calculate position
-    Eigen::MatrixXd p(4,1);
+    Eigen::MatrixXd p1(4,1);
     p(0,0) = 0;
     p(1,0) = 0;
-    p(2,0) = L2;
+    p(2,0) = L4;
     p(3,0) = 1;
-    Eigen::MatrixXd result = T0 * p;
+    Eigen::MatrixXd p2(4,1);
+    p(0,0) = 0;
+    p(1,0) = 0;
+    p(2,0) = 0;
+    p(3,0) = 1;
+    Eigen::MatrixXd p3(4,1);
+    p(0,0) = 0;
+    p(1,0) = 0;
+    p(2,0) = 0;
+    p(3,0) = 1;
+    Eigen::MatrixXd result = T0 * p1;
+    position_.setX(result(0,0));
+    position_.setY(result(1,0));
+    position_.setZ(result(2,0));
+
+    Eigen::MatrixXd result = J2 * p2;
+    position_.setX(result(0,0));
+    position_.setY(result(1,0));
+    position_.setZ(result(2,0));
+
+    Eigen::MatrixXd result = J3 * p3;
     position_.setX(result(0,0));
     position_.setY(result(1,0));
     position_.setZ(result(2,0));

@@ -74,7 +74,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     joint_state_ = *msg;
 
     printf("%f %f %f %f \n\n\n",joint_state_.position[0],joint_state_.position[1],joint_state_.position[2],joint_state_.position[3]);
-    Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) + createRy(joint_state_.position[2]) * createTz(L2) ;//+ createRy(joint_state_.position[3] * createTz(L3));
+    Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) + createRz(joint_state_.position[2]) * createTz(L2) ;//+ createRy(joint_state_.position[3] * createTz(L3));
 
     // convert rotation matrix to tf matrix
     tf::Matrix3x3 tf3d;

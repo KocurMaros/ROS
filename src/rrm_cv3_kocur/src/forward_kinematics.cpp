@@ -73,7 +73,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
 {
     joint_state_ = *msg;
 
-    Eigen::MatrixXd T0 = (createRz(joint_state_.position[0]);
+    Eigen::MatrixXd T0 = createRz(joint_state_.position[0]);
     //* (createRy(joint_state_.position[1]))* (createRy(joint_state_.position[2]));
     // * createTz(joint_state_.position[3]) ;
     //+ createRy(joint_state_.position[3] * createTz(L3));

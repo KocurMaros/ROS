@@ -53,9 +53,9 @@ void ForwardKinematics::broadcastTf(){
     transform.setRotation(orientation_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
 
-    // transform.setOrigin( position1_ );
-    // transform.setRotation(orientation1_);
-    // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_2"));
+    transform.setOrigin( position1_ );
+    transform.setRotation(orientation1_);
+    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_2"));
 
     // transform.setOrigin( position2_ );
     // transform.setRotation(orientation2_);
@@ -93,7 +93,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     joint_state_ = *msg;
 
     Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]) * createTz(L3)* createRy(joint_state_.position[3]);
-    Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1);
+    Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) ;
     Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
     Eigen::MatrixXd J4 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2])* createTz(L3);
     // convert rotation matrix to tf matrix
@@ -109,9 +109,9 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     tf3d_to_joint2.setValue(static_cast<double>(J2(0,0)), static_cast<double>(J2(0,1)), static_cast<double>(J2(0,2)),
                   static_cast<double>(J2(1,0)), static_cast<double>(J2(1,1)), static_cast<double>(J2(1,2)),
                   static_cast<double>(J2(2,0)), static_cast<double>(J2(2,1)), static_cast<double>(J2(2,2)));
-    tf3d_to_joint3.setValue(static_cast<double>(J2(0,0)), static_cast<double>(J2(0,1)), static_cast<double>(J2(0,2)),
-                  static_cast<double>(J2(1,0)), static_cast<double>(J2(1,1)), static_cast<double>(J2(1,2)),
-                  static_cast<double>(J2(2,0)), static_cast<double>(J2(2,1)), static_cast<double>(J2(2,2)));
+    tf3d_to_joint3.setValue(static_cast<double>(J3(0,0)), static_cast<double>(J3(0,1)), static_cast<double>(J3(0,2)),
+                  static_cast<double>(J3(1,0)), static_cast<double>(J3(1,1)), static_cast<double>(J3(1,2)),
+                  static_cast<double>(J3(2,0)), static_cast<double>(J3(2,1)), static_cast<double>(J3(2,2)));
 
     // tf3d_to_joint4.setValue(static_cast<double>(J4(0,0)), static_cast<double>(J4(0,1)), static_cast<double>(J4(0,2)),
     //               static_cast<double>(J4(1,0)), static_cast<double>(J4(1,1)), static_cast<double>(J4(1,2)),

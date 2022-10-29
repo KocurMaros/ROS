@@ -146,7 +146,7 @@
   <joint name="link1_to_joint_1" type="fixed">
     <parent link="joint_1"/>
     <child link="link1"/>
-    <origin xyz="0 0 0.203" rpy = "0 0 0"/>
+    <origin xyz="0 0 0.0" rpy = "0 0 0"/>
   </joint>
 
   <joint name="link2_to_joint_2" type="fixed">

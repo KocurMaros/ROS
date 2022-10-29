@@ -25,7 +25,7 @@ public:
 private:
 
     // Const
-    const double L1 = 0.1015;
+    const double L1 = 0.203;
     const double L2 = 0.178;
     const double L3 = 0.178; 
     const double L4 = 0.178;   

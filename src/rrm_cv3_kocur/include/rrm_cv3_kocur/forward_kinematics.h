@@ -43,6 +43,10 @@ private:
     // current position of link2 and end efector
     tf::Vector3 position_;
     tf::Quaternion orientation_;
+    tf::Vector3 position1_;
+    tf::Quaternion orientation1_;
+    tf::Vector3 position2_;
+    tf::Quaternion orientation2_;
 };
 
 #endif //FORWARD_KINEMATICS_H

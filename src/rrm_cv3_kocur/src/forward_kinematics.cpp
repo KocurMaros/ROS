@@ -45,12 +45,12 @@ void ForwardKinematics::broadcastTf(){
     transform.setRotation(orientation_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
 
-    transform.setOrigin( position_ );
-    transform.setRotation(orientation_);
+    transform.setOrigin( position1_ );
+    transform.setRotation(orientation1_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_2"));
     
-    transform.setOrigin( position_ );
-    transform.setRotation(orientation_);
+    transform.setOrigin( position2_ );
+    transform.setRotation(orientation2_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_3"));
     // Links
     transform.setOrigin( tf::Vector3(0, 0, 0.1015));
@@ -110,8 +110,8 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
 
     // Convert to quternion
     tf3d.getRotation(orientation_);
-    tf3d_to_joint2.getRotation(orientation_);
-    tf3d_to_joint3.getRotation(orientation_);
+    tf3d_to_joint2.getRotation(orientation1_);
+    tf3d_to_joint3.getRotation(orientation1_);
     // Calculate position
     Eigen::MatrixXd p1(4,1);
     p1(0,0) = 0;
@@ -134,12 +134,12 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     position_.setZ(result(2,0));
 
     result = J2 * p2;
-    position_.setX(result(0,0));
-    position_.setY(result(1,0));
-    position_.setZ(result(2,0));
+    position1_.setX(result(0,0));
+    position1_.setY(result(1,0));
+    position1_.setZ(result(2,0));
 
     result = J3 * p3;
-    position_.setX(result(0,0));
-    position_.setY(result(1,0));
-    position_.setZ(result(2,0));
+    position2_.setX(result(0,0));
+    position2_.setY(result(1,0));
+    position2_.setZ(result(2,0));
 }

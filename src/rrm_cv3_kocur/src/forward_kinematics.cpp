@@ -13,11 +13,11 @@ ForwardKinematics::ForwardKinematics() : position_(0, 0, L1 + L2 + L3 + L$){
     // Resize joint_state array and initialize with value 0
     joint_state_.position.resize(3, 0);
     orientation_.setRPY(0,0,0);
-    position_ = tf:Vector3(0,0,0.0);
+    position_ = tf::Vector3(0,0,0.0);
     orientation1_.setRPY(0,0,0);
-    position1_ = tf:Vector3(0,0,0.0);
+    position1_ = tf::Vector3(0,0,0.0);
     orientation2_.setRPY(0,0,0);
-    position2_ = tf:Vector3(0,0,0.0);
+    position2_ = tf::Vector3(0,0,0.0);
 }
 
 void ForwardKinematics::broadcastTf(){

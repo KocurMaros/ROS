@@ -27,7 +27,8 @@ private:
     // Const
     const double L1 = 0.203;
     const double L2 = 0.178;
-
+    const double L3 = 0.178; 
+    const double L4 = 0.178;   
     // ROS communication tools
     ros::Publisher marker_pub_;
     ros::Subscriber joint_sub_;

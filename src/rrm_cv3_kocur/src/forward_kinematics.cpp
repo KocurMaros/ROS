@@ -2,7 +2,7 @@
 
 using namespace matrix;
 
-ForwardKinematics::ForwardKinematics() : position_(0, 0, L1 + L2 + L3){
+ForwardKinematics::ForwardKinematics() : position_(0, 0, L1 + L2 + L3 + L$){
 
     // ROS node handler
     ros::NodeHandle n;
@@ -12,6 +12,12 @@ ForwardKinematics::ForwardKinematics() : position_(0, 0, L1 + L2 + L3){
 
     // Resize joint_state array and initialize with value 0
     joint_state_.position.resize(3, 0);
+    orientation_.setRPY(0,0,0);
+    position_ = tf:Vector3(0,0,0.0);
+    orientation1_.setRPY(0,0,0);
+    position1_ = tf:Vector3(0,0,0.0);
+    orientation2_.setRPY(0,0,0);
+    position2_ = tf:Vector3(0,0,0.0);
 }
 
 void ForwardKinematics::broadcastTf(){
@@ -81,8 +87,8 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     joint_state_ = *msg;
 
     Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]) * createTz(L3)* createRy(joint_state_.position[3]);
-    Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]);
-    Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
+    Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
+    Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2])* createTz(L3);
 
     // convert rotation matrix to tf matrix
     tf::Matrix3x3 tf3d;

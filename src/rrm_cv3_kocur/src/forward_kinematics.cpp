@@ -2,7 +2,7 @@
 
 using namespace matrix;
 
-ForwardKinematics::ForwardKinematics() : position_(0, 0, L1 + L2 + L3 + L$){
+ForwardKinematics::ForwardKinematics() : position_(0, 0, L1 + L2 + L3 + L4){
 
     // ROS node handler
     ros::NodeHandle n;

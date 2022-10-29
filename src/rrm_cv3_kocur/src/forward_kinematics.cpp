@@ -99,7 +99,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     // convert rotation matrix to tf matrix
     tf::Matrix3x3 tf3d;
     tf::Matrix3x3 tf3d_to_joint2;
-    // tf::Matrix3x3 tf3d_to_joint3;
+    tf::Matrix3x3 tf3d_to_joint3;
     // tf::Matrix3x3 tf3d_to_joint4;
 
 

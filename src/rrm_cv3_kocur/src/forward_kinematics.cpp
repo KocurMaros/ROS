@@ -31,17 +31,17 @@ void ForwardKinematics::broadcastTf(){
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_1"));
     
-    transform.setOrigin( tf::Vector3(0, 0, L1));
+    transform.setOrigin( tf::Vector3(0, 0, 0.203));
     q.setRPY(0,joint_state_.position[1],0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_1", "joint_2"));
 
-    transform.setOrigin( tf::Vector3(0, 0, L2 +joint_state_.position[2]));
+    transform.setOrigin( tf::Vector3(0, 0, 0.178 +joint_state_.position[2]));
     q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_2", "joint_3"));
 
-    transform.setOrigin( tf::Vector3(0, 0, L3));
+    transform.setOrigin( tf::Vector3(0, 0, 0.178));
     q.setRPY(0,joint_state_.position[3],0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_3", "joint_4"));
@@ -58,24 +58,23 @@ void ForwardKinematics::broadcastTf(){
     transform.setOrigin( position2_ );
     transform.setRotation(orientation2_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_4"));
-    
     // Links
-    transform.setOrigin( tf::Vector3(0, 0, L1));
+    transform.setOrigin( tf::Vector3(0, 0, 0.1015));
     q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_1", "link1"));
 
-    transform.setOrigin( tf::Vector3(0, 0, L2));
+    transform.setOrigin( tf::Vector3(0, 0, 0.089));
     q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_2", "link2"));
 
-    transform.setOrigin( tf::Vector3(0, 0, L3));
+    transform.setOrigin( tf::Vector3(0, 0, 0.089));
     q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_3", "link3"));
 
-    transform.setOrigin( tf::Vector3(0, 0, L4));
+    transform.setOrigin( tf::Vector3(0, 0, 0.089));
     q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_4", "link4"));
@@ -88,8 +87,8 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     joint_state_ = *msg;
 
     Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]) * createTz(L3)* createRy(joint_state_.position[3]);
-    Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2);
-    Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
+    Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
+    Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2])* createTz(L3);
 
     // convert rotation matrix to tf matrix
     tf::Matrix3x3 tf3d;

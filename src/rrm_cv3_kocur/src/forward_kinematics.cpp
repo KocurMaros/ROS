@@ -18,6 +18,9 @@ ForwardKinematics::ForwardKinematics() : position_(0, 0, L1 + L2 + L3 + L4){
     position1_ = tf::Vector3(0,0,0.0);
     orientation2_.setRPY(0,0,0);
     position2_ = tf::Vector3(0,0,0.0);
+
+    orientation3_.setRPY(0,0,0);
+    position3_ = tf::Vector3(0,0,0.0);
 }
 
 void ForwardKinematics::broadcastTf(){
@@ -58,6 +61,10 @@ void ForwardKinematics::broadcastTf(){
     transform.setOrigin( position2_ );
     transform.setRotation(orientation2_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_3"));
+
+    transform.setOrigin( position3_ );
+    transform.setRotation(orientation3_);
+    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_4"));
     // Links
     transform.setOrigin( tf::Vector3(0, 0, L1));
     q.setRPY(0,0,0);

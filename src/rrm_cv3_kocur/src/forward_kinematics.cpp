@@ -59,22 +59,22 @@ void ForwardKinematics::broadcastTf(){
     transform.setRotation(orientation2_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_3"));
     // Links
-    transform.setOrigin( tf::Vector3(0, 0, 0.1015));
+    transform.setOrigin( tf::Vector3(0, 0, L1));
     q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_1", "link1"));
 
-    transform.setOrigin( tf::Vector3(0, 0, 0.089));
+    transform.setOrigin( tf::Vector3(0, 0, L2));
     q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_2", "link2"));
 
-    transform.setOrigin( tf::Vector3(0, 0, 0.089));
+    transform.setOrigin( tf::Vector3(0, 0, L3));
     q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_3", "link3"));
 
-    transform.setOrigin( tf::Vector3(0, 0, 0.089));
+    transform.setOrigin( tf::Vector3(0, 0, L4));
     q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_4", "link4"));

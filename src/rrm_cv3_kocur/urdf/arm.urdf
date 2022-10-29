@@ -167,10 +167,11 @@
     <origin xyz="0 0 0.089" rpy = "0 0 0"/>
   </joint>
 
-  <joint name="joint_4_to_tool0" type="fixed">
+  <joint name="base_link_to_tool0" type="fixed">
     <parent link="joint_4"/>
     <child link="tool0"/>
     <origin xyz="0 0 0" rpy = "0 0 0"/>
   </joint>
+  
 
 </robot>

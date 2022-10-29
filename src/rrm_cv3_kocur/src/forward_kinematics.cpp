@@ -19,7 +19,7 @@ void ForwardKinematics::broadcastTf(){
     //Create transformation, set origin and rotation and finally send
     tf::Transform transform;
 
-    transform.setOrigin( tf::Vector3(0, 0, 0.0));
+    transform.setOrigin( tf::Vector3(0, 0, 0));
     tf::Quaternion q;
     q.setRPY(0,0,joint_state_.position[0]);
     transform.setRotation(q);
@@ -30,8 +30,8 @@ void ForwardKinematics::broadcastTf(){
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_1", "joint_2"));
 
-    transform.setOrigin( tf::Vector3(0, 0, 0.178));
-    q.setRPY(0,joint_state_.position[2],0);
+    transform.setOrigin( tf::Vector3(0, 0, 0.178 +joint_state_.position[2]));
+    q.setRPY(0,0,0);
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_2", "joint_3"));
 

@@ -70,9 +70,9 @@ namespace matrix {
         MatrixXd matrix(4, 4);
         matrix(0, 0) = cos(teta);
         matrix(0, 1) = -sin(teta)*cos(alfa);
-        matrix(0, 2) = sin(teta)*cos(alfa);
+        matrix(0, 2) = sin(teta)*sin(alfa);
         matrix(0, 3) = a*cos(teta);
-        matrix(1, 0) = sin(alfa);
+        matrix(1, 0) = sin(teta);
         matrix(1, 1) = cos(teta)*sin(alfa);
         matrix(1, 2) = -cos(teta)*sin(alfa);
         matrix(1, 3) = a*sin(teta);

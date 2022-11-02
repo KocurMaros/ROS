@@ -8,7 +8,7 @@ namespace matrix {
     Eigen::MatrixXd createRz(double angle);
     Eigen::MatrixXd createRy(double angle);
     Eigen::MatrixXd createTz(double l);
-    Eigen::MatrixXd HD(double teta, double alfa, double a, double d);
+    Eigen::MatrixXd DH(double teta, double alfa, double a, double d);
 
 }
 

@@ -66,4 +66,24 @@ namespace matrix {
         matrix(3, 3) = 1;
         return matrix;
     }
+    MatrixXd DH(double teta, double alfa, double a, double d) {
+        MatrixXd matrix(4, 4);
+        matrix(0, 0) = cos(teta);
+        matrix(0, 1) = -sin(teta)*cos(alfa);
+        matrix(0, 2) = sin(teta)*cos(alfa);
+        matrix(0, 3) = a*cos(teta);
+        matrix(1, 0) = sin(alfa);
+        matrix(1, 1) = cos(teta)*sin(alfa);
+        matrix(1, 2) = -cos(teta)*sin(alfa);
+        matrix(1, 3) = a*sin(teta);
+        matrix(2, 0) = 0;
+        matrix(2, 1) = sin(alfa);
+        matrix(2, 2) = cos(alfa);
+        matrix(2, 3) = d;
+        matrix(3, 0) = 0;
+        matrix(3, 1) = 0;
+        matrix(3, 2) = 0;
+        matrix(3, 3) = 1;
+        return matrix;
+    }
 }

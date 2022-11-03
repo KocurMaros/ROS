@@ -1,8 +1,38 @@
 # CMake generated Testfile for 
-# Source directory: /home/laptop/catkin_ws/src
-# Build directory: /home/laptop/catkin_ws/build
+# Source directory: /home/rrm/ROS/src
+# Build directory: /home/rrm/ROS/build
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("abb/abb")
+subdirs("abb_experimental/abb_experimental")
+subdirs("abb_experimental/abb_irb1200_5_90_moveit_config")
+subdirs("abb_experimental/abb_irb1200_7_70_moveit_config")
+subdirs("abb_experimental/abb_irb1200_gazebo")
+subdirs("abb_experimental/abb_irb120_gazebo")
+subdirs("abb_experimental/abb_irb120_moveit_config")
+subdirs("abb_experimental/abb_irb120t_moveit_config")
+subdirs("abb_experimental/abb_irb1600_6_12_moveit_config")
+subdirs("abb/abb_irb2400_moveit_config")
+subdirs("abb/abb_irb6640_moveit_config")
+subdirs("abb_moveit_config")
+subdirs("abb/abb_resources")
 subdirs("meno_matky_za_slobodna")
+subdirs("abb_experimental/abb_crb15000_support")
+subdirs("abb_experimental/abb_irb1200_support")
+subdirs("abb_experimental/abb_irb120_support")
+subdirs("abb_experimental/abb_irb1600_support")
+subdirs("abb/abb_irb2400_support")
+subdirs("abb_experimental/abb_irb2600_support")
+subdirs("abb/abb_irb4400_support")
+subdirs("abb_experimental/abb_irb4600_support")
+subdirs("abb_experimental/abb_irb52_support")
+subdirs("abb/abb_irb5400_support")
+subdirs("abb/abb_irb6600_support")
+subdirs("abb/abb_irb6640_support")
+subdirs("abb_experimental/abb_irb6650s_support")
+subdirs("abb_experimental/abb_irb6700_support")
+subdirs("abb_experimental/abb_irb7600_support")
+subdirs("rrm_cv3_kocur")
+subdirs("abb/abb_irb2400_moveit_plugins")

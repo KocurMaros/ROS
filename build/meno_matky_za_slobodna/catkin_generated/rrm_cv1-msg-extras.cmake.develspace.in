@@ -1,2 +1,0 @@
-set(rrm_cv1_MESSAGE_FILES "")
-set(rrm_cv1_SERVICE_FILES "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv")

@@ -21,22 +21,13 @@ class StartRequest {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.start = null;
     }
     else {
-      if (initObj.hasOwnProperty('start')) {
-        this.start = initObj.start
-      }
-      else {
-        this.start = false;
-      }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type StartRequest
-    // Serialize message field [start]
-    bufferOffset = _serializer.bool(obj.start, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -44,13 +35,11 @@ class StartRequest {
     //deserializes a message object of type StartRequest
     let len;
     let data = new StartRequest(null);
-    // Deserialize message field [start]
-    data.start = _deserializer.bool(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 1;
+    return 0;
   }
 
   static datatype() {
@@ -60,13 +49,12 @@ class StartRequest {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '676aa7bfb3ec2071e814f2368dfd5fb5';
+    return 'd41d8cd98f00b204e9800998ecf8427e';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    bool start
     
     `;
   }
@@ -77,13 +65,6 @@ class StartRequest {
       msg = {};
     }
     const resolved = new StartRequest(null);
-    if (msg.start !== undefined) {
-      resolved.start = msg.start;
-    }
-    else {
-      resolved.start = false
-    }
-
     return resolved;
     }
 };
@@ -162,6 +143,6 @@ class StartResponse {
 module.exports = {
   Request: StartRequest,
   Response: StartResponse,
-  md5sum() { return 'bbb7ba84302b6f35af5466a95cd7ac90'; },
+  md5sum() { return '358e233cde0c8a8bcfea4ce193f8fc15'; },
   datatype() { return 'meno_matky_za_slobodna/Start'; }
 };

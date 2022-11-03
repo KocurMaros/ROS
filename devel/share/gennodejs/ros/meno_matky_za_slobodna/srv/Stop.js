@@ -21,22 +21,13 @@ class StopRequest {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.stop = null;
     }
     else {
-      if (initObj.hasOwnProperty('stop')) {
-        this.stop = initObj.stop
-      }
-      else {
-        this.stop = false;
-      }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type StopRequest
-    // Serialize message field [stop]
-    bufferOffset = _serializer.bool(obj.stop, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -44,13 +35,11 @@ class StopRequest {
     //deserializes a message object of type StopRequest
     let len;
     let data = new StopRequest(null);
-    // Deserialize message field [stop]
-    data.stop = _deserializer.bool(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 1;
+    return 0;
   }
 
   static datatype() {
@@ -60,13 +49,12 @@ class StopRequest {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '71f1172402e56b82716ca71681cded6b';
+    return 'd41d8cd98f00b204e9800998ecf8427e';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    bool stop
     
     `;
   }
@@ -77,13 +65,6 @@ class StopRequest {
       msg = {};
     }
     const resolved = new StopRequest(null);
-    if (msg.stop !== undefined) {
-      resolved.stop = msg.stop;
-    }
-    else {
-      resolved.stop = false
-    }
-
     return resolved;
     }
 };
@@ -162,6 +143,6 @@ class StopResponse {
 module.exports = {
   Request: StopRequest,
   Response: StopResponse,
-  md5sum() { return '5fb7f99d98a30bfd9eeddbb34b138b31'; },
+  md5sum() { return '358e233cde0c8a8bcfea4ce193f8fc15'; },
   datatype() { return 'meno_matky_za_slobodna/Stop'; }
 };

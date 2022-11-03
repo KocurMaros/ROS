@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/src/turtle_control.cpp" "/home/laptop/catkin_ws/build/meno_matky_za_slobodna/CMakeFiles/turtle_control.dir/src/turtle_control.cpp.o"
-  "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/src/turtle_control_node.cpp" "/home/laptop/catkin_ws/build/meno_matky_za_slobodna/CMakeFiles/turtle_control.dir/src/turtle_control_node.cpp.o"
+  "/home/rrm/ROS/src/meno_matky_za_slobodna/src/turtle_control.cpp" "/home/rrm/ROS/build/meno_matky_za_slobodna/CMakeFiles/turtle_control.dir/src/turtle_control.cpp.o"
+  "/home/rrm/ROS/src/meno_matky_za_slobodna/src/turtle_control_node.cpp" "/home/rrm/ROS/build/meno_matky_za_slobodna/CMakeFiles/turtle_control.dir/src/turtle_control_node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,8 +18,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/laptop/catkin_ws/devel/include"
-  "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/include"
+  "/home/rrm/ROS/devel/include"
+  "/home/rrm/ROS/src/meno_matky_za_slobodna/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

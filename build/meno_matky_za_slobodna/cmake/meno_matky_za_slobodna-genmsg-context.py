@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = ""
-services_str = "/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Draw.srv;/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Stop.srv;/home/laptop/catkin_ws/src/meno_matky_za_slobodna/srv/Start.srv"
+services_str = "/home/rrm/ROS/src/meno_matky_za_slobodna/srv/Draw.srv;/home/rrm/ROS/src/meno_matky_za_slobodna/srv/Stop.srv;/home/rrm/ROS/src/meno_matky_za_slobodna/srv/Start.srv"
 pkg_name = "meno_matky_za_slobodna"
 dependencies_str = "std_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

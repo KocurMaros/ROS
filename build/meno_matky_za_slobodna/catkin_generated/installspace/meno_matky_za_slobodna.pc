@@ -1,4 +1,4 @@
-prefix=/home/laptop/catkin_ws/install
+prefix=/home/rrm/ROS/install
 
 Name: meno_matky_za_slobodna
 Description: Description of meno_matky_za_slobodna

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/laptop/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/rrm/ROS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/laptop/catkin_ws/build
+CMAKE_BINARY_DIR = /home/rrm/ROS/build
 
 # Utility rule file for roscpp_generate_messages_py.
 
@@ -63,10 +63,10 @@ meno_matky_za_slobodna/CMakeFiles/roscpp_generate_messages_py.dir/build: roscpp_
 .PHONY : meno_matky_za_slobodna/CMakeFiles/roscpp_generate_messages_py.dir/build
 
 meno_matky_za_slobodna/CMakeFiles/roscpp_generate_messages_py.dir/clean:
-	cd /home/laptop/catkin_ws/build/meno_matky_za_slobodna && $(CMAKE_COMMAND) -P CMakeFiles/roscpp_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/rrm/ROS/build/meno_matky_za_slobodna && $(CMAKE_COMMAND) -P CMakeFiles/roscpp_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : meno_matky_za_slobodna/CMakeFiles/roscpp_generate_messages_py.dir/clean
 
 meno_matky_za_slobodna/CMakeFiles/roscpp_generate_messages_py.dir/depend:
-	cd /home/laptop/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/laptop/catkin_ws/src /home/laptop/catkin_ws/src/meno_matky_za_slobodna /home/laptop/catkin_ws/build /home/laptop/catkin_ws/build/meno_matky_za_slobodna /home/laptop/catkin_ws/build/meno_matky_za_slobodna/CMakeFiles/roscpp_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/rrm/ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rrm/ROS/src /home/rrm/ROS/src/meno_matky_za_slobodna /home/rrm/ROS/build /home/rrm/ROS/build/meno_matky_za_slobodna /home/rrm/ROS/build/meno_matky_za_slobodna/CMakeFiles/roscpp_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : meno_matky_za_slobodna/CMakeFiles/roscpp_generate_messages_py.dir/depend
 

@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"meno_matky_za_slobodna\"
 
-CXX_INCLUDES = -I/home/laptop/catkin_ws/devel/include -I/home/laptop/catkin_ws/src/meno_matky_za_slobodna/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/home/rrm/ROS/devel/include -I/home/rrm/ROS/src/meno_matky_za_slobodna/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
 

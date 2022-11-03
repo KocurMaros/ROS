@@ -1,12 +1,12 @@
 
 "use strict";
 
-let Draw = require('./Draw.js')
 let Start = require('./Start.js')
+let Draw = require('./Draw.js')
 let Stop = require('./Stop.js')
 
 module.exports = {
-  Draw: Draw,
   Start: Start,
+  Draw: Draw,
   Stop: Stop,
 };

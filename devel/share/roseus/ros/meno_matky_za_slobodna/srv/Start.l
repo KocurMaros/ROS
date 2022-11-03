@@ -20,37 +20,27 @@
 
 (defclass meno_matky_za_slobodna::StartRequest
   :super ros::object
-  :slots (_start ))
+  :slots ())
 
 (defmethod meno_matky_za_slobodna::StartRequest
   (:init
    (&key
-    ((:start __start) nil)
     )
    (send-super :init)
-   (setq _start __start)
    self)
-  (:start
-   (&optional (__start :null))
-   (if (not (eq __start :null)) (setq _start __start)) _start)
   (:serialization-length
    ()
    (+
-    ;; bool _start
-    1
+    0
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; bool _start
-       (if _start (write-byte -1 s) (write-byte 0 s))
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; bool _start
-     (setq _start (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;;
    self)
   )
@@ -96,7 +86,7 @@
   :super ros::object
   :slots ())
 
-(setf (get meno_matky_za_slobodna::Start :md5sum-) "bbb7ba84302b6f35af5466a95cd7ac90")
+(setf (get meno_matky_za_slobodna::Start :md5sum-) "358e233cde0c8a8bcfea4ce193f8fc15")
 (setf (get meno_matky_za_slobodna::Start :datatype-) "meno_matky_za_slobodna/Start")
 (setf (get meno_matky_za_slobodna::Start :request) meno_matky_za_slobodna::StartRequest)
 (setf (get meno_matky_za_slobodna::Start :response) meno_matky_za_slobodna::StartResponse)
@@ -104,24 +94,22 @@
 (defmethod meno_matky_za_slobodna::StartRequest
   (:response () (instance meno_matky_za_slobodna::StartResponse :init)))
 
-(setf (get meno_matky_za_slobodna::StartRequest :md5sum-) "bbb7ba84302b6f35af5466a95cd7ac90")
+(setf (get meno_matky_za_slobodna::StartRequest :md5sum-) "358e233cde0c8a8bcfea4ce193f8fc15")
 (setf (get meno_matky_za_slobodna::StartRequest :datatype-) "meno_matky_za_slobodna/StartRequest")
 (setf (get meno_matky_za_slobodna::StartRequest :definition-)
-      "bool start
----
+      "---
 bool success
 ")
 
-(setf (get meno_matky_za_slobodna::StartResponse :md5sum-) "bbb7ba84302b6f35af5466a95cd7ac90")
+(setf (get meno_matky_za_slobodna::StartResponse :md5sum-) "358e233cde0c8a8bcfea4ce193f8fc15")
 (setf (get meno_matky_za_slobodna::StartResponse :datatype-) "meno_matky_za_slobodna/StartResponse")
 (setf (get meno_matky_za_slobodna::StartResponse :definition-)
-      "bool start
----
+      "---
 bool success
 ")
 
 
 
-(provide :meno_matky_za_slobodna/Start "bbb7ba84302b6f35af5466a95cd7ac90")
+(provide :meno_matky_za_slobodna/Start "358e233cde0c8a8bcfea4ce193f8fc15")
 
 

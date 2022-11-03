@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "/home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/manifest.l"
-  "/home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Draw.l"
-  "/home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Start.l"
-  "/home/laptop/catkin_ws/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Stop.l"
+  "/home/rrm/ROS/devel/share/roseus/ros/meno_matky_za_slobodna/manifest.l"
+  "/home/rrm/ROS/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Draw.l"
+  "/home/rrm/ROS/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Start.l"
+  "/home/rrm/ROS/devel/share/roseus/ros/meno_matky_za_slobodna/srv/Stop.l"
   "CMakeFiles/meno_matky_za_slobodna_generate_messages_eus"
 )
 

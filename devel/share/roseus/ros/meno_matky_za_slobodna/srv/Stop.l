@@ -20,37 +20,27 @@
 
 (defclass meno_matky_za_slobodna::StopRequest
   :super ros::object
-  :slots (_stop ))
+  :slots ())
 
 (defmethod meno_matky_za_slobodna::StopRequest
   (:init
    (&key
-    ((:stop __stop) nil)
     )
    (send-super :init)
-   (setq _stop __stop)
    self)
-  (:stop
-   (&optional (__stop :null))
-   (if (not (eq __stop :null)) (setq _stop __stop)) _stop)
   (:serialization-length
    ()
    (+
-    ;; bool _stop
-    1
+    0
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; bool _stop
-       (if _stop (write-byte -1 s) (write-byte 0 s))
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; bool _stop
-     (setq _stop (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;;
    self)
   )
@@ -96,7 +86,7 @@
   :super ros::object
   :slots ())
 
-(setf (get meno_matky_za_slobodna::Stop :md5sum-) "5fb7f99d98a30bfd9eeddbb34b138b31")
+(setf (get meno_matky_za_slobodna::Stop :md5sum-) "358e233cde0c8a8bcfea4ce193f8fc15")
 (setf (get meno_matky_za_slobodna::Stop :datatype-) "meno_matky_za_slobodna/Stop")
 (setf (get meno_matky_za_slobodna::Stop :request) meno_matky_za_slobodna::StopRequest)
 (setf (get meno_matky_za_slobodna::Stop :response) meno_matky_za_slobodna::StopResponse)
@@ -104,24 +94,22 @@
 (defmethod meno_matky_za_slobodna::StopRequest
   (:response () (instance meno_matky_za_slobodna::StopResponse :init)))
 
-(setf (get meno_matky_za_slobodna::StopRequest :md5sum-) "5fb7f99d98a30bfd9eeddbb34b138b31")
+(setf (get meno_matky_za_slobodna::StopRequest :md5sum-) "358e233cde0c8a8bcfea4ce193f8fc15")
 (setf (get meno_matky_za_slobodna::StopRequest :datatype-) "meno_matky_za_slobodna/StopRequest")
 (setf (get meno_matky_za_slobodna::StopRequest :definition-)
-      "bool stop
----
+      "---
 bool success
 ")
 
-(setf (get meno_matky_za_slobodna::StopResponse :md5sum-) "5fb7f99d98a30bfd9eeddbb34b138b31")
+(setf (get meno_matky_za_slobodna::StopResponse :md5sum-) "358e233cde0c8a8bcfea4ce193f8fc15")
 (setf (get meno_matky_za_slobodna::StopResponse :datatype-) "meno_matky_za_slobodna/StopResponse")
 (setf (get meno_matky_za_slobodna::StopResponse :definition-)
-      "bool stop
----
+      "---
 bool success
 ")
 
 
 
-(provide :meno_matky_za_slobodna/Stop "5fb7f99d98a30bfd9eeddbb34b138b31")
+(provide :meno_matky_za_slobodna/Stop "358e233cde0c8a8bcfea4ce193f8fc15")
 
 

@@ -1,0 +1,8 @@
+prefix=/home/rrm/ROS/install
+
+Name: rrm_cv3_kocur
+Description: Description of rrm_cv3_kocur
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

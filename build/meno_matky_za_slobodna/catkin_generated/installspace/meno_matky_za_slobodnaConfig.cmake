@@ -67,14 +67,14 @@ set(meno_matky_za_slobodna_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(meno_matky_za_slobodna_SOURCE_PREFIX /home/laptop/catkin_ws/src/meno_matky_za_slobodna)
-  set(meno_matky_za_slobodna_DEVEL_PREFIX /home/laptop/catkin_ws/devel)
+  set(meno_matky_za_slobodna_SOURCE_PREFIX /home/rrm/ROS/src/meno_matky_za_slobodna)
+  set(meno_matky_za_slobodna_DEVEL_PREFIX /home/rrm/ROS/devel)
   set(meno_matky_za_slobodna_INSTALL_PREFIX "")
   set(meno_matky_za_slobodna_PREFIX ${meno_matky_za_slobodna_DEVEL_PREFIX})
 else()
   set(meno_matky_za_slobodna_SOURCE_PREFIX "")
   set(meno_matky_za_slobodna_DEVEL_PREFIX "")
-  set(meno_matky_za_slobodna_INSTALL_PREFIX /home/laptop/catkin_ws/install)
+  set(meno_matky_za_slobodna_INSTALL_PREFIX /home/rrm/ROS/install)
   set(meno_matky_za_slobodna_PREFIX ${meno_matky_za_slobodna_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/laptop/catkin_ws/install/lib;/home/laptop/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/rrm/ROS/install/lib;/home/rrm/ROS/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

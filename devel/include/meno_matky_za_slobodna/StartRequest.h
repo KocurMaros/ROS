@@ -24,17 +24,14 @@ struct StartRequest_
   typedef StartRequest_<ContainerAllocator> Type;
 
   StartRequest_()
-    : start(false)  {
+    {
     }
   StartRequest_(const ContainerAllocator& _alloc)
-    : start(false)  {
+    {
   (void)_alloc;
     }
 
 
-
-   typedef uint8_t _start_type;
-  _start_type start;
 
 
 
@@ -59,19 +56,6 @@ std::ostream& operator<<(std::ostream& s, const ::meno_matky_za_slobodna::StartR
 {
 ros::message_operations::Printer< ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator> >::stream(s, "", v);
 return s;
-}
-
-
-template<typename ContainerAllocator1, typename ContainerAllocator2>
-bool operator==(const ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator1> & lhs, const ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator2> & rhs)
-{
-  return lhs.start == rhs.start;
-}
-
-template<typename ContainerAllocator1, typename ContainerAllocator2>
-bool operator!=(const ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator1> & lhs, const ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator2> & rhs)
-{
-  return !(lhs == rhs);
 }
 
 
@@ -122,12 +106,12 @@ struct MD5Sum< ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "676aa7bfb3ec2071e814f2368dfd5fb5";
+    return "d41d8cd98f00b204e9800998ecf8427e";
   }
 
   static const char* value(const ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x676aa7bfb3ec2071ULL;
-  static const uint64_t static_value2 = 0xe814f2368dfd5fb5ULL;
+  static const uint64_t static_value1 = 0xd41d8cd98f00b204ULL;
+  static const uint64_t static_value2 = 0xe9800998ecf8427eULL;
 };
 
 template<class ContainerAllocator>
@@ -146,7 +130,7 @@ struct Definition< ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "bool start\n"
+    return "\n"
 ;
   }
 
@@ -163,10 +147,8 @@ namespace serialization
 
   template<class ContainerAllocator> struct Serializer< ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator> >
   {
-    template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
-    {
-      stream.next(m.start);
-    }
+    template<typename Stream, typename T> inline static void allInOne(Stream&, T)
+    {}
 
     ROS_DECLARE_ALLINONE_SERIALIZER
   }; // struct StartRequest_
@@ -182,11 +164,8 @@ namespace message_operations
 template<class ContainerAllocator>
 struct Printer< ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator> >
 {
-  template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator>& v)
-  {
-    s << indent << "start: ";
-    Printer<uint8_t>::stream(s, indent + "  ", v.start);
-  }
+  template<typename Stream> static void stream(Stream&, const std::string&, const ::meno_matky_za_slobodna::StartRequest_<ContainerAllocator>&)
+  {}
 };
 
 } // namespace message_operations

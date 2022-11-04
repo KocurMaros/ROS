@@ -49,8 +49,8 @@ void ForwardKinematics::broadcastTf(){
     // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_3", "joint_4"));
 
     // Calculated forward kinematic tool0 -> base_link
-    transform.setOrigin( position3_ );
-    transform.setRotation(orientation3_);
+    transform.setOrigin( position_ );
+    transform.setRotation(orientation_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
 
     transform.setOrigin( position1_ );
@@ -61,8 +61,8 @@ void ForwardKinematics::broadcastTf(){
     transform.setRotation(orientation2_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_3"));
     
-    transform.setOrigin( position_ );
-    transform.setRotation(orientation_);
+    transform.setOrigin( position3_ );
+    transform.setRotation(orientation3_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_4"));
     // Links
     transform.setOrigin( tf::Vector3(0, 0, 0.1015));
@@ -95,7 +95,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
 {
     joint_state_ = *msg;
 
-    Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);//* createTz(L3)* createRy(joint_state_.position[3]);
+    Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2])* createTz(L3)* createRy(joint_state_.position[3]);
     Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) ;
     Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
     Eigen::MatrixXd dh =    DH(0,0,L1,joint_state_.position[0])*
@@ -132,7 +132,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     Eigen::MatrixXd p1(4,1);
     p1(0,0) = 0;
     p1(1,0) = 0;
-    p1(2,0) = 0;
+    p1(2,0) = L4;
     p1(3,0) = 1;
     Eigen::MatrixXd p2(4,1);
     p2(0,0) = 0;

@@ -133,7 +133,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     // tf3d.getRotation(orientation_);
     tf3d_to_joint2.getRotation(orientation1_);
     tf3d_to_joint3.getRotation(orientation2_);
-    tf3d_dh.getRotation(orientation3_)
+    tf3d_dh.getRotation(orientation3_);
     // tf3d_to_joint4.getRotation(orientation3_);
     // Calculate position
     Eigen::MatrixXd p1(4,1);

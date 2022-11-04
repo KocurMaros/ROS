@@ -132,7 +132,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     Eigen::MatrixXd p1(4,1);
     p1(0,0) = 0;
     p1(1,0) = 0;
-    p1(2,0) = L4;
+    p1(2,0) = 0;
     p1(3,0) = 1;
     Eigen::MatrixXd p2(4,1);
     p2(0,0) = 0;

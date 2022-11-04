@@ -49,9 +49,9 @@ void ForwardKinematics::broadcastTf(){
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_3", "joint_4"));
 
     // Calculated forward kinematic tool0 -> base_link
-    // transform.setOrigin( position_ );
-    // transform.setRotation(orientation_);
-    // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
+    transform.setOrigin( position_ );
+    transform.setRotation(orientation_);
+    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
 
     transform.setOrigin( position1_ );
     transform.setRotation(orientation1_);
@@ -85,9 +85,9 @@ void ForwardKinematics::broadcastTf(){
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_4", "link4"));
 
-    transform.setOrigin( position3_ );
-    transform.setRotation(orientation3_);
-    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
+    // transform.setOrigin( position3_ );
+    // transform.setRotation(orientation3_);
+    // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
 }
 
 
@@ -130,10 +130,10 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     //               static_cast<double>(J4(2,0)), static_cast<double>(J4(2,1)), static_cast<double>(J4(2,2)));
 
     // Convert to quternion
-    // tf3d.getRotation(orientation_);
+    tf3d.getRotation(orientation_);
     tf3d_to_joint2.getRotation(orientation1_);
     tf3d_to_joint3.getRotation(orientation2_);
-    tf3d_dh.getRotation(orientation3_);
+    // tf3d_dh.getRotation(orientation3_);
     // tf3d_to_joint4.getRotation(orientation3_);
     // Calculate position
     Eigen::MatrixXd p1(4,1);

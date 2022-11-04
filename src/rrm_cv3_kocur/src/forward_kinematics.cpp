@@ -111,10 +111,10 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
                 static_cast<double>(dh(1,0)), static_cast<double>(dh(1,1)), static_cast<double>(dh(1,2)),
                 static_cast<double>(dh(2,0)), static_cast<double>(dh(2,1)), static_cast<double>(dh(2,2)));
     
-    dh =    DH(0,0,0,joint_state_.position[0])*
-            DH(0, 90*M_PI/180, L1,joint_state_.position[1])*
-            DH(L2+joint_state_.position[2],90*M_PI/180,L2+joint_state_.position[2],0)*
-            DH(0,0,L3,-M_PI+joint_state_.position[3]);
+    dh =    DH(0,0,L1,joint_state_.position[0])*
+            DH(0, joint_state_.position[1], L2+joint_state_.position[2],0)*
+            DH(0,0,L3,0)*
+            DH(0,joint_state_.position[3],L4,0);
     
     tf3d.setValue(static_cast<double>(T0(0,0)), static_cast<double>(T0(0,1)), static_cast<double>(T0(0,2)),
                   static_cast<double>(T0(1,0)), static_cast<double>(T0(1,1)), static_cast<double>(T0(1,2)),

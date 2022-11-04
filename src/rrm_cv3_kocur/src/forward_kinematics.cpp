@@ -161,10 +161,10 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     // p3(1,0) = 0;
     // p3(2,0) = 0;
     // p3(3,0) = 1;
-    Eigen::MatrixXd result = T0 * p1;
-    position_.setX(result(0,0));
-    position_.setY(result(1,0));
-    position_.setZ(result(2,0));
+    Eigen::MatrixXd result;// = T0 * p1;
+    // position_.setX(result(0,0));
+    // position_.setY(result(1,0));
+    // position_.setZ(result(2,0));
 
     result = J2 * p2;
     position1_.setX(result(0,0));

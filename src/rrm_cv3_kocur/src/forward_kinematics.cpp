@@ -43,10 +43,10 @@ void ForwardKinematics::broadcastTf(){
     // transform.setRotation(q);
     // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_2", "joint_3"));
 
-    // transform.setOrigin( tf::Vector3(0, 0, 0.178));
-    // q.setRPY(0,joint_state_.position[3],0);
-    // transform.setRotation(q);
-    // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_3", "joint_4"));
+    transform.setOrigin( tf::Vector3(0, 0, 0.178));
+    q.setRPY(0,joint_state_.position[3],0);
+    transform.setRotation(q);
+    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_3", "joint_4"));
 
     // Calculated forward kinematic tool0 -> base_link
     transform.setOrigin( position_ );
@@ -61,9 +61,9 @@ void ForwardKinematics::broadcastTf(){
     transform.setRotation(orientation2_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_3"));
     
-    transform.setOrigin( position3_ );
-    transform.setRotation(orientation3_);
-    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_4"));
+    // transform.setOrigin( position3_ );
+    // transform.setRotation(orientation3_);
+    // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_4"));
     // Links
     transform.setOrigin( tf::Vector3(0, 0, 0.1015));
     q.setRPY(0,0,0);

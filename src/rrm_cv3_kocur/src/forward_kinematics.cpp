@@ -85,9 +85,9 @@ void ForwardKinematics::broadcastTf(){
     transform.setRotation(q);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_4", "link4"));
 
-    transform.setOrigin( position3_ );
-    transform.setRotation(orientation3_);
-    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
+    // transform.setOrigin( position3_ );
+    // transform.setRotation(orientation3_);
+    // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
 }
 
 

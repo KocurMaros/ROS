@@ -100,7 +100,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
     Eigen::MatrixXd dh =    DH(0,M_PI/2,L1,joint_state_.position[0])*
                             DH(0,-M_PI/2, 0,-M_PI -joint_state_.position[1])*
-                            DH(0,M_PI/2,0,L2 + L3 + joint_state_.position[2])*
+                            DH(0,M_PI/2,L2 + L3 + joint_state_.position[2],0)*
                             DH(0,-M_PI/2,0,-joint_state_.position[3]);
     
     // convert rotation matrix to tf matrix

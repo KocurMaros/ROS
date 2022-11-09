@@ -129,43 +129,34 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
 
     // Convert to quternion
     // Calculate position
-    Eigen::MatrixXd p1(4,1);
+    Eigen::MatrixXd p(4,1);
     p1(0,0) = 0;
     p1(1,0) = 0;
     p1(2,0) = L4;
     p1(3,0) = 1;
-    Eigen::MatrixXd p2(4,1);
+    Eigen::MatrixXd p1(4,1);
     p2(0,0) = 0;
     p2(1,0) = 0;
     p2(2,0) = 0;
     p2(3,0) = 1;
-    Eigen::MatrixXd p3(4,1);
-    p3(0,0) = 0;
-    p3(1,0) = 0;
-    p3(2,0) = 0;
-    p3(3,0) = 1;
-    Eigen::MatrixXd p4(4,1);
-    p4(0,0) = 0;
-    p4(1,0) = 0;
-    p4(2,0) = 0;
-    p4(3,0) = 1;
 
-    Eigen::MatrixXd result = T0 * p1;
+    Eigen::MatrixXd result;
+    result = T0 * p;
     position_.setX(result(0,0));
     position_.setY(result(1,0));
     position_.setZ(result(2,0));
 
-    result = J2 * p2;
+    result = J2 * p1;
     position1_.setX(result(0,0));
     position1_.setY(result(1,0));
     position1_.setZ(result(2,0));
 
-    result = J3 * p3;
+    result = J3 * p1;
     position2_.setX(result(0,0));
     position2_.setY(result(1,0));
     position2_.setZ(result(2,0));
 
-    result = dh * p1;
+    result = dh * p;
     position3_.setX(result(0,0));
     position3_.setY(result(1,0));
     position3_.setZ(result(2,0));

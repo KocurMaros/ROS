@@ -130,15 +130,15 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     // Convert to quternion
     // Calculate position
     Eigen::MatrixXd p(4,1);
+    p,0) = 0;
+    p,0) = 0;
+    p,0) = L4;
+    p,0) = 1;
+    Eigen::MatrixXd p1(4,1);
     p1(0,0) = 0;
     p1(1,0) = 0;
-    p1(2,0) = L4;
+    p1(2,0) = 0;
     p1(3,0) = 1;
-    Eigen::MatrixXd p1(4,1);
-    p2(0,0) = 0;
-    p2(1,0) = 0;
-    p2(2,0) = 0;
-    p2(3,0) = 1;
 
     Eigen::MatrixXd result;
     result = T0 * p;

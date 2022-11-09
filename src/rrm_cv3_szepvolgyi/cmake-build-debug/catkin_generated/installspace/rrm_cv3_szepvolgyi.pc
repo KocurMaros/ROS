@@ -1,8 +1,0 @@
-prefix=/usr/local
-
-Name: rrm_cv3_szepvolgyi
-Description: Description of rrm_cv3_szepvolgyi
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

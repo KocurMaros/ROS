@@ -122,10 +122,10 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     tf3d_to_joint3.setValue(static_cast<double>(J3(0,0)), static_cast<double>(J3(0,1)), static_cast<double>(J3(0,2)),
                   static_cast<double>(J3(1,0)), static_cast<double>(J3(1,1)), static_cast<double>(J3(1,2)),
                   static_cast<double>(J3(2,0)), static_cast<double>(J3(2,1)), static_cast<double>(J3(2,2)));
-    tf3d_dh.getRotation(orientation3_);
     tf3d_dh.setValue(static_cast<double>(dh(0,0)), static_cast<double>(dh(0,1)), static_cast<double>(dh(0,2)),
                 static_cast<double>(dh(1,0)), static_cast<double>(dh(1,1)), static_cast<double>(dh(1,2)),
                 static_cast<double>(dh(2,0)), static_cast<double>(dh(2,1)), static_cast<double>(dh(2,2)));
+    tf3d_dh.getRotation(orientation3_);
 
     // Convert to quternion
     // Calculate position

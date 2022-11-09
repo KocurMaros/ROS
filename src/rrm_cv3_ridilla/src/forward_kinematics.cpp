@@ -143,15 +143,15 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     position_.setY(result(1,0));
     position_.setZ(result(2,0));
 
-    // result = j2 * p2;
+    result = j2 * p2;
 
-    // position2_.setX(result(0,0));
-    // position2_.setY(result(1,0));
-    // position2_.setZ(result(2,0));
+    position2_.setX(result(0,0));
+    position2_.setY(result(1,0));
+    position2_.setZ(result(2,0));
 
-    // result = j3 * p2;
+    result = j3 * p2;
 
-    // position3_.setX(result(0,0));
-    // position3_.setY(result(1,0));
-    // position3_.setZ(result(2,0));
+    position3_.setX(result(0,0));
+    position3_.setY(result(1,0));
+    position3_.setZ(result(2,0));
 }

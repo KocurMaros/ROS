@@ -49,6 +49,8 @@ private:
     tf::Quaternion orientation2_;
     tf::Vector3 position3_;
     tf::Quaternion orientation3_;
+    tf::Vector3 position4_;
+    tf::Quaternion orientation4_;
 };
 
 #endif //FORWARD_KINEMATICS_H

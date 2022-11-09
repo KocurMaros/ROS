@@ -1,0 +1,8 @@
+prefix=/home/david/szepvolgyi_2_ws/src/rrm_cv3/cmake-build-debug/devel
+
+Name: rrm_cv3
+Description: Description of rrm_cv3
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

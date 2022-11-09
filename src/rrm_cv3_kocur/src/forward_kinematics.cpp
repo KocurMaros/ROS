@@ -110,24 +110,24 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     tf::Matrix3x3 tf3d_dh;
 
 
+    tf3d.getRotation(orientation_);
     tf3d.setValue(static_cast<double>(T0(0,0)), static_cast<double>(T0(0,1)), static_cast<double>(T0(0,2)),
                   static_cast<double>(T0(1,0)), static_cast<double>(T0(1,1)), static_cast<double>(T0(1,2)),
                   static_cast<double>(T0(2,0)), static_cast<double>(T0(2,1)), static_cast<double>(T0(2,2)));
+    tf3d_to_joint2.getRotation(orientation1_);
     tf3d_to_joint2.setValue(static_cast<double>(J2(0,0)), static_cast<double>(J2(0,1)), static_cast<double>(J2(0,2)),
                   static_cast<double>(J2(1,0)), static_cast<double>(J2(1,1)), static_cast<double>(J2(1,2)),
                   static_cast<double>(J2(2,0)), static_cast<double>(J2(2,1)), static_cast<double>(J2(2,2)));
+    tf3d_to_joint3.getRotation(orientation2_);
     tf3d_to_joint3.setValue(static_cast<double>(J3(0,0)), static_cast<double>(J3(0,1)), static_cast<double>(J3(0,2)),
                   static_cast<double>(J3(1,0)), static_cast<double>(J3(1,1)), static_cast<double>(J3(1,2)),
                   static_cast<double>(J3(2,0)), static_cast<double>(J3(2,1)), static_cast<double>(J3(2,2)));
+    tf3d_dh.getRotation(orientation3_);
     tf3d_dh.setValue(static_cast<double>(dh(0,0)), static_cast<double>(dh(0,1)), static_cast<double>(dh(0,2)),
                 static_cast<double>(dh(1,0)), static_cast<double>(dh(1,1)), static_cast<double>(dh(1,2)),
                 static_cast<double>(dh(2,0)), static_cast<double>(dh(2,1)), static_cast<double>(dh(2,2)));
 
     // Convert to quternion
-    tf3d.getRotation(orientation_);
-    tf3d_to_joint2.getRotation(orientation1_);
-    tf3d_to_joint3.getRotation(orientation2_);
-    tf3d_dh.getRotation(orientation3_);
     // Calculate position
     Eigen::MatrixXd p1(4,1);
     p1(0,0) = 0;

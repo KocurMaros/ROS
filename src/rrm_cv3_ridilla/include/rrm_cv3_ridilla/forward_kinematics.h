@@ -45,11 +45,15 @@ private:
     tf::Vector3 position_;
     tf::Quaternion orientation_;
 
+    tf::Vector3 position1_;
+    tf::Quaternion orientation1_;
+
     tf::Vector3 position2_;
     tf::Quaternion orientation2_;
 
     tf::Vector3 position3_;
     tf::Quaternion orientation3_;
+    
     tf::Vector3 position4_;
     tf::Quaternion orientation4_;
 };

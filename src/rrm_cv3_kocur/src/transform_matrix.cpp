@@ -73,7 +73,7 @@ namespace matrix {
         matrix(0, 2) = sin(teta)*sin(alfa);
         matrix(0, 3) = a*cos(teta);
         matrix(1, 0) = sin(teta);
-        matrix(1, 1) = cos(teta)*sin(alfa);
+        matrix(1, 1) = cos(teta)*cos(alfa);
         matrix(1, 2) = -cos(teta)*sin(alfa);
         matrix(1, 3) = a*sin(teta);
         matrix(2, 0) = 0;

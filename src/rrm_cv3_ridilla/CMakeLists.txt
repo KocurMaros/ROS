@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(rrm_cv3_ridilla)
+project(rrm_cv3_kocur)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -105,7 +105,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES rrm_cv3_ridilla
+#  LIBRARIES rrm_cv3_kocur
 #  CATKIN_DEPENDS roscpp std_msgs tf
 #  DEPENDS system_lib
 )
@@ -123,7 +123,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/rrm_cv3_ridilla.cpp
+#   src/${PROJECT_NAME}/rrm_cv3_kocur.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -189,7 +189,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_rrm_cv3_ridilla.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_rrm_cv3_kocur.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

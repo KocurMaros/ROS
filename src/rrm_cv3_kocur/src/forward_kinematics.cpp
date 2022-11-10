@@ -49,9 +49,9 @@ void ForwardKinematics::broadcastTf(){
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"joint_3", "joint_4"));
 
     // Calculated forward kinematic tool0 -> base_link
-    // transform.setOrigin( position_ );
-    // transform.setRotation(orientation_);
-    // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
+    transform.setOrigin( position_ );
+    transform.setRotation(orientation_);
+    broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
 
     transform.setOrigin( position1_ );
     transform.setRotation(orientation1_);
@@ -64,9 +64,6 @@ void ForwardKinematics::broadcastTf(){
     transform.setOrigin( position3_ );
     transform.setRotation(orientation3_);
     broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "tool0"));
-    // transform.setOrigin( position3_ );
-    // transform.setRotation(orientation3_);
-    // broadcaster_.sendTransform(tf::StampedTransform(transform, ros::Time::now(),"base_link", "joint_4"));
     // Links
     transform.setOrigin( tf::Vector3(0, 0, 0.1015));
     q.setRPY(0,0,0);
@@ -95,7 +92,7 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
 {
     joint_state_ = *msg;
 
-    // Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2])* createTz(L3)* createRy(joint_state_.position[3]);
+    Eigen::MatrixXd T0 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2])* createTz(L3)* createRy(joint_state_.position[3]);
     Eigen::MatrixXd J2 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) ;
     Eigen::MatrixXd J3 = createRz(joint_state_.position[0]) * createTz(L1) * createRy(joint_state_.position[1]) * createTz(L2) * createTz(joint_state_.position[2]);
     Eigen::MatrixXd dh = DH(0,M_PI/2,L1,joint_state_.position[0])*
@@ -114,14 +111,14 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     // tf3d.setValue(static_cast<double>(T0(0,0)), static_cast<double>(T0(0,1)), static_cast<double>(T0(0,2)),
     //               static_cast<double>(T0(1,0)), static_cast<double>(T0(1,1)), static_cast<double>(T0(1,2)),
     //               static_cast<double>(T0(2,0)), static_cast<double>(T0(2,1)), static_cast<double>(T0(2,2)));
-    tf3d_to_joint2.getRotation(orientation1_);
     tf3d_to_joint2.setValue(static_cast<double>(J2(0,0)), static_cast<double>(J2(0,1)), static_cast<double>(J2(0,2)),
                   static_cast<double>(J2(1,0)), static_cast<double>(J2(1,1)), static_cast<double>(J2(1,2)),
                   static_cast<double>(J2(2,0)), static_cast<double>(J2(2,1)), static_cast<double>(J2(2,2)));
-    tf3d_to_joint3.getRotation(orientation2_);
+    tf3d_to_joint2.getRotation(orientation1_);
     tf3d_to_joint3.setValue(static_cast<double>(J3(0,0)), static_cast<double>(J3(0,1)), static_cast<double>(J3(0,2)),
                   static_cast<double>(J3(1,0)), static_cast<double>(J3(1,1)), static_cast<double>(J3(1,2)),
                   static_cast<double>(J3(2,0)), static_cast<double>(J3(2,1)), static_cast<double>(J3(2,2)));
+    tf3d_to_joint3.getRotation(orientation2_);
     tf3d_dh.setValue(static_cast<double>(dh(0,0)), static_cast<double>(dh(0,1)), static_cast<double>(dh(0,2)),
                 static_cast<double>(dh(1,0)), static_cast<double>(dh(1,1)), static_cast<double>(dh(1,2)),
                 static_cast<double>(dh(2,0)), static_cast<double>(dh(2,1)), static_cast<double>(dh(2,2)));
@@ -141,10 +138,10 @@ void ForwardKinematics::jointCallback(const sensor_msgs::JointState::ConstPtr& m
     p1(3,0) = 1;
 
     Eigen::MatrixXd result;
-    // result = T0 * p;
-    // position_.setX(result(0,0));
-    // position_.setY(result(1,0));
-    // position_.setZ(result(2,0));
+    result = T0 * p;
+    position_.setX(result(0,0));
+    position_.setY(result(1,0));
+    position_.setZ(result(2,0));
 
     result = J2 * p1;
     position1_.setX(result(0,0));

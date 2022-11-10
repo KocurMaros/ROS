@@ -74,7 +74,6 @@
         <origin xyz="0 0 0" rpy = "0 0 0"/>
     </visual>
   </link>
-  
   <link name="joint_2">
     <visual>
       <geometry>
@@ -97,7 +96,6 @@
       <origin xyz="0 0 0" rpy = "0 0 0"/>
     </visual>
   </link>
-
   <link name="joint_4">
     <visual>
       <geometry>

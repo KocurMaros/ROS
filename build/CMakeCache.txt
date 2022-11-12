@@ -812,6 +812,18 @@ rrm_cv3_kocur_BINARY_DIR:STATIC=/home/rrm/ROS/build/rrm_cv3_kocur
 //Value Computed by CMake
 rrm_cv3_kocur_SOURCE_DIR:STATIC=/home/rrm/ROS/src/rrm_cv3_kocur
 
+//Value Computed by CMake
+rrm_cv3_ridilla_BINARY_DIR:STATIC=/home/rrm/ROS/build/rrm_cv3_ridilla
+
+//Value Computed by CMake
+rrm_cv3_ridilla_SOURCE_DIR:STATIC=/home/rrm/ROS/src/rrm_cv3_ridilla
+
+//Value Computed by CMake
+rrm_cv3_szepvolgyi_BINARY_DIR:STATIC=/home/rrm/ROS/build/rrm_cv3_szepvolgyi
+
+//Value Computed by CMake
+rrm_cv3_szepvolgyi_SOURCE_DIR:STATIC=/home/rrm/ROS/src/rrm_cv3_szepvolgyi
+
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/noetic/share/sensor_msgs/cmake
 

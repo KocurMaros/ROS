@@ -6,6 +6,7 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
 subdirs("abb/abb")
+subdirs("abb_config")
 subdirs("abb_experimental/abb_experimental")
 subdirs("abb_experimental/abb_irb1200_5_90_moveit_config")
 subdirs("abb_experimental/abb_irb1200_7_70_moveit_config")
@@ -36,3 +37,4 @@ subdirs("abb_experimental/abb_irb6700_support")
 subdirs("abb_experimental/abb_irb7600_support")
 subdirs("rrm_cv3_kocur")
 subdirs("abb/abb_irb2400_moveit_plugins")
+subdirs("moveit_tutorials")

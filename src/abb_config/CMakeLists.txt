@@ -8,3 +8,7 @@ catkin_package()
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   PATTERN "setup_assistant.launch" EXCLUDE)
 install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+include_directories(${THIS_PACKAGE_INCLUDE_DIRS})
+
+add_subdirectory(abb_config)

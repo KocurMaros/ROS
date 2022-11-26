@@ -5,6 +5,10 @@ find_package(catkin REQUIRED)
 
 catkin_package()
 
+find_package(catkin REQUIRED COMPONENTS
+move_group_interface
+moveit_ros_planning_interface
+)
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   PATTERN "setup_assistant.launch" EXCLUDE)
 install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
@@ -12,6 +16,6 @@ install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 add_executable(moveit_tutorial src/moveit_tutorial.cpp)
 
 target_link_libraries(moveit_tutorial ${catkin_LIBRARIES} ${Boost_LIBRARIES})
-target_link_libraries(move_group_interface ${catkin_LIBRARIES})
+
 install(TARGETS moveit_tutorial DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 include_directories(${THIS_PACKAGE_INCLUDE_DIRS})

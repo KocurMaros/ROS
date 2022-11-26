@@ -6,7 +6,6 @@ find_package(catkin REQUIRED)
 catkin_package()
 
 find_package(catkin REQUIRED COMPONENTS
-move_group_interface
 moveit_ros_planning_interface
 )
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}

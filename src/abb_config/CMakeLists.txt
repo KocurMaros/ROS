@@ -4,9 +4,9 @@ project(abb_config)
 find_package(catkin REQUIRED)
 
 catkin_package()
-
 find_package(catkin REQUIRED COMPONENTS
-moveit_ros_planning_interface
+moveit_ros_planning_interface 
+moveit_ros_move_group
 )
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   PATTERN "setup_assistant.launch" EXCLUDE)

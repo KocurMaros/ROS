@@ -10,9 +10,9 @@ The package `trac_ik_kinematics_plugin <https://bitbucket.org/traclabs/trac_ik/s
 Install
 -------
 
-As of v1.4.5, **trac_ik** is part of the ROS Indigo/Jade binaries: ::
+To install **trac_ik** for ROS Noetic, use the following command: ::
 
-  sudo apt-get install ros-kinetic-trac-ik-kinematics-plugin
+  sudo apt-get install ros-noetic-trac-ik-kinematics-plugin
 
 Usage
 -----

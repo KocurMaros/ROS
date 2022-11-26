@@ -40,6 +40,8 @@
 #include "interactivity/pose_string.h"
 #include <tf2_eigen/tf2_eigen.h>
 
+#include <utility>
+
 /* default callback which just prints the current pose */
 void IMarker::printFeedback(const visualization_msgs::InteractiveMarkerFeedbackConstPtr& feedback)
 {
@@ -105,7 +107,7 @@ void IMarker::makeAxisControl()
 }
 
 /* move to new pose */
-void IMarker::move(const Eigen::Affine3d& pose)
+void IMarker::move(const Eigen::Isometry3d& pose)
 {
   imarker_.pose = tf2::toMsg(pose);
   server_->applyChanges();
@@ -182,6 +184,6 @@ void IMarker::initialize(interactive_markers::InteractiveMarkerServer& server, c
 
   // tell the server to show the marker and listen for changes
   server_->insert(imarker_);
-  server_->setCallback(imarker_.name, callback);
+  server_->setCallback(imarker_.name, std::move(callback));
   server_->applyChanges();
 }

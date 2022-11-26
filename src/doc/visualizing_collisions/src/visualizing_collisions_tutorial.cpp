@@ -44,13 +44,11 @@
 #include <moveit/robot_model/robot_model.h>
 #include <moveit/robot_state/robot_state.h>
 #include <moveit/planning_scene/planning_scene.h>
-#include <moveit/collision_detection_fcl/collision_world_fcl.h>
-#include <moveit/collision_detection_fcl/collision_robot_fcl.h>
 #include <moveit/collision_detection/collision_tools.h>
 
-planning_scene::PlanningScene* g_planning_scene = 0;
+planning_scene::PlanningScene* g_planning_scene = nullptr;
 shapes::ShapePtr g_world_cube_shape;
-ros::Publisher* g_marker_array_publisher = 0;
+ros::Publisher* g_marker_array_publisher = nullptr;
 visualization_msgs::MarkerArray g_collision_points;
 
 void help()
@@ -75,10 +73,10 @@ void help()
 void publishMarkers(visualization_msgs::MarkerArray& markers)
 {
   // delete old markers
-  if (g_collision_points.markers.size())
+  if (!g_collision_points.markers.empty())
   {
-    for (int i = 0; i < g_collision_points.markers.size(); i++)
-      g_collision_points.markers[i].action = visualization_msgs::Marker::DELETE;
+    for (auto& marker : g_collision_points.markers)
+      marker.action = visualization_msgs::Marker::DELETE;
 
     g_marker_array_publisher->publish(g_collision_points);
   }
@@ -87,14 +85,14 @@ void publishMarkers(visualization_msgs::MarkerArray& markers)
   std::swap(g_collision_points.markers, markers.markers);
 
   // draw new markers (if there are any)
-  if (g_collision_points.markers.size())
+  if (!g_collision_points.markers.empty())
     g_marker_array_publisher->publish(g_collision_points);
 }
 
 void computeCollisionContactPoints(InteractiveRobot& robot)
 {
   // move the world geometry in the collision world
-  Eigen::Affine3d world_cube_pose;
+  Eigen::Isometry3d world_cube_pose;
   double world_cube_size;
   robot.getWorldGeometry(world_cube_pose, world_cube_size);
   g_planning_scene->getWorldNonConst()->moveShapeInObject("world_cube", g_world_cube_shape, world_cube_pose);
@@ -126,7 +124,7 @@ void computeCollisionContactPoints(InteractiveRobot& robot)
   // iterate through **c_res.contacts** which is a std::map of contact points.
   // Look at the implementation of getCollisionMarkersFromContacts() in
   // `collision_tools.cpp
-  // <https://github.com/ros-planning/moveit/blob/kinetic-devel/moveit_core/collision_detection/src/collision_tools.cpp>`_
+  // <https://github.com/ros-planning/moveit/blob/noetic-devel/moveit_core/collision_detection/src/collision_tools.cpp>`_
   // for how.
   if (c_res.collision)
   {
@@ -140,7 +138,7 @@ void computeCollisionContactPoints(InteractiveRobot& robot)
       color.a = 0.5;
       visualization_msgs::MarkerArray markers;
 
-      /* Get the contact ponts and display them as markers */
+      /* Get the contact points and display them as markers */
       collision_detection::getCollisionMarkersFromContacts(markers, "panda_link0", c_res.contacts, color,
                                                            ros::Duration(),  // remain until deleted
                                                            0.01);            // radius
@@ -176,7 +174,7 @@ int main(int argc, char** argv)
   g_planning_scene = new planning_scene::PlanningScene(robot.robotModel());
 
   // Adding geometry to the PlanningScene
-  Eigen::Affine3d world_cube_pose;
+  Eigen::Isometry3d world_cube_pose;
   double world_cube_size;
   robot.getWorldGeometry(world_cube_pose, world_cube_size);
   g_world_cube_shape.reset(new shapes::Box(world_cube_size, world_cube_size, world_cube_size));

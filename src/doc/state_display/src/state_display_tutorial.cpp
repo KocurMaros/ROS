@@ -62,13 +62,13 @@ int main(int argc, char** argv)
   robot_model_loader::RobotModelLoader robot_model_loader("robot_description");
 
   /* Get a shared pointer to the model */
-  robot_model::RobotModelPtr kinematic_model = robot_model_loader.getModel();
+  const moveit::core::RobotModelPtr& kinematic_model = robot_model_loader.getModel();
 
   /* Create a kinematic state - this represents the configuration for the robot represented by kinematic_model */
-  robot_state::RobotStatePtr kinematic_state(new robot_state::RobotState(kinematic_model));
+  moveit::core::RobotStatePtr kinematic_state(new moveit::core::RobotState(kinematic_model));
 
   /* Get the configuration for the joints in the right arm of the Panda*/
-  const robot_model::JointModelGroup* joint_model_group = kinematic_model->getJointModelGroup("panda_arm");
+  const moveit::core::JointModelGroup* joint_model_group = kinematic_model->getJointModelGroup("panda_arm");
 
   /* PUBLISH RANDOM ARM POSITIONS */
   ros::NodeHandle nh;
@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 
     /* get a robot state message describing the pose in kinematic_state */
     moveit_msgs::DisplayRobotState msg;
-    robot_state::robotStateToRobotStateMsg(*kinematic_state, msg.state);
+    moveit::core::robotStateToRobotStateMsg(*kinematic_state, msg.state);
 
     /* send the message to the RobotState display */
     robot_state_publisher.publish(msg);
@@ -98,7 +98,7 @@ int main(int argc, char** argv)
   /* Find the default pose for the end effector */
   kinematic_state->setToDefaultValues();
 
-  const Eigen::Affine3d end_effector_default_pose = kinematic_state->getGlobalLinkTransform("r_wrist_roll_link");
+  const Eigen::Isometry3d end_effector_default_pose = kinematic_state->getGlobalLinkTransform("r_wrist_roll_link");
 
   const double PI = boost::math::constants::pi<double>();
   const double RADIUS = 0.1;
@@ -106,13 +106,13 @@ int main(int argc, char** argv)
   for (double angle = 0; angle <= 2 * PI && ros::ok(); angle += 2 * PI / 20)
   {
     /* calculate a position for the end effector */
-    Eigen::Affine3d end_effector_pose =
+    Eigen::Isometry3d end_effector_pose =
         Eigen::Translation3d(RADIUS * cos(angle), RADIUS * sin(angle), 0.0) * end_effector_default_pose;
 
     ROS_INFO_STREAM("End effector position:\n" << end_effector_pose.translation());
 
     /* use IK to get joint angles satisfyuing the calculated position */
-    bool found_ik = kinematic_state->setFromIK(joint_model_group, end_effector_pose, 10, 0.1);
+    bool found_ik = kinematic_state->setFromIK(joint_model_group, end_effector_pose, 0.1);
     if (!found_ik)
     {
       ROS_INFO_STREAM("Could not solve IK for pose\n" << end_effector_pose.translation());
@@ -121,7 +121,7 @@ int main(int argc, char** argv)
 
     /* get a robot state message describing the pose in kinematic_state */
     moveit_msgs::DisplayRobotState msg;
-    robot_state::robotStateToRobotStateMsg(*kinematic_state, msg.state);
+    moveit::core::robotStateToRobotStateMsg(*kinematic_state, msg.state);
 
     /* send the message to the RobotState display */
     robot_state_publisher.publish(msg);

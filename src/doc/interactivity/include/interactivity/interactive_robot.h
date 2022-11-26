@@ -44,6 +44,9 @@
 #include <moveit/robot_model/robot_model.h>
 #include <moveit/robot_state/robot_state.h>
 #include <moveit_msgs/DisplayRobotState.h>
+
+#include <utility>
+
 #include "imarker.h"
 
 /** Keeps track of the state of the robot and the world.
@@ -63,30 +66,30 @@ public:
   const std::string& getGroupName() const;
 
   /** Set the pose of the group we are manipulating */
-  bool setGroupPose(const Eigen::Affine3d& pose);
+  void setGroupPose(const Eigen::Isometry3d& pose);
 
   /** set pose of the world object */
-  void setWorldObjectPose(const Eigen::Affine3d& pose);
+  void setWorldObjectPose(const Eigen::Isometry3d& pose);
 
   /** set a callback to call when updates occur */
   void setUserCallback(boost::function<void(InteractiveRobot& robot)> callback)
   {
-    user_callback_ = callback;
+    user_callback_ = std::move(callback);
   }
 
   /** access RobotModel */
-  robot_model::RobotModelPtr& robotModel()
+  moveit::core::RobotModelPtr& robotModel()
   {
     return robot_model_;
   }
   /** access RobotState */
-  robot_state::RobotStatePtr& robotState()
+  moveit::core::RobotStatePtr& robotState()
   {
     return robot_state_;
   }
 
   /** return size and pose of world object cube */
-  void getWorldGeometry(Eigen::Affine3d& pose, double& size);
+  void getWorldGeometry(Eigen::Isometry3d& pose, double& size);
 
   /** exception thrown when a problem occurs */
   class RobotLoadException : std::exception
@@ -132,17 +135,17 @@ private:
 
   /* robot info */
   robot_model_loader::RobotModelLoader rm_loader_;
-  robot_model::RobotModelPtr robot_model_;
-  robot_state::RobotStatePtr robot_state_;
+  moveit::core::RobotModelPtr robot_model_;
+  moveit::core::RobotStatePtr robot_state_;
 
   /* info about joint group we are manipulating */
-  const robot_model::JointModelGroup* group_;
-  Eigen::Affine3d desired_group_end_link_pose_;
+  const moveit::core::JointModelGroup* group_;
+  Eigen::Isometry3d desired_group_end_link_pose_;
 
   /* world info */
-  Eigen::Affine3d desired_world_object_pose_;
+  Eigen::Isometry3d desired_world_object_pose_;
   static const double WORLD_BOX_SIZE_;
-  static const Eigen::Affine3d DEFAULT_WORLD_OBJECT_POSE_;
+  static const Eigen::Isometry3d DEFAULT_WORLD_OBJECT_POSE_;
 
   /* user callback function */
   boost::function<void(InteractiveRobot& robot)> user_callback_;

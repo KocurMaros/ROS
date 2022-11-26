@@ -66,9 +66,9 @@ int main(int argc, char** argv)
   // :moveit_core:`RobotModel` for us to use.
   //
   // .. _RobotModelLoader:
-  //     http://docs.ros.org/kinetic/api/moveit_ros_planning/html/classrobot__model__loader_1_1RobotModelLoader.html
+  //     http://docs.ros.org/noetic/api/moveit_ros_planning/html/classrobot__model__loader_1_1RobotModelLoader.html
   robot_model_loader::RobotModelLoader robot_model_loader("robot_description");
-  robot_model::RobotModelPtr kinematic_model = robot_model_loader.getModel();
+  const moveit::core::RobotModelPtr& kinematic_model = robot_model_loader.getModel();
   ROS_INFO("Model frame: %s", kinematic_model->getModelFrame().c_str());
 
   // Using the :moveit_core:`RobotModel`, we can construct a
@@ -78,15 +78,15 @@ int main(int argc, char** argv)
   // :moveit_core:`JointModelGroup`, which represents the robot
   // model for a particular group, e.g. the "panda_arm" of the Panda
   // robot.
-  robot_state::RobotStatePtr kinematic_state(new robot_state::RobotState(kinematic_model));
+  moveit::core::RobotStatePtr kinematic_state(new moveit::core::RobotState(kinematic_model));
   kinematic_state->setToDefaultValues();
-  const robot_state::JointModelGroup* joint_model_group = kinematic_model->getJointModelGroup("panda_arm");
+  const moveit::core::JointModelGroup* joint_model_group = kinematic_model->getJointModelGroup("panda_arm");
 
   const std::vector<std::string>& joint_names = joint_model_group->getVariableNames();
 
   // Get Joint Values
   // ^^^^^^^^^^^^^^^^
-  // We can retreive the current set of joint values stored in the state for the Panda arm.
+  // We can retrieve the current set of joint values stored in the state for the Panda arm.
   std::vector<double> joint_values;
   kinematic_state->copyJointGroupPositions(joint_model_group, joint_values);
   for (std::size_t i = 0; i < joint_names.size(); ++i)
@@ -115,7 +115,7 @@ int main(int argc, char** argv)
   // "panda_link8" which is the most distal link in the
   // "panda_arm" group of the robot.
   kinematic_state->setToRandomPositions(joint_model_group);
-  const Eigen::Affine3d& end_effector_state = kinematic_state->getGlobalLinkTransform("panda_link8");
+  const Eigen::Isometry3d& end_effector_state = kinematic_state->getGlobalLinkTransform("panda_link8");
 
   /* Print end-effector pose. Remember that this is in the model frame */
   ROS_INFO_STREAM("Translation: \n" << end_effector_state.translation() << "\n");
@@ -128,11 +128,9 @@ int main(int argc, char** argv)
   //
   //  * The desired pose of the end-effector (by default, this is the last link in the "panda_arm" chain):
   //    end_effector_state that we computed in the step above.
-  //  * The number of attempts to be made at solving IK: 10
-  //  * The timeout for each attempt: 0.1 s
-  std::size_t attempts = 10;
+  //  * The timeout: 0.1 s
   double timeout = 0.1;
-  bool found_ik = kinematic_state->setFromIK(joint_model_group, end_effector_state, attempts, timeout);
+  bool found_ik = kinematic_state->setFromIK(joint_model_group, end_effector_state, timeout);
 
   // Now, we can print out the IK solution (if found):
   if (found_ik)

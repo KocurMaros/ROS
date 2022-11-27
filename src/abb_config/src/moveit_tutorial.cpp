@@ -68,6 +68,7 @@ int main(int argc, char** argv)
   // the `JointModelGroup`. Throughout MoveIt the terms "planning group" and "joint model group"
   // are used interchangeably.
   static const std::string PLANNING_GROUP = "robot_arm";
+  static const std::string LOGNAME = "moveit_cpp_tutorial";
 
   // The :planning_interface:`MoveGroupInterface` class can be easily
   // setup using just the name of the planning group you would like to control and plan for.

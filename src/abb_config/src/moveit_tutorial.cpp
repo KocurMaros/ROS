@@ -45,6 +45,8 @@
 
 #include <moveit_visual_tools/moveit_visual_tools.h>
 
+#include "geometric_shapes/mesh_operations.h"
+
 // The circle constant tau = 2*pi. One tau is one rotation in radians.
 const double tau = 2 * M_PI;
 
@@ -58,6 +60,37 @@ int main(int argc, char** argv)
   // beforehand.
   ros::AsyncSpinner spinner(1);
   spinner.start();
+
+
+  
+  moveit_msgs::CollisionObject toilet;
+shapes::Mesh* m = shapes::createMeshFromResource("package://dell.stl");
+shape_msgs::Mesh toilet_mesh;
+shapes::ShapeMsg toilet_mesh_msg;
+shapes::constructMsgFromShape(m,toilet_mesh_msg);
+toilet_mesh = boost::get<shape_msgs::Mesh>(toilet_mesh_msg);
+toilet.meshes.resize(1);
+toilet.meshes[0] = toilet_mesh;
+toilet.mesh_poses.resize(1);
+toilet.mesh_poses[0].position.x = 1.0;
+toilet.mesh_poses[0].position.y = 1.0;
+toilet.mesh_poses[0].position.z = 0.0;
+toilet.mesh_poses[0].orientation.w= 1.0;
+toilet.mesh_poses[0].orientation.x= 0.0;
+toilet.mesh_poses[0].orientation.y= 0.0;
+toilet.mesh_poses[0].orientation.z= 0.0;
+//pub_co.publish(toilet);
+
+toilet.meshes.push_back(toilet_mesh);
+toilet.mesh_poses.push_back(toilet.mesh_poses[0]);
+toilet.operation = toilet.ADD;
+
+std::vector<moveit_msgs::CollisionObject> collision_objects;  
+collision_objects.push_back(toilet);  
+
+// Now, let's add the collision object into the world
+ROS_INFO("Add an object into the world");  
+planning_scene_interface.addCollisionObjects(collision_objects);
 
   // BEGIN_TUTORIAL
   //

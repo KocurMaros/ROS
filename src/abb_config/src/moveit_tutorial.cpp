@@ -108,7 +108,7 @@ int main(int argc, char** argv)
   collision_object.meshes.resize(1);
   collision_object.mesh_poses.resize(1);
   collision_object.meshes[0] = mesh;
-  collision_object.header.frame_id = move_group_interface.getPlanningFrame();
+  // collision_object.header.frame_id = move_group_interface.getPlanningFrame();
   collision_object.mesh_poses[0].position.x = 1.0;
   collision_object.mesh_poses[0].position.y = 1.0;
   collision_object.mesh_poses[0].position.z = 0.0;

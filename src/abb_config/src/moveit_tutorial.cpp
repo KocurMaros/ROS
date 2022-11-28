@@ -91,6 +91,11 @@ int main(int argc, char** argv)
   //
   // The package MoveItVisualTools provides many capabilities for visualizing objects, robots,
   // and trajectories in RViz as well as debugging tools such as step-by-step introspection of a script.
+      
+  sleep(2.0);
+  Eigen::Vector3d b(0.001, 0.001, 0.001);
+  sleep(2.0);
+
   shapes::Mesh* c_mesh = shapes::createMeshFromResource("package://dell.stl", b); shapes::ShapeMsg mesh_msg; 
   shapes::ShapeMsg mesh_msg;
   shapes::constructMsgFromShape(c_mesh, mesh_msg); 
@@ -117,7 +122,7 @@ int main(int argc, char** argv)
 
   planning_scene_interface.applyCollisionObjects(collision_vector);
   ROS_INFO("Wall added into the world");
-  move_group.attachObject(collision_object.id);
+  move_group_interface.attachObject(collision_object.id);
   sleep(5.0);
 
   namespace rvt = rviz_visual_tools;

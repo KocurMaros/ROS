@@ -49,8 +49,8 @@ link_directories(${catkin_LIBRARY_DIRS})
 
 
 
-add_executable(abb_config src/moveit_tutorial.cpp)
-target_link_libraries(abb_config ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+add_executable(pica src/moveit_tutorial.cpp)
+target_link_libraries(pica ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 include_directories(${THIS_PACKAGE_INCLUDE_DIRS})
 
 install(TARGETS abb_config DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

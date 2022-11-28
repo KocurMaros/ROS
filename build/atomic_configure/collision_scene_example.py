@@ -3,7 +3,7 @@
 # generated from catkin/cmake/template/script.py.in
 # creates a relay to a python script source file, acting as that file.
 # The purpose is that of a symlink
-python_script = '/home/rrm/ROS/src/moveit_tutorials/doc/collision_environments/scripts/collision_scene_example.py'
+python_script = '/home/rrm/ROS/src/moveit_tutorials-master/doc/collision_environments/scripts/collision_scene_example.py'
 with open(python_script, 'r') as fh:
     context = {
         '__builtins__': __builtins__,

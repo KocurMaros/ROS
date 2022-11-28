@@ -132,7 +132,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/rrm/ROS/build/gtest/cmake_install.cmake")
   include("/home/rrm/ROS/build/abb/abb/cmake_install.cmake")
-  include("/home/rrm/ROS/build/abb_config/cmake_install.cmake")
   include("/home/rrm/ROS/build/abb_experimental/abb_experimental/cmake_install.cmake")
   include("/home/rrm/ROS/build/abb_experimental/abb_irb1200_5_90_moveit_config/cmake_install.cmake")
   include("/home/rrm/ROS/build/abb_experimental/abb_irb1200_7_70_moveit_config/cmake_install.cmake")
@@ -163,7 +162,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/rrm/ROS/build/abb_experimental/abb_irb7600_support/cmake_install.cmake")
   include("/home/rrm/ROS/build/rrm_cv3_kocur/cmake_install.cmake")
   include("/home/rrm/ROS/build/abb/abb_irb2400_moveit_plugins/cmake_install.cmake")
-  include("/home/rrm/ROS/build/moveit_tutorials/cmake_install.cmake")
+  include("/home/rrm/ROS/build/abb_config/cmake_install.cmake")
 
 endif()
 

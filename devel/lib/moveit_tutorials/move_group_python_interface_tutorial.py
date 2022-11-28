@@ -3,7 +3,7 @@
 # generated from catkin/cmake/template/script.py.in
 # creates a relay to a python script source file, acting as that file.
 # The purpose is that of a symlink
-python_script = '/home/rrm/ROS/src/moveit_tutorials/doc/move_group_python_interface/scripts/move_group_python_interface_tutorial.py'
+python_script = '/home/rrm/ROS/src/moveit_tutorials-master/doc/move_group_python_interface/scripts/move_group_python_interface_tutorial.py'
 with open(python_script, 'r') as fh:
     context = {
         '__builtins__': __builtins__,

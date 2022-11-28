@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(abb_config_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT " " STREQUAL " ")
+if(NOT "/usr/include/eigen3 " STREQUAL " ")
   set(abb_config_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "/usr/include/eigen3")
   if(NOT "https://github.com/ros-planning/moveit/issues " STREQUAL " ")
     set(_report "Check the issue tracker 'https://github.com/ros-planning/moveit/issues' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://moveit.ros.org/ " STREQUAL " ")
@@ -116,7 +116,7 @@ if(NOT " " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "")
+set(libraries "interactivity_utils")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -185,7 +185,7 @@ foreach(t ${abb_config_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "")
+set(depends "moveit_core;moveit_visual_tools;moveit_ros_planning_interface;interactive_markers")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

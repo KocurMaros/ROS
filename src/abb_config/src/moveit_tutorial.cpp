@@ -45,8 +45,9 @@
 
 #include <moveit_visual_tools/moveit_visual_tools.h>
 
+#include "geometric_shapes/shapes.h"
 #include "geometric_shapes/mesh_operations.h"
-
+#include "geometric_shapes/shape_operations.h"
 // The circle constant tau = 2*pi. One tau is one rotation in radians.
 const double tau = 2 * M_PI;
 

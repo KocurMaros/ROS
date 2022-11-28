@@ -63,35 +63,6 @@ int main(int argc, char** argv)
   spinner.start();
 
 
-  
-  moveit_msgs::CollisionObject toilet;
-shapes::Mesh* m = shapes::createMeshFromResource("package://dell.stl");
-shape_msgs::Mesh toilet_mesh;
-shapes::ShapeMsg toilet_mesh_msg;
-shapes::constructMsgFromShape(m,toilet_mesh_msg);
-toilet_mesh = boost::get<shape_msgs::Mesh>(toilet_mesh_msg);
-toilet.meshes.resize(1);
-toilet.meshes[0] = toilet_mesh;
-toilet.mesh_poses.resize(1);
-toilet.mesh_poses[0].position.x = 1.0;
-toilet.mesh_poses[0].position.y = 1.0;
-toilet.mesh_poses[0].position.z = 0.0;
-toilet.mesh_poses[0].orientation.w= 1.0;
-toilet.mesh_poses[0].orientation.x= 0.0;
-toilet.mesh_poses[0].orientation.y= 0.0;
-toilet.mesh_poses[0].orientation.z= 0.0;
-//pub_co.publish(toilet);
-
-toilet.meshes.push_back(toilet_mesh);
-toilet.mesh_poses.push_back(toilet.mesh_poses[0]);
-toilet.operation = toilet.ADD;
-
-std::vector<moveit_msgs::CollisionObject> collision_objects;  
-collision_objects.push_back(toilet);  
-
-// Now, let's add the collision object into the world
-ROS_INFO("Add an object into the world");  
-planning_scene_interface.addCollisionObjects(collision_objects);
 
   // BEGIN_TUTORIAL
   //
@@ -120,6 +91,35 @@ planning_scene_interface.addCollisionObjects(collision_objects);
   //
   // The package MoveItVisualTools provides many capabilities for visualizing objects, robots,
   // and trajectories in RViz as well as debugging tools such as step-by-step introspection of a script.
+  shapes::Mesh* c_mesh = shapes::createMeshFromResource("package://dell.stl", b); shapes::ShapeMsg mesh_msg; 
+  shapes::ShapeMsg mesh_msg;
+  shapes::constructMsgFromShape(c_mesh, mesh_msg); 
+  shape_msgs::Mesh custom_mesh = boost::get<shape_msgs::mesh>(mesh_msg);
+  
+  shape_msgs::Mesh mesh;
+  mesh = boost::get<shape_msgs::Mesh>(mesh_msg);
+
+  moveit_msgs::CollisionObject collision_object;
+  collision_object.meshes.resize(1);
+  collision_object.mesh_poses.resize(1);
+  collision_object.meshes[0] = mesh;
+  collision_object.header.frame_id = move_group_interface.getPlanningFrame();
+  collision_object.mesh_poses[0].position.x = 1.0;
+  collision_object.mesh_poses[0].position.y = 1.0;
+  collision_object.mesh_poses[0].position.z = 0.0;
+  collision_object.mesh_poses[0].orientation.x = 1.57;
+
+  collision_object.meshes.push_back(mesh);
+  collision_object.mesh_poses.push_back(collision_object.mesh_poses[0]);
+  collision_object.operation = collision_object.ADD;
+  std::vector<moveit_msgs::CollisionObject> collision_vector;
+  collision_vector.push_back(collision_object);
+
+  planning_scene_interface.applyCollisionObjects(collision_vector);
+  ROS_INFO("Wall added into the world");
+  move_group.attachObject(collision_object.id);
+  sleep(5.0);
+
   namespace rvt = rviz_visual_tools;
   moveit_visual_tools::MoveItVisualTools visual_tools("base_link");
   visual_tools.deleteAllMarkers();
@@ -384,7 +384,6 @@ planning_scene_interface.addCollisionObjects(collision_objects);
   //    :alt: animation showing the arm moving relatively straight toward the goal
   //
   // Now let's define a collision object ROS message for the robot to avoid.
-  moveit_msgs::CollisionObject collision_object;
   collision_object.header.frame_id = move_group_interface.getPlanningFrame();
 
   // The id of the object is used to identify it.

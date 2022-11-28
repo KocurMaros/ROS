@@ -407,7 +407,6 @@ int main(int argc, char** argv)
   // You can attach objects to the robot, so that it moves with the robot geometry.
   // This simulates picking up the object for the purpose of manipulating it.
   // The motion planning should avoid collisions between the two objects as well.
-  /*
   moveit_msgs::CollisionObject object_to_attach;
   object_to_attach.id = "cylinder1";
 
@@ -432,13 +431,14 @@ int main(int argc, char** argv)
   // Then, we "attach" the object to the robot. It uses the frame_id to determine which robot link it is attached to.
   // You could also use applyAttachedCollisionObject to attach an object to the robot directly.
   ROS_INFO_NAMED("tutorial", "Attach the object to the robot");
-  move_group_interface.attachObject(object_to_attach.id, "panda_hand");
+  move_group_interface.attachObject(object_to_attach.id, "tool0");
 
   visual_tools.publishText(text_pose, "Object attached to robot", rvt::WHITE, rvt::XLARGE);
   visual_tools.trigger();
 
   // Wait for MoveGroup to receive and process the attached collision object message 
   visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window once the new object is attached to the robot");
+  /*
 
   // Replan, but now with the object in hand.
   move_group_interface.setStartStateToCurrentState();

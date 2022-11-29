@@ -353,9 +353,9 @@ int main(int argc, char** argv)
   geometry_msgs::Pose start_pose2;
 
   start_pose2.orientation.x = 0.0;
-  start_pose2.orientation.y = 0.001;
+  start_pose2.orientation.y = 0.99;
   start_pose2.orientation.z = 0.0;  
-  start_pose2.orientation.w = 0.999;
+  start_pose2.orientation.w = 0.01;
   start_pose2.position.x = 1;
   start_pose2.position.y = 0.0;
   start_pose2.position.z = 0.4;

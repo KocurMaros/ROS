@@ -351,14 +351,14 @@ int main(int argc, char** argv)
   // need to be added to the waypoint list but adding it can help with visualizations
   moveit::core::RobotState start_state(*move_group_interface.getCurrentState());
   geometry_msgs::Pose start_pose2;
-  start_pose2.orientation.w = 0.0;
-  start_pose2.position.x = 1;
-  start_pose2.position.y = 1;
-  start_pose2.position.z = 1;
-  start_state.setFromIK(joint_model_group, start_pose2);
-  move_group_interface.setStartState(start_state);
+  // start_pose2.orientation.w = 0.0;
+  // start_pose2.position.x = 1;
+  // start_pose2.position.y = 1;
+  // start_pose2.position.z = 1;
+  // start_state.setFromIK(joint_model_group, start_pose2);
+  // move_group_interface.setStartState(start_state);
   std::vector<geometry_msgs::Pose> waypoints;
-  waypoints.push_back(start_pose2);
+  // waypoints.push_back(start_pose2);
 
 
   geometry_msgs::Pose target_pose3;

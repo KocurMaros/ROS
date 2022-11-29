@@ -357,18 +357,17 @@ int main(int argc, char** argv)
   start_pose2.position.z = 0.65837;
   start_state.setFromIK(joint_model_group, start_pose2);
   move_group_interface.setStartState(start_state);
-
-  std::vector<geometry_msgs::Pose> waypoints;
   waypoints.push_back(start_pose2);
 
-  geometry_msgs::Pose target_pose3 = start_pose2;
+  std::vector<geometry_msgs::Pose> waypoints;
+
+  geometry_msgs::Pose target_pose3;
 
   target_pose3.orientation.w = 1.0;
   target_pose3.position.x = 0.0;
   target_pose3.position.y = 1.0;
   target_pose3.position.z = 0.0;
   waypoints.push_back(target_pose3);  // down
-
 
   target_pose3.orientation.w = 0.5;
   target_pose3.position.x = 0.0;
@@ -380,11 +379,6 @@ int main(int argc, char** argv)
   target_pose3.position.y = 0.62698;
   target_pose3.position.z = 0.65837;
   waypoints.push_back(target_pose3);  // right
-
-  // target_pose3.position.z += 0.2;
-  // target_pose3.position.y += 0.2;
-  // target_pose3.position.x -= 0.2;
-  // waypoints.push_back(target_pose3);  // up and left
 
   // We want the Cartesian path to be interpolated at a resolution of 1 cm
   // which is why we will specify 0.01 as the max step in Cartesian

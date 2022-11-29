@@ -105,7 +105,7 @@ int main(int argc, char** argv)
   mesh = boost::get<shape_msgs::Mesh>(mesh_msg);
 
   moveit_msgs::CollisionObject collision_object;
-  collision_object.meshes.resize(1);
+  collision_object.meshes.resize(5);
   collision_object.mesh_poses.resize(1);
   collision_object.meshes[0] = mesh;
   collision_object.header.frame_id = move_group_interface.getPlanningFrame();

@@ -319,14 +319,6 @@ int main(int argc, char** argv)
   // Note that this will only work if the current state already
   // satisfies the path constraints. So we need to set the start
   // state to a new pose.
-  moveit::core::RobotState start_state(*move_group_interface.getCurrentState());
-  geometry_msgs::Pose start_pose2;
-  start_pose2.orientation.w = 1.0;
-  start_pose2.position.x = 0.55;
-  start_pose2.position.y = -0.05;
-  start_pose2.position.z = 0.8;
-  start_state.setFromIK(joint_model_group, start_pose2);
-  move_group_interface.setStartState(start_state);
 
   // // Now we will plan to the earlier pose target from the new
   // // start state that we have just created.
@@ -357,6 +349,15 @@ int main(int argc, char** argv)
   // for the end-effector to go through. Note that we are starting
   // from the new start state above.  The initial pose (start state) does not
   // need to be added to the waypoint list but adding it can help with visualizations
+  moveit::core::RobotState start_state(*move_group_interface.getCurrentState());
+  geometry_msgs::Pose start_pose2;
+  start_pose2.orientation.w = 1.0;
+  start_pose2.position.x = 0.0;
+  start_pose2.position.y = 0.0;
+  start_pose2.position.z = 0.0;
+  start_state.setFromIK(joint_model_group, start_pose2);
+  move_group_interface.setStartState(start_state);
+
   std::vector<geometry_msgs::Pose> waypoints;
   waypoints.push_back(start_pose2);
 
@@ -391,7 +392,7 @@ int main(int argc, char** argv)
   for (std::size_t i = 0; i < waypoints.size(); ++i)
     visual_tools.publishAxisLabeled(waypoints[i], "pt" + std::to_string(i), rvt::SMALL);
   visual_tools.trigger();
-  visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to continue the demo");
+  visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to exit the demo");
 
   // Cartesian motions should often be slow, e.g. when approaching objects. The speed of cartesian
   // plans cannot currently be set through the maxVelocityScalingFactor, but requires you to time

@@ -164,7 +164,7 @@ int main(int argc, char** argv)
  * 
  * 
  */
-  eometry_msgs::Pose target_pose1;
+  geometry_msgs::Pose target_pose1;
   target_pose1.orientation.w = 1.0;
   target_pose1.position.x = 0.28;
   target_pose1.position.y = -0.2;

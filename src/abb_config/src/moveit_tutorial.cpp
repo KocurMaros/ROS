@@ -352,7 +352,7 @@ int main(int argc, char** argv)
   moveit::core::RobotState start_state(*move_group_interface.getCurrentState());
   geometry_msgs::Pose start_pose2;
   start_pose2.orientation.w = 0.12;
-  start_pose2.position.x = 0.4;
+  start_pose2.position.x = 0.6;
   start_pose2.position.y = 0.0;
   start_pose2.position.z = 0.12;
   start_state.setFromIK(joint_model_group, start_pose2);

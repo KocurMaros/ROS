@@ -363,11 +363,14 @@ int main(int argc, char** argv)
 
   geometry_msgs::Pose target_pose3 = start_pose2;
 
+  target_pose3.orientation.w = 1.0;
   target_pose3.position.x = 0.0;
   target_pose3.position.y = 1.0;
   target_pose3.position.z = 0.0;
   waypoints.push_back(target_pose3);  // down
 
+
+  target_pose3.orientation.w = 0.5;
   target_pose3.position.x = 0.0;
   target_pose3.position.y = 1.0;
   target_pose3.position.z = 1.0;

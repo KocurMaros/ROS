@@ -351,10 +351,10 @@ int main(int argc, char** argv)
   // need to be added to the waypoint list but adding it can help with visualizations
   moveit::core::RobotState start_state(*move_group_interface.getCurrentState());
   geometry_msgs::Pose start_pose2;
-  start_pose2.orientation.w = 1.0;
-  start_pose2.position.x = 0.0;
-  start_pose2.position.y = 1.0;
-  start_pose2.position.z = 0.0;
+  start_pose2.orientation.w = 0.0;
+  start_pose2.position.x = 0.55598;
+  start_pose2.position.y = 0.62698;
+  start_pose2.position.z = 0.65837;
   start_state.setFromIK(joint_model_group, start_pose2);
   move_group_interface.setStartState(start_state);
 
@@ -363,16 +363,20 @@ int main(int argc, char** argv)
 
   geometry_msgs::Pose target_pose3 = start_pose2;
 
-  target_pose3.position.z += 0.2;
+  target_pose3.position.x = 0.0;
+  target_pose3.position.y = 1.0;
+  target_pose3.position.z = 0.0;
   waypoints.push_back(target_pose3);  // down
 
-  target_pose3.position.y -= 0.2;
+  target_pose3.position.x = 0.0;
+  target_pose3.position.y = 1.0;
+  target_pose3.position.z = 1.0;
   waypoints.push_back(target_pose3);  // right
 
   // target_pose3.position.z += 0.2;
   // target_pose3.position.y += 0.2;
   // target_pose3.position.x -= 0.2;
-  waypoints.push_back(target_pose3);  // up and left
+  // waypoints.push_back(target_pose3);  // up and left
 
   // We want the Cartesian path to be interpolated at a resolution of 1 cm
   // which is why we will specify 0.01 as the max step in Cartesian

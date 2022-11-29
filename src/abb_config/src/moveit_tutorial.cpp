@@ -353,7 +353,7 @@ int main(int argc, char** argv)
   geometry_msgs::Pose start_pose2;
   start_pose2.orientation.w = 1.0;
   start_pose2.position.x = 0.0;
-  start_pose2.position.y = 0.0;
+  start_pose2.position.y = 1.0;
   start_pose2.position.z = 0.0;
   start_state.setFromIK(joint_model_group, start_pose2);
   move_group_interface.setStartState(start_state);
@@ -363,7 +363,7 @@ int main(int argc, char** argv)
 
   geometry_msgs::Pose target_pose3 = start_pose2;
 
-  target_pose3.position.z -= 0.2;
+  target_pose3.position.z += 0.2;
   waypoints.push_back(target_pose3);  // down
 
   target_pose3.position.y -= 0.2;

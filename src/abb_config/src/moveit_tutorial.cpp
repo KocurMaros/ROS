@@ -369,9 +369,9 @@ int main(int argc, char** argv)
   target_pose3.position.y -= 0.2;
   waypoints.push_back(target_pose3);  // right
 
-  target_pose3.position.z += 0.2;
-  target_pose3.position.y += 0.2;
-  target_pose3.position.x -= 0.2;
+  // target_pose3.position.z += 0.2;
+  // target_pose3.position.y += 0.2;
+  // target_pose3.position.x -= 0.2;
   waypoints.push_back(target_pose3);  // up and left
 
   // We want the Cartesian path to be interpolated at a resolution of 1 cm

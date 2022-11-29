@@ -357,9 +357,9 @@ int main(int argc, char** argv)
   start_pose2.position.z = 0.65837;
   start_state.setFromIK(joint_model_group, start_pose2);
   move_group_interface.setStartState(start_state);
+  std::vector<geometry_msgs::Pose> waypoints;
   waypoints.push_back(start_pose2);
 
-  std::vector<geometry_msgs::Pose> waypoints;
 
   geometry_msgs::Pose target_pose3;
 

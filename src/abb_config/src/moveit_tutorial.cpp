@@ -170,11 +170,12 @@ int main(int argc, char** argv)
   target_pose1.position.y = -0.2;
   target_pose1.position.z = 0.5;
   move_group_interface.setPoseTarget(target_pose1);
-  target_pose1.orientation.w = 1.0;
-  target_pose1.position.x = 0.0;
-  target_pose1.position.y = -0.2;
-  target_pose1.position.z = 1.0;
-  move_group_interface.setPoseTarget(target_pose1);
+  geometry_msgs::Pose target_pose2;
+  target_pose2.orientation.w = 1.0;
+  target_pose2.position.x = 0.0;
+  target_pose2.position.y = -0.2;
+  target_pose2.position.z = 1.0;
+  move_group_interface.setPoseTarget(target_pose2);
 
   moveit::planning_interface::MoveGroupInterface::Plan my_plan;
 

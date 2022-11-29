@@ -105,13 +105,13 @@ int main(int argc, char** argv)
   mesh = boost::get<shape_msgs::Mesh>(mesh_msg);
 
   moveit_msgs::CollisionObject collision_object;
-  collision_object.meshes.resize(100);
+  collision_object.meshes.resize(1);
   collision_object.mesh_poses.resize(1);
   collision_object.meshes[0] = mesh;
   collision_object.header.frame_id = move_group_interface.getPlanningFrame();
   collision_object.mesh_poses[0].position.x = 1.0;
   collision_object.mesh_poses[0].position.y = 0.0;
-  collision_object.mesh_poses[0].position.z = 3.0;
+  collision_object.mesh_poses[0].position.z = 0.0;
   collision_object.mesh_poses[0].orientation.x = 0;
 
   collision_object.meshes.push_back(mesh);

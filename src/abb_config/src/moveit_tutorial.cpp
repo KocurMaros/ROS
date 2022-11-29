@@ -368,8 +368,8 @@ int main(int argc, char** argv)
   waypoints.push_back(start_pose2);
 
   start_pose2.orientation.x = 0.0;
-  start_pose2.orientation.y = 0.70711;
-  start_pose2.orientation.z = -0.70711;  
+  start_pose2.orientation.y = 0.35;
+  start_pose2.orientation.z = 0.0;  
   start_pose2.orientation.w = 0.70711;
   target_pose3.position.x += 0.0;
   target_pose3.position.y -= 0.0;

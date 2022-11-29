@@ -353,7 +353,7 @@ int main(int argc, char** argv)
   geometry_msgs::Pose start_pose2;
 
   start_pose2.orientation.x = 0.0;
-  start_pose2.orientation.y = 0.70711;
+  start_pose2.orientation.y = 1.2;
   start_pose2.orientation.z = 0.0;  
   start_pose2.orientation.w = 0.70711;
   start_pose2.position.x = 1;
@@ -367,10 +367,6 @@ int main(int argc, char** argv)
 
   waypoints.push_back(start_pose2);
 
-  target_pose3.orientation.x = 0.0;
-  target_pose3.orientation.y = 1;
-  target_pose3.orientation.z = 0.0;
-  target_pose3.orientation.w = 0.70711;
   target_pose3.position.x += 0.2;
   target_pose3.position.y -= 0.0;
   target_pose3.position.z -= 0.2;
@@ -379,7 +375,7 @@ int main(int argc, char** argv)
   // target_pose3.orientation.w = 0.5;
   target_pose3.position.x -= 0.2;
   target_pose3.position.y += 0.0;
-  target_pose3.position.z -= 0.1;
+  target_pose3.position.z -= 0.0;
   waypoints.push_back(target_pose3);  // right
   
   // target_pose3.position.x = 0.55598;

@@ -352,9 +352,9 @@ int main(int argc, char** argv)
   moveit::core::RobotState start_state(*move_group_interface.getCurrentState());
   geometry_msgs::Pose start_pose2;
   start_pose2.orientation.w = 0.0;
-  start_pose2.position.x = 0.55598;
-  start_pose2.position.y = 0.62698;
-  start_pose2.position.z = 0.65837;
+  start_pose2.position.x = 1;
+  start_pose2.position.y = 1;
+  start_pose2.position.z = 1;
   start_state.setFromIK(joint_model_group, start_pose2);
   move_group_interface.setStartState(start_state);
   std::vector<geometry_msgs::Pose> waypoints;

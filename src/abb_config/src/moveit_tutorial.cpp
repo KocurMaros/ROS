@@ -80,7 +80,7 @@ int main(int argc, char** argv)
   sleep(2.0);
   Eigen::Vector3d b(0.002, 0.002, 0.002);
   sleep(2.0);
-  shapes::Mesh* c_mesh = shapes::createMeshFromResource("package://abb_config/dell.stl", b);
+  shapes::Mesh* c_mesh = shapes::createMeshFromResource("package://abb_config/patagonia.stl", b);
   shapes::ShapeMsg mesh_msg;
   shapes::constructMsgFromShape(c_mesh, mesh_msg); 
   shape_msgs::Mesh custom_mesh = boost::get<shape_msgs::Mesh>(mesh_msg);

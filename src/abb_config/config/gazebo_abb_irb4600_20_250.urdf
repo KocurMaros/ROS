@@ -273,9 +273,9 @@
         <parent link="flange" />
         <child link="tool0" />
     </joint>
-    <joint name="tool0-kar" type="fixed">
-        <origin rpy="0 1.5707963267948966 0" xyz="0 0 0" />
-        <parent link="tool0" />
+    <joint name="link_6-kar" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="link_6" />
         <child link="kar" />
     </joint>
 

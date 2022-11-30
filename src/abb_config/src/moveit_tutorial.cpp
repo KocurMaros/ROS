@@ -93,7 +93,7 @@ int main(int argc, char** argv)
   collision_object.meshes[0] = mesh;
   collision_object.header.frame_id = move_group_interface.getPlanningFrame();
   collision_object.mesh_poses[0].position.x = 1.0;
-  collision_object.mesh_poses[0].position.y = 0.0;
+  collision_object.mesh_poses[0].position.y = -0.3;
   collision_object.mesh_poses[0].position.z = 0.0;
   collision_object.mesh_poses[0].orientation.x = 0;
   collision_object.meshes.push_back(mesh);
@@ -298,7 +298,7 @@ int main(int argc, char** argv)
   // start_pose2.orientation.w = 0.01;
   start_pose2.position.x = 1;
   start_pose2.position.y = 0.0;
-  start_pose2.position.z = 0.55;
+  start_pose2.position.z = 0.4;
   start_state.setFromIK(joint_model_group, start_pose2);
   move_group_interface.setStartState(start_state);
   move_group_interface.setPlanningTime(10.0);

@@ -254,9 +254,9 @@
         <parent link="flange" />
         <child link="tool0" />
     </joint>
-    <joint name="link6_to_link7" type="fixed">
-        <parent link="link6"/>
-        <child link="link7"/>
+    <joint name="link_6_to_link_7" type="fixed">
+        <parent link="link_6"/>
+        <child link="link_7"/>
         <origin xyz="0 0 0" rpy = "0 0 0"/>
     </joint>
 

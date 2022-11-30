@@ -318,6 +318,8 @@ int main(int argc, char** argv)
   target_pose3.position.z -= 0.0;
   waypoints.push_back(target_pose3);  // right
 
+
+
   target_pose3.position.x -= 0.0;
   target_pose3.position.y += 0.1;
   target_pose3.position.z -= 0.0;
@@ -328,15 +330,6 @@ int main(int argc, char** argv)
   waypoints.push_back(target_pose3);  // right
   // target_pose3.position.x = 0.55598;
   // target_pose3.position.y = 0.62698;
-
-    
-          
-            
-    
-
-          
-    
-    
   
   // target_pose3.position.z = 0.65837;
   // waypoints.push_back(target_pose3);  // right

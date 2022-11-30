@@ -177,6 +177,36 @@
             <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
         </inertial>
     </link>
+
+
+
+    <link name="kar">
+        <collision name="collision">
+            <geometry>
+                <mesh filename="package://abb_config/tool.stl" />
+            </geometry>
+            <material name="">
+                <color rgba="0.9254902 0.9254902 0.9058824 1" />
+            </material>
+        </collision>
+        <visual name="visual">
+            <geometry>
+                <mesh filename="package://abb_config/tool.stl" />
+            </geometry>
+            <material name="">
+                <color rgba="0.9254902 0.9254902 0.9058824 1" />
+            </material>
+            <material name="yellow" />
+        </visual>
+        <inertial>
+            <mass value="0.1" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+    </link>
+
+
+
     <!-- end of link list -->
     <!-- joint list -->
     <joint name="joint_1" type="revolute">
@@ -243,6 +273,12 @@
         <parent link="flange" />
         <child link="tool0" />
     </joint>
+    <joint name="tool0-kar" type="fixed">
+        <origin rpy="0 1.5707963267948966 0" xyz="0 0 0" />
+        <parent link="tool0" />
+        <child link="kar" />
+    </joint>
+
     <transmission name="trans_joint_1">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="joint_1">

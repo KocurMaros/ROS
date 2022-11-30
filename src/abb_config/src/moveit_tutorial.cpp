@@ -78,7 +78,7 @@ int main(int argc, char** argv)
   // and trajectories in RViz as well as debugging tools such as step-by-step introspection of a script.
       
   sleep(2.0);
-  Eigen::Vector3d b(0.01, 0.01, 0.01);
+  Eigen::Vector3d b(0.002, 0.002, 0.002);
   sleep(2.0);
   shapes::Mesh* c_mesh = shapes::createMeshFromResource("package://abb_config/dell.stl", b);
   shapes::ShapeMsg mesh_msg;

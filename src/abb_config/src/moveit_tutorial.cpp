@@ -298,7 +298,7 @@ int main(int argc, char** argv)
   // start_pose2.orientation.w = 0.01;
   start_pose2.position.x = 1;
   start_pose2.position.y = 0.0;
-  start_pose2.position.z = 0.4;
+  start_pose2.position.z = 0.55;
   start_state.setFromIK(joint_model_group, start_pose2);
   move_group_interface.setStartState(start_state);
   move_group_interface.setPlanningTime(10.0);

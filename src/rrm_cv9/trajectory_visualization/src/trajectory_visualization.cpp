@@ -114,7 +114,7 @@ int main(int argc, char **argv)
         trajectory.joint_trajectory.points.push_back(point);
     }
     // second state
-    for (double t = 1; t <= 4; t += 0.1) {
+    for (double t = 1.1; t <= 4; t += 0.1) {
 
         // Vytvorenie prejazdoveho bodu
         trajectory_msgs::JointTrajectoryPoint point;
@@ -135,7 +135,7 @@ int main(int argc, char **argv)
         point.accelerations[1] =0;
 
         // Klb 3
-        point.positions[2] = t*1*M_PI/180;
+        point.positions[2] = t*0*M_PI/180;
         point.velocities[2] = 0;
         point.accelerations[2] = 0;
 

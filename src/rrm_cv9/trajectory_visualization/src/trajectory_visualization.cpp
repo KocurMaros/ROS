@@ -19,7 +19,55 @@ int main(int argc, char **argv)
     trajectory.joint_trajectory.joint_names = {"joint_1", "joint_2", "joint_3", "joint_4", "joint_5", "joint_6"};
 
     // // V cykle sa vytvori trajektoria, kde pre ukazku kazdy klb bude mat hodnota q(t) = t*0.5
-    for (double t = 0; t <= 2; t += 0.1) {
+    // for (double t = 0; t <= 2; t += 0.1) {
+
+    //     // Vytvorenie prejazdoveho bodu
+    //     trajectory_msgs::JointTrajectoryPoint point;
+
+    //     // Robot ma 6 klbov
+    //     point.positions.resize(6);
+    //     point.velocities.resize(6);
+    //     point.accelerations.resize(6);
+
+    //     // Klb 1
+    //     point.positions[0] = t*0.5;
+    //     point.velocities[0] = 0;
+    //     point.accelerations[0] = 0;
+        
+    //     // Klb 2
+    //     point.positions[1] = t*0.5;
+    //     point.velocities[1] = 0;
+    //     point.accelerations[1] =0;
+
+    //     // Klb 3
+    //     point.positions[2] = t*0.5;
+    //     point.velocities[2] = 0;
+    //     point.accelerations[2] = 0;
+
+    //     // Klb 4
+    //     point.positions[3] = t*0.5;
+    //     point.velocities[3] = 0;
+    //     point.accelerations[3] =0;
+
+    //     // Klb 5
+    //     point.positions[4] = t*0.5;
+    //     point.velocities[4] = 0;
+    //     point.accelerations[4] = 0;
+
+    //     // Klb 6
+    //     point.positions[5] = t*0.5;
+    //     point.velocities[5] = 0;
+    //     point.accelerations[5] =0;
+
+    //     // Vlozenie casu prejazdu
+    //     point.time_from_start = ros::Duration(t);
+
+    //     // VLozenie bodu do trajektorie
+    //     trajectory.joint_trajectory.points.push_back(point);
+    // }
+
+    // first state
+    for (double t = 0; t <= 1; t += 0.1) {
 
         // Vytvorenie prejazdoveho bodu
         trajectory_msgs::JointTrajectoryPoint point;
@@ -30,32 +78,32 @@ int main(int argc, char **argv)
         point.accelerations.resize(6);
 
         // Klb 1
-        point.positions[0] = t*0.5;
+        point.positions[0] = 0;
         point.velocities[0] = 0;
         point.accelerations[0] = 0;
         
         // Klb 2
-        point.positions[1] = t*0.5;
+        point.positions[1] = 0;
         point.velocities[1] = 0;
         point.accelerations[1] =0;
 
         // Klb 3
-        point.positions[2] = t*0.5;
+        point.positions[2] = t*30*M_PI/180;
         point.velocities[2] = 0;
         point.accelerations[2] = 0;
 
         // Klb 4
-        point.positions[3] = t*0.5;
+        point.positions[3] = 0;
         point.velocities[3] = 0;
         point.accelerations[3] =0;
 
         // Klb 5
-        point.positions[4] = t*0.5;
+        point.positions[4] = 0;
         point.velocities[4] = 0;
         point.accelerations[4] = 0;
 
         // Klb 6
-        point.positions[5] = t*0.5;
+        point.positions[5] = 0;
         point.velocities[5] = 0;
         point.accelerations[5] =0;
 
@@ -65,7 +113,53 @@ int main(int argc, char **argv)
         // VLozenie bodu do trajektorie
         trajectory.joint_trajectory.points.push_back(point);
     }
-    
+    // second state
+    for (double t = 1; t <= 4; t += 0.1) {
+
+        // Vytvorenie prejazdoveho bodu
+        trajectory_msgs::JointTrajectoryPoint point;
+
+        // Robot ma 6 klbov
+        point.positions.resize(6);
+        point.velocities.resize(6);
+        point.accelerations.resize(6);
+
+        // Klb 1
+        point.positions[0] = t*90*M_PI/180;
+        point.velocities[0] = 0;
+        point.accelerations[0] = 0;
+        
+        // Klb 2
+        point.positions[1] = 0;
+        point.velocities[1] = 0;
+        point.accelerations[1] =0;
+
+        // Klb 3
+        point.positions[2] = t*0*M_PI/180;
+        point.velocities[2] = 0;
+        point.accelerations[2] = 0;
+
+        // Klb 4
+        point.positions[3] = 0;
+        point.velocities[3] = 0;
+        point.accelerations[3] =0;
+
+        // Klb 5
+        point.positions[4] = 0;
+        point.velocities[4] = 0;
+        point.accelerations[4] = 0;
+
+        // Klb 6
+        point.positions[5] = 0;
+        point.velocities[5] = 0;
+        point.accelerations[5] =0;
+
+        // Vlozenie casu prejazdu
+        point.time_from_start = ros::Duration(t);
+
+        // VLozenie bodu do trajektorie
+        trajectory.joint_trajectory.points.push_back(point);
+    }
     // int t=0;
     // trajectory_msgs::JointTrajectoryPoint point;
     // for (size_t i = 0; i < 6; i++){

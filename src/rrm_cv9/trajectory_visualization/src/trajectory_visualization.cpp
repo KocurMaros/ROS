@@ -67,8 +67,8 @@ int main(int argc, char **argv)
     // }
     
     int t=0;
+    trajectory_msgs::JointTrajectoryPoint point;
     for (size_t i = 0; i < 6; i++){
-        trajectory_msgs::JointTrajectoryPoint point;
         
         point.positions.resize(6);
         point.velocities.resize(6);

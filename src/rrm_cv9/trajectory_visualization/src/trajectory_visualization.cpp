@@ -95,9 +95,10 @@ int main(int argc, char **argv)
             point.accelerations[2] = 0;
         }
         else{
+            //kazda sec 10 stupnov
             u += 0.1;
             if(u<=1){
-                point.positions[2] = 30*M_PI/180 - u*30*M_PI/180;
+                point.positions[2] = 30*M_PI/180 - u*10*M_PI/180;
                 point.velocities[2] = 0;
                 point.accelerations[2] = 0;
             }

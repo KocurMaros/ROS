@@ -135,7 +135,7 @@ int main(int argc, char **argv)
         point.accelerations[1] =0;
 
         // Klb 3
-        point.positions[2] = t*0*M_PI/180;
+        point.positions[2] = t*1*M_PI/180;
         point.velocities[2] = 0;
         point.accelerations[2] = 0;
 

@@ -79,7 +79,7 @@ int main(int argc, char **argv)
         point.accelerations.resize(6);
 
         // Klb 1
-        point.positions[0] = t*90*M_PI/180;
+        point.positions[0] = (t*90*M_PI/180)/4;
         point.velocities[0] = 0;
         point.accelerations[0] = 0;
         

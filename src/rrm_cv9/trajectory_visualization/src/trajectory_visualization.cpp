@@ -65,20 +65,21 @@ int main(int argc, char **argv)
     //     // VLozenie bodu do trajektorie
     //     trajectory.joint_trajectory.points.push_back(point);
     // }
-    trajectory_msgs::JointTrajectoryPoint point;
-    //     // Robot ma 6 klbov
-    point.positions.resize(6);
-    point.velocities.resize(6);
-    point.accelerations.resize(6);
     
     for (size_t i = 0; i < 6; i++){
+        trajectory_msgs::JointTrajectoryPoint point;
+        
+        point.positions.resize(6);
+        point.velocities.resize(6);
+        point.accelerations.resize(6);
+
         point.positions[i] = 0;
         point.velocities[i] = 0;
         point.accelerations[i] =0;
+        int t=0;
+        point.time_from_start = ros::Duration(t);
+        trajectory.joint_trajectory.points.push_back(point);
     }
-    int t=0;
-    point.time_from_start = ros::Duration(t);
-    trajectory.joint_trajectory.points.push_back(point);
 
     t = 1;
     point.positions[2] = 30*(M_PI/180);

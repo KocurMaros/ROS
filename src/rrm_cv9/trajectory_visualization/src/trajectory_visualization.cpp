@@ -67,6 +67,7 @@ int main(int argc, char **argv)
     // }
 
     // first state
+    double u=0;
     for (double t = 0; t <= 4; t += 0.1) {
 
         // Vytvorenie prejazdoveho bodu
@@ -94,7 +95,8 @@ int main(int argc, char **argv)
             point.accelerations[2] = 0;
         }
         else{
-            point.positions[2] = 30*M_PI/180 - t*30*M_PI/180;
+            u += 0.1;
+            point.positions[2] = 30*M_PI/180 - u*30*M_PI/180;
             point.velocities[2] = 0;
             point.accelerations[2] = 0;
         }

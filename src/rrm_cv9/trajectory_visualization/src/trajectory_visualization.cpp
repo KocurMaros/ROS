@@ -82,17 +82,17 @@ int main(int argc, char **argv)
     }
 
     t = 1;
-    point.positions[2] = 30*(M_PI/180);
+    point.positions[2] = 30*(M_PI/180)*t;
     point.velocities[2] = 0;
     point.accelerations[2] =0;
     point.time_from_start = ros::Duration(t);
     trajectory.joint_trajectory.points.push_back(point);
 
     t = 4;
-    point.positions[0] = 90*(M_PI/180);
+    point.positions[0] = 90*(M_PI/180)*t;
     point.velocities[0] = 0;
     point.accelerations[0] =0;
-    point.positions[2] =0;
+    point.positions[2] =0*t;
     point.velocities[2] = 0;
     point.accelerations[2] =0;
     point.time_from_start = ros::Duration(t);

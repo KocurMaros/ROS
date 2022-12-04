@@ -97,10 +97,9 @@ int main(int argc, char **argv)
         else{
             u += 0.1;
             if(u<=1){
-
-            point.positions[2] = 30*M_PI/180 - u*30*M_PI/180;
-            point.velocities[2] = 0;
-            point.accelerations[2] = 0;
+                point.positions[2] = (30*M_PI/180 - u*30*M_PI/180)/4;
+                point.velocities[2] = 0;
+                point.accelerations[2] = 0;
             }
         }
 

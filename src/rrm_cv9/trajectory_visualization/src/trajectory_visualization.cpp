@@ -66,6 +66,7 @@ int main(int argc, char **argv)
     //     trajectory.joint_trajectory.points.push_back(point);
     // }
     
+    int t=0;
     for (size_t i = 0; i < 6; i++){
         trajectory_msgs::JointTrajectoryPoint point;
         
@@ -76,7 +77,6 @@ int main(int argc, char **argv)
         point.positions[i] = 0;
         point.velocities[i] = 0;
         point.accelerations[i] =0;
-        int t=0;
         point.time_from_start = ros::Duration(t);
         trajectory.joint_trajectory.points.push_back(point);
     }

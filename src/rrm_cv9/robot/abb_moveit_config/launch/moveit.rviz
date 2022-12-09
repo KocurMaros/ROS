@@ -4,16 +4,11 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /MotionPlanning1
-        - /MotionPlanning1/Scene Geometry1
         - /MotionPlanning1/Scene Robot1
-        - /MotionPlanning1/Planning Request1
-        - /MotionPlanning1/Planning Metrics1
-        - /MotionPlanning1/Planned Path1
         - /Trajectory1
         - /Marker1
       Splitter Ratio: 0.7502691149711609
-    Tree Height: 1725
+    Tree Height: 524
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -58,8 +53,6 @@ Visualization Manager:
       MoveIt_Planning_Time: 5
       MoveIt_Use_Cartesian_Path: false
       MoveIt_Use_Constraint_Aware_IK: true
-      MoveIt_Warehouse_Host: 127.0.0.1
-      MoveIt_Warehouse_Port: 33829
       MoveIt_Workspace:
         Center:
           X: 0
@@ -140,6 +133,7 @@ Visualization Manager:
         State Display Time: 0.05 s
         Trail Step Size: 1
         Trajectory Topic: move_group/display_planned_path
+        Use Sim Time: false
       Planning Metrics:
         Payload: 1
         Show Joint Torques: false
@@ -154,7 +148,7 @@ Visualization Manager:
         Interactive Marker Size: 0
         Joint Violation Color: 255; 0; 255
         Planning Group: robot
-        Query Goal State: true
+        Query Goal State: false
         Query Start State: false
         Show Workspace: false
         Start State Alpha: 1
@@ -234,7 +228,7 @@ Visualization Manager:
       Value: true
       Velocity_Scaling_Factor: 1
     - Class: moveit_rviz_plugin/Trajectory
-      Color Enabled: false
+      Color Enabled: true
       Enabled: true
       Interrupt Display: false
       Links:
@@ -302,10 +296,11 @@ Visualization Manager:
       Robot Description: robot_description
       Show Robot Collision: false
       Show Robot Visual: true
-      Show Trail: false
+      Show Trail: true
       State Display Time: 0.05 s
       Trail Step Size: 1
       Trajectory Topic: /trajectory
+      Use Sim Time: false
       Value: true
     - Class: rviz/Marker
       Enabled: true
@@ -331,30 +326,30 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 4.99845027923584
+      Distance: 4.828039169311523
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.5253540277481079
-        Y: -0.21656882762908936
-        Z: -1.012748725770507e-6
+        X: -1.3019323348999023
+        Y: 0.04856416583061218
+        Z: -9.917920351654175e-07
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.470206081867218
+      Pitch: 0.1702061891555786
       Target Frame: base_link
-      Value: XYOrbit (rviz)
-      Yaw: 5.853344917297363
+      Yaw: 0.2401568591594696
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 2049
+  Height: 704
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -363,11 +358,11 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000003a300000765fc020000000afb0000000800480065006c00700000000342000000bb000000d400fffffffb0000000a0056006900650077007300000003b0000000b00000013200fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000007a00fffffffc0000006e00000765000002f201000039fa000000000100000002fb000000100044006900730070006c0061007900730100000000ffffffff000001f700fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000000000002a2000003a300fffffffb0000000a0049006d00610067006500000003be000000210000000000000000fb0000000a0049006d00610067006500000003950000043e0000000000000000fb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb0000003c005400720061006a006500630074006f007200790020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000007a00ffffff00000acb0000076500000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002b100000266fc020000000afb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fc0000003d000002660000019a0100001cfa000000000100000002fb000000100044006900730070006c0061007900730100000000ffffffff0000015600fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000000000002a2000001f300fffffffb0000000a0049006d00610067006500000003be000000210000000000000000fb0000000a0049006d00610067006500000003950000043e0000000000000000fb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb0000003c005400720061006a006500630074006f007200790020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016000002510000026600000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Trajectory - Trajectory Slider:
     collapsed: false
   Views:
     collapsed: false
-  Width: 3706
-  X: 134
-  Y: 55
+  Width: 1288
+  X: 72
+  Y: 27

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(trajectory_visualization)
+project(trajectory_visualization_part2)
 
 find_package(catkin REQUIRED COMPONENTS
         roscpp

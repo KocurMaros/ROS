@@ -76,9 +76,12 @@ int main(int argc, char **argv)
             solutions = IKEAsolver(m_IKEA(5,0),m_IKEA(5,1),m_IKEA(5,2),m_IKEA(5,3),m_IKEA(5,4),m_IKEA(5,5));
         }
 
+
+
+
         double place_holder_compare = abs(solutions[0][0])+abs(solutions[0][1])+abs(solutions[0][2])+abs(solutions[0][3])+abs(solutions[0][4])+abs(solutions[0][5]);
-//        ROS_INFO_STREAM("m_IKEA:\n" << place_holder_compare);
-//        ROS_INFO_STREAM("m_IKEA:\n" << solutions.size());
+       ROS_INFO_STREAM("m_IKEA abs sol 0:\n" << place_holder_compare);
+       ROS_INFO_STREAM("m_IKEA sol size:\n" << solutions.size());
         for (int i=0; i<solutions.size();i++) {
             double place_holder = 0;
             for (int j=0; j<6;j++) {

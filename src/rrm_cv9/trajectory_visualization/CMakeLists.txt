@@ -20,6 +20,7 @@ include_directories(
 
 
 add_executable(trajectory_visualization src/trajectory_visualization.cpp)
+add_executable(trajectory_visualization_samesrc src/trajectory_visualization_part2.cpp)
 
 add_dependencies(trajectory_visualization ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(trajectory_visualization

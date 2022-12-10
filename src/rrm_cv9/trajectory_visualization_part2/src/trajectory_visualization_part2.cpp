@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     ros::Publisher publisher = n.advertise<moveit_msgs::DisplayTrajectory>("trajectory", 1);
     std::vector<std::vector<double>> solutions;
     std::vector<std::vector<double>> prev_solutions;
-    prev_solution << 0,0,0,0,0,0;
+    prev_solutions << 0,0,0,0,0,0;
     Eigen::VectorXd solution_final(6);
     double place_holder_solution = 0;
     double place_holder_compare_2 = 0;

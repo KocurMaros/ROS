@@ -217,11 +217,11 @@ int main(int argc, char **argv)
     ROS_INFO_STREAM("m2:\n" << m2);
 
     Eigen::VectorXd v1(6);
-    v1 << 0, 0, 0, M_PI/2, 0, 0, 0, 0;
+    v1 << 0, 0, 0, M_PI/2, 0, 0;
     ROS_INFO_STREAM("v1 = \n" << v1);
 
     Eigen::VectorXd v2(9);
-    v2 << 0, 0, 0, M_PI/6, 0, 0, 0;
+    v2 << 0, 0, 0, M_PI/6, 0, 0, 0, 0, 0;
     ROS_INFO_STREAM("v2 = \n" << v2);
     v1 = (m1.inverse() * v1);  //ziskali sme a
     ROS_INFO_STREAM("m1.inverse() * v1 = \n" << v1);

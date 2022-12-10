@@ -37,16 +37,16 @@ int main(int argc, char **argv)
     float A1[6] = {0, 0, 0, 0, 0, 0};
     float A3[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-
-    // V cykle sa vytvori trajektoria, kde pre ukazku kazdy klb bude mat hodnota q(t) = t*0.5
-    for (double t = 0; t <= 9; t += 0.05) {
-//iksolver
         Eigen::VectorXd U1 = MatrixMaker4(0,1,1.6,0,1,0);
         Eigen::VectorXd U2 = MatrixMaker4(1,2,0,0,M_PI/2,0);
         Eigen::VectorXd U3 = MatrixMaker5(3,4,5,0,0,0.5,0.5,0);
         Eigen::VectorXd U4 = MatrixMaker5(3,4,5,1,0,1,1.6,0);
-        Eigen::VectorXd U5 = MatrixMaker6(3,5,M_PI/2,0,M_PI/2,0,M_PI/2,0);
+        Eigen::VectorXd U5 = MatrixMaker6(3,5,M_PI/2,0,M_PI/2,0,0,0);
         Eigen::VectorXd U6 = MatrixMaker4(5,9,0.5,0,0,0);
+
+    // V cykle sa vytvori trajektoria, kde pre ukazku kazdy klb bude mat hodnota q(t) = t*0.5
+    for (double t = 0; t <= 9; t += 0.05) {
+//iksolver
 
         Eigen::MatrixXd m_IKEA(9,6);
         m_IKEA <<   1,0,U1(0)+U1(1)*pow(t,1)+U1(2)*pow(t,2)+U1(3)*pow(t,3),0,M_PI/2,0,
@@ -63,16 +63,16 @@ int main(int argc, char **argv)
         if(t<=1){
             solutions = IKEAsolver(m_IKEA(0,0),m_IKEA(0,1),m_IKEA(0,2),m_IKEA(0,3),m_IKEA(0,4),m_IKEA(0,5));
         }
-        if(t>1 && t<=2){
+        else if(t>1 && t<=2){
             solutions = IKEAsolver(m_IKEA(1,0),m_IKEA(1,1),m_IKEA(1,2),m_IKEA(1,3),m_IKEA(1,4),m_IKEA(1,5));
         }
-        if(t>2 && t<=3){
+        else if(t>2 && t<=3){
             solutions = IKEAsolver(m_IKEA(2,0),m_IKEA(2,1),m_IKEA(2,2),m_IKEA(2,3),m_IKEA(2,4),m_IKEA(2,5));
         }
-        if(t>3 && t<=5){
+        else if(t>3 && t<=5){
             solutions = IKEAsolver(m_IKEA(3,0),m_IKEA(3,1),m_IKEA(3,2),m_IKEA(3,3),m_IKEA(3,4),m_IKEA(3,5));
         }
-        if(t>5 && t<=9){
+        else if(t>5 && t<=9){
             solutions = IKEAsolver(m_IKEA(5,0),m_IKEA(5,1),m_IKEA(5,2),m_IKEA(5,3),m_IKEA(5,4),m_IKEA(5,5));
         }
 

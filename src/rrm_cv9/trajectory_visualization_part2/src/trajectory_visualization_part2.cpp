@@ -75,19 +75,26 @@ int main(int argc, char **argv)
         else if(t>5 && t<=9){
             solutions = IKEAsolver(m_IKEA(5,0),m_IKEA(5,1),m_IKEA(5,2),m_IKEA(5,3),m_IKEA(5,4),m_IKEA(5,5));
         }
-
+        for (int i=0; i<solutions.size();i++) {
+            for (int j=0; j<6;j++) {
+                ROS_INFO_STREAM("solution in time :" << t ": "<< solutions[i][j]);
+            }
+        }
 
 
 
         double place_holder_compare = abs(solutions[0][0])+abs(solutions[0][1])+abs(solutions[0][2])+abs(solutions[0][3])+abs(solutions[0][4])+abs(solutions[0][5]);
-       ROS_INFO_STREAM("m_IKEA abs sol 0:\n" << place_holder_compare);
-       ROS_INFO_STREAM("m_IKEA sol size:\n" << solutions.size());
+    //    ROS_INFO_STREAM("m_IKEA abs sol 0:\n" << place_holder_compare);
+    //    ROS_INFO_STREAM("m_IKEA sol size:\n" << solutions.size());
         for (int i=0; i<solutions.size();i++) {
+
             double place_holder = 0;
+            
             for (int j=0; j<6;j++) {
                 place_holder += abs(solutions[i][j]);
-                ROS_INFO_STREAM("m_IKEA:\n" << place_holder);
+                // ROS_INFO_STREAM("m_IKEA:\n" << place_holder);
             }
+            
             if(abs(place_holder_compare_2-place_holder)<=abs(place_holder_compare_2-place_holder_compare)){
                 place_holder_compare = place_holder;
                 solution_final << solutions[i][0],solutions[i][1],solutions[i][2],solutions[i][3],solutions[i][4],solutions[i][5];
@@ -95,7 +102,7 @@ int main(int argc, char **argv)
 
         }
         place_holder_compare_2 = place_holder_compare;
-        ROS_INFO_STREAM("m_IKEA:\n" << solution_final);
+        // ROS_INFO_STREAM("m_IKEA:\n" << solution_final);
 
         // Vytvorenie prejazdoveho bodu
         trajectory_msgs::JointTrajectoryPoint point;

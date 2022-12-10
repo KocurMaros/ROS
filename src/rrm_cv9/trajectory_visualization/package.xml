@@ -1,4 +1,4 @@
-<!-- <?xml version="1.0"?>
+<?xml version="1.0"?>
 <package format="2">
   <name>trajectory_visualization</name>
   <version>0.0.0</version>
@@ -26,4 +26,4 @@
   <export>
 
   </export>
-</package> -->
+</package>

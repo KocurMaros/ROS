@@ -26,6 +26,8 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     ros::Publisher publisher = n.advertise<moveit_msgs::DisplayTrajectory>("trajectory", 1);
     std::vector<std::vector<double>> solutions;
+    std::vector<std::vector<double>> prev_solutions;
+    prev_solution << 0,0,0,0,0,0;
     Eigen::VectorXd solution_final(6);
     double place_holder_solution = 0;
     double place_holder_compare_2 = 0;
@@ -80,7 +82,7 @@ int main(int argc, char **argv)
                 printf("solution %d in time %.2f : %f\n",i,t,solutions[i][j]);
             }
         }
-
+        
 
 
         double place_holder_compare = abs(solutions[0][0])+abs(solutions[0][1])+abs(solutions[0][2])+abs(solutions[0][3])+abs(solutions[0][4])+abs(solutions[0][5]);

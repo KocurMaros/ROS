@@ -26,8 +26,12 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     ros::Publisher publisher = n.advertise<moveit_msgs::DisplayTrajectory>("trajectory", 1);
     std::vector<std::vector<double>> solutions;
-    std::vector<std::vector<double>> prev_solutions;
-    prev_solutions << 0,0,0,0,0,0;
+    std::vector<std::vector<double>> prev_solutions(6);
+    for (size_t i = 0; i < prev_solutions.size(); i++)
+    {
+        printf("%d\n",i);
+    }
+    sleep(10);    
     Eigen::VectorXd solution_final(6);
     double place_holder_solution = 0;
     double place_holder_compare_2 = 0;

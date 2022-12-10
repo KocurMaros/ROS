@@ -86,7 +86,7 @@ int main(int argc, char **argv)
         int best_sum_pos = 0;
         for (int i=0; i<solutions.size();i++) {
             for (int j=0; j<6;j++) {
-                actual_sum += abs(abs(solutions[i][j]) - abs(solution_final(j));
+                actual_sum += abs(abs(solutions[i][j]) - abs(solution_final(j)));
             }
             if(i == 0)
                 best_sum = actual_sum;

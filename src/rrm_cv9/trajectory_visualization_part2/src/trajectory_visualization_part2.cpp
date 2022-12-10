@@ -26,11 +26,8 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     ros::Publisher publisher = n.advertise<moveit_msgs::DisplayTrajectory>("trajectory", 1);
     std::vector<std::vector<double>> solutions;
-    // std::vector<std::vector<double>> prev_solutions(6);
     Eigen::VectorXd solution_final(6);
     solution_final << 0,0,0,0,0,0;
-    double place_holder_solution = 0;
-    double place_holder_compare_2 = 0;
     // Sprava pre trajektoriu
     moveit_msgs::RobotTrajectory trajectory;
     // Mena klbov musia byt vyplnene
@@ -46,12 +43,10 @@ int main(int argc, char **argv)
         Eigen::VectorXd U5 = MatrixMaker6(3,5,M_PI/2,0,M_PI/2,0,0,0);
         Eigen::VectorXd U6 = MatrixMaker4(5,9,0.5,0,0,0);
 
-    // V cykle sa vytvori trajektoria, kde pre ukazku kazdy klb bude mat hodnota q(t) = t*0.5
+        Eigen::MatrixXd matrixIK(9,6);
     for (double t = 0; t <= 9; t += 0.05) {
-//iksolver
 
-        Eigen::MatrixXd m_IKEA(9,6);
-        m_IKEA <<   1,0,U1(0)+U1(1)*pow(t,1)+U1(2)*pow(t,2)+U1(3)*pow(t,3),0,M_PI/2,0,
+        matrixIK <<   1,0,U1(0)+U1(1)*pow(t,1)+U1(2)*pow(t,2)+U1(3)*pow(t,3),0,M_PI/2,0,
                   1,0,1,0,M_PI/2,U2(0)+U2(1)*pow(t,1)+U2(2)*pow(t,2)+U2(3)*pow(t,3),
                   1,0,1,0,M_PI/2,M_PI/2,
                   1,U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2)+U3(3)*pow(t,3)+U3(4)*pow(t,4),U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2)+U4(3)*pow(t,3)+U4(4)*pow(t,4),0,M_PI/2,U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3)+U5(4)*pow(t,4)+U5(5)*pow(t,5),
@@ -60,34 +55,31 @@ int main(int argc, char **argv)
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0;
-        ROS_INFO_STREAM("m_IKEA:\n" << m_IKEA);
+        ROS_INFO_STREAM("matrixIK:\n" << matrixIK);
 
-        if(t<=1){
-            solutions = IKEAsolver(m_IKEA(0,0),m_IKEA(0,1),m_IKEA(0,2),m_IKEA(0,3),m_IKEA(0,4),m_IKEA(0,5));
-        }
-        else if(t>1 && t<=2){
-            solutions = IKEAsolver(m_IKEA(1,0),m_IKEA(1,1),m_IKEA(1,2),m_IKEA(1,3),m_IKEA(1,4),m_IKEA(1,5));
-        }
-        else if(t>2 && t<=3){
-            solutions = IKEAsolver(m_IKEA(2,0),m_IKEA(2,1),m_IKEA(2,2),m_IKEA(2,3),m_IKEA(2,4),m_IKEA(2,5));
-        }
-        else if(t>3 && t<=5){
-            solutions = IKEAsolver(m_IKEA(3,0),m_IKEA(3,1),m_IKEA(3,2),m_IKEA(3,3),m_IKEA(3,4),m_IKEA(3,5));
-        }
-        else if(t>5 && t<=9){
-            solutions = IKEAsolver(m_IKEA(5,0),m_IKEA(5,1),m_IKEA(5,2),m_IKEA(5,3),m_IKEA(5,4),m_IKEA(5,5));
-        }
-        for (int i=0; i<solutions.size();i++) {
-            for (int j=0; j<6;j++) {
-                printf("solution %d in time %.2f : %f\n",i,t,solutions[i][j]);
-            }
-        }
+        solutions = IKEAsolver(matrixIK(t-0.04,0),matrixIK(t-0.04,1),matrixIK(t-0.04,2),matrixIK(t-0.04,3),matrixIK(t-0.04,4),matrixIK(t-0.04,5));
+
+        // if(t<=1){
+        //     solutions = IKEAsolver(matrixIK(0,0),matrixIK(0,1),matrixIK(0,2),matrixIK(0,3),matrixIK(0,4),matrixIK(0,5));
+        // }
+        // else if(t>1 && t<=2){
+        //     solutions = IKEAsolver(matrixIK(1,0),matrixIK(1,1),matrixIK(1,2),matrixIK(1,3),matrixIK(1,4),matrixIK(1,5));
+        // }
+        // else if(t>2 && t<=3){
+        //     solutions = IKEAsolver(matrixIK(2,0),matrixIK(2,1),matrixIK(2,2),matrixIK(2,3),matrixIK(2,4),matrixIK(2,5));
+        // }
+        // else if(t>3 && t<=5){
+        //     solutions = IKEAsolver(matrixIK(3,0),matrixIK(3,1),matrixIK(3,2),matrixIK(3,3),matrixIK(3,4),matrixIK(3,5));
+        // }
+        // else if(t>5 && t<=9){
+        //     solutions = IKEAsolver(matrixIK(5,0),matrixIK(5,1),matrixIK(5,2),matrixIK(5,3),matrixIK(5,4),matrixIK(5,5));
+        // }
+
         double actual_sum =0, best_sum = 0;
         int best_sum_pos = 0;
         for (int i=0; i<solutions.size();i++) {
-            for (int j=0; j<6;j++) {
+            for (int j=0; j<6;j++) 
                 actual_sum += abs(abs(solutions[i][j]) - abs(solution_final(j)));
-            }
             if(i == 0)
                 best_sum = actual_sum;
             else if (actual_sum < best_sum){
@@ -98,29 +90,6 @@ int main(int argc, char **argv)
         }
         solution_final << solutions[best_sum_pos][0],solutions[best_sum_pos][1],solutions[best_sum_pos][2],solutions[best_sum_pos][3],solutions[best_sum_pos][4],solutions[best_sum_pos][5];
         
-
-
-    //     double place_holder_compare = abs(solutions[0][0])+abs(solutions[0][1])+abs(solutions[0][2])+abs(solutions[0][3])+abs(solutions[0][4])+abs(solutions[0][5]);
-    // //    ROS_INFO_STREAM("m_IKEA abs sol 0:\n" << place_holder_compare);
-    // //    ROS_INFO_STREAM("m_IKEA sol size:\n" << solutions.size());
-    //     for (int i=0; i<solutions.size();i++) {
-
-    //         double place_holder = 0;
-            
-    //         for (int j=0; j<6;j++) {
-    //             place_holder += abs(solutions[i][j]);
-    //             // ROS_INFO_STREAM("m_IKEA:\n" << place_holder);
-    //         }
-            
-    //         if(abs(place_holder_compare_2-place_holder)<=abs(place_holder_compare_2-place_holder_compare)){
-    //             place_holder_compare = place_holder;
-    //             solution_final << solutions[i][0],solutions[i][1],solutions[i][2],solutions[i][3],solutions[i][4],solutions[i][5];
-    //         }
-
-    //     }
-    //     place_holder_compare_2 = place_holder_compare;
-        // ROS_INFO_STREAM("m_IKEA:\n" << solution_final);
-
         // Vytvorenie prejazdoveho bodu
         trajectory_msgs::JointTrajectoryPoint point;
 
@@ -217,7 +186,6 @@ Eigen::VectorXd MatrixMaker6(float tn, float tn1, float con1, float con2, float 
 
     return vector;
 }
-
 std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double rx, double ry, double rz) {
     ros::NodeHandle n;
     //x,Eigen::VectorXd y,Eigen::VectorXd z,Eigen::VectorXd dx,Eigen::VectorXd dy, Eigen::VectorXd dz

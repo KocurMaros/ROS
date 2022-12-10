@@ -26,13 +26,9 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     ros::Publisher publisher = n.advertise<moveit_msgs::DisplayTrajectory>("trajectory", 1);
     std::vector<std::vector<double>> solutions;
-    std::vector<std::vector<double>> prev_solutions(6);
-    for (size_t i = 0; i < prev_solutions.size(); i++)
-    {
-        printf("%d\n",i);
-    }
-    sleep(10);    
+    // std::vector<std::vector<double>> prev_solutions(6);
     Eigen::VectorXd solution_final(6);
+    solution_final << 0,0,0,0,0,0;
     double place_holder_solution = 0;
     double place_holder_compare_2 = 0;
     // Sprava pre trajektoriu
@@ -86,28 +82,43 @@ int main(int argc, char **argv)
                 printf("solution %d in time %.2f : %f\n",i,t,solutions[i][j]);
             }
         }
+        double actual_sum =0, best_sum = 0;
+        int best_sum_pos = 0;
+        for (int i=0; i<solutions.size();i++) {
+            for (int j=0; j<6;j++) {
+                actual_sum += abs(abs(solutions[i][j]) - abs(solution_final(j));
+            }
+            if(i == 0)
+                best_sum = actual_sum;
+            else if (actual_sum < best_sum){
+                best_sum = actual_sum;
+                best_sum_pos = i;
+            }
+            actual_sum = 0;
+        }
+        solution_final << solutions[best_sum_pos][0],solutions[best_sum_pos][1],solutions[best_sum_pos][2],solutions[best_sum_pos][3],solutions[best_sum_pos][4],solutions[best_sum_pos][5];
         
 
 
-        double place_holder_compare = abs(solutions[0][0])+abs(solutions[0][1])+abs(solutions[0][2])+abs(solutions[0][3])+abs(solutions[0][4])+abs(solutions[0][5]);
-    //    ROS_INFO_STREAM("m_IKEA abs sol 0:\n" << place_holder_compare);
-    //    ROS_INFO_STREAM("m_IKEA sol size:\n" << solutions.size());
-        for (int i=0; i<solutions.size();i++) {
+    //     double place_holder_compare = abs(solutions[0][0])+abs(solutions[0][1])+abs(solutions[0][2])+abs(solutions[0][3])+abs(solutions[0][4])+abs(solutions[0][5]);
+    // //    ROS_INFO_STREAM("m_IKEA abs sol 0:\n" << place_holder_compare);
+    // //    ROS_INFO_STREAM("m_IKEA sol size:\n" << solutions.size());
+    //     for (int i=0; i<solutions.size();i++) {
 
-            double place_holder = 0;
+    //         double place_holder = 0;
             
-            for (int j=0; j<6;j++) {
-                place_holder += abs(solutions[i][j]);
-                // ROS_INFO_STREAM("m_IKEA:\n" << place_holder);
-            }
+    //         for (int j=0; j<6;j++) {
+    //             place_holder += abs(solutions[i][j]);
+    //             // ROS_INFO_STREAM("m_IKEA:\n" << place_holder);
+    //         }
             
-            if(abs(place_holder_compare_2-place_holder)<=abs(place_holder_compare_2-place_holder_compare)){
-                place_holder_compare = place_holder;
-                solution_final << solutions[i][0],solutions[i][1],solutions[i][2],solutions[i][3],solutions[i][4],solutions[i][5];
-            }
+    //         if(abs(place_holder_compare_2-place_holder)<=abs(place_holder_compare_2-place_holder_compare)){
+    //             place_holder_compare = place_holder;
+    //             solution_final << solutions[i][0],solutions[i][1],solutions[i][2],solutions[i][3],solutions[i][4],solutions[i][5];
+    //         }
 
-        }
-        place_holder_compare_2 = place_holder_compare;
+    //     }
+    //     place_holder_compare_2 = place_holder_compare;
         // ROS_INFO_STREAM("m_IKEA:\n" << solution_final);
 
         // Vytvorenie prejazdoveho bodu

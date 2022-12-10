@@ -77,7 +77,7 @@ int main(int argc, char **argv)
         }
         for (int i=0; i<solutions.size();i++) {
             for (int j=0; j<6;j++) {
-                printf("solution in time %.2f : %f\n"solutions[i][j]);
+                printf("solution in time %.2f : %f\n",solutions[i][j]);
             }
         }
 

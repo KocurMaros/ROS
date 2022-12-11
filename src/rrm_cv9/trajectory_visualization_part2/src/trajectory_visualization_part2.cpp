@@ -59,22 +59,6 @@ int main(int argc, char **argv)
 
         solutions = IKEAsolver(matrixIK(t-0.04,0),matrixIK(t-0.04,1),matrixIK(t-0.04,2),matrixIK(t-0.04,3),matrixIK(t-0.04,4),matrixIK(t-0.04,5));
 
-        // if(t<=1){
-        //     solutions = IKEAsolver(matrixIK(0,0),matrixIK(0,1),matrixIK(0,2),matrixIK(0,3),matrixIK(0,4),matrixIK(0,5));
-        // }
-        // else if(t>1 && t<=2){
-        //     solutions = IKEAsolver(matrixIK(1,0),matrixIK(1,1),matrixIK(1,2),matrixIK(1,3),matrixIK(1,4),matrixIK(1,5));
-        // }
-        // else if(t>2 && t<=3){
-        //     solutions = IKEAsolver(matrixIK(2,0),matrixIK(2,1),matrixIK(2,2),matrixIK(2,3),matrixIK(2,4),matrixIK(2,5));
-        // }
-        // else if(t>3 && t<=5){
-        //     solutions = IKEAsolver(matrixIK(3,0),matrixIK(3,1),matrixIK(3,2),matrixIK(3,3),matrixIK(3,4),matrixIK(3,5));
-        // }
-        // else if(t>5 && t<=9){
-        //     solutions = IKEAsolver(matrixIK(5,0),matrixIK(5,1),matrixIK(5,2),matrixIK(5,3),matrixIK(5,4),matrixIK(5,5));
-        // }
-
         double actual_sum =0, best_sum = 0;
         int best_sum_pos = 0;
         for (int i=0; i<solutions.size();i++) {

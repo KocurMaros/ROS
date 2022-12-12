@@ -60,7 +60,7 @@ int main(int argc, char **argv)
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0;
-        ROS_INFO_STREAM("matrixIK:\n" << matrixIK);
+        // ROS_INFO_STREAM("matrixIK:\n" << matrixIK);
 
         solutions = IKEAsolver(matrixIK(t-0.04,0),matrixIK(t-0.04,1),matrixIK(t-0.04,2),matrixIK(t-0.04,3),matrixIK(t-0.04,4),matrixIK(t-0.04,5));
 
@@ -170,7 +170,7 @@ int main(int argc, char **argv)
             tool_velo_z = 1.6;
             tool_acce_z = 0;  
         }
-
+        cout << t << " " << tool_position_y << " " << tool_velo_y << " " tool_acce_y << endl;
         myfile << t << ";";
         myfile << tool_position_y << ";";
         myfile << tool_velo_y << ";";
@@ -282,9 +282,9 @@ std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double
 
     // Vypis riesenii
     for (const auto &solution: solutions) {
-        ROS_INFO("Solution found: ");
+        // ROS_INFO("Solution found: ");
         for (const auto &joint : solution) {
-            ROS_INFO_STREAM(std::to_string(joint));
+            // ROS_INFO_STREAM(std::to_string(joint));
         }
     }
 

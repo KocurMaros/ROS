@@ -14,7 +14,8 @@
 
 Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float con3, float con4);
 Eigen::VectorXd MatrixMaker5(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5);
-Eigen::VectorXd MatrixMaker6(float tn, float tn1, float con1, float con2, float con3, float con4, float con5, float con6);
+Eigen::VectorXd MatrixMaker6(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5, float con6);
+
 std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double rx, double ry, double rz);
 
 int main(int argc, char **argv)
@@ -40,7 +41,7 @@ int main(int argc, char **argv)
         Eigen::VectorXd U2 = MatrixMaker4(1,2,0,0,M_PI/2,0);
         Eigen::VectorXd U3 = MatrixMaker5(3,4,5,0,0,0.5,0.5,0);
         Eigen::VectorXd U4 = MatrixMaker5(3,4,5,1,0,1,1.6,0);
-        Eigen::VectorXd U5 = MatrixMaker6(3,5,M_PI/2,0,M_PI/2,0,0,0);
+        Eigen::VectorXd U5 = MatrixMaker6(3,4,5,M_PI/2,0,M_PI/2,0,0,0);
         Eigen::VectorXd U6 = MatrixMaker4(5,9,0.5,0,0,0);
 
         Eigen::MatrixXd matrixIK(9,6);
@@ -164,8 +165,8 @@ Eigen::VectorXd MatrixMaker6(float tn, float tn1, float con1, float con2, float 
             0,  1,              2*pow(tn,1),    3*pow(tn,2),    4*pow(tn,3),  5*pow(tn,4),
             1,  pow(tn1,1),pow(tn1,2),    pow(tn1,3),     pow(tn1,4),   pow(tn1,5),
             0,  1,              2*pow(tn1,1),   3*pow(tn1,2),   4*pow(tn1,3), 5*pow(tn1,4),
-            1,  pow(tn1,1),pow(tn1,2),    pow(tn1,3),     pow(tn1,4),   pow(tn1,5),
-            0,  1,              2*pow(tn1,1),   3*pow(tn1,2),   4*pow(tn1,3), 5*pow(tn1,4);
+            1,  pow(tn2,1),pow(tn2,2),    pow(tn2,3),     pow(tn2,4),   pow(tn2,5),
+            0,  1,              2*pow(tn2,1),   3*pow(tn2,2),   4*pow(tn2,3), 5*pow(tn2,4);
             vector = (m6.inverse() * vector);
 
     return vector;

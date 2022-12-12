@@ -37,14 +37,18 @@ int main(int argc, char **argv)
     float A1[6] = {0, 0, 0, 0, 0, 0};
     float A3[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        Eigen::VectorXd U1 = MatrixMaker4(0,1,1.6,0,1,0);
-        Eigen::VectorXd U2 = MatrixMaker4(1,2,0,0,M_PI/2,0);
-        Eigen::VectorXd U3 = MatrixMaker5(3,4,5,0,0,0.5,0.5,0);
-        Eigen::VectorXd U4 = MatrixMaker5(3,4,5,1,0,1,1.6,0);
-        Eigen::VectorXd U5 = MatrixMaker6(3,4,5,M_PI/2,0,M_PI/2,0,0,0);
-        Eigen::VectorXd U6 = MatrixMaker4(5,9,0.5,0,0,0);
+    Eigen::VectorXd U1 = MatrixMaker4(0,1,1.6,0,1,0);
+    Eigen::VectorXd U2 = MatrixMaker4(1,2,0,0,M_PI/2,0);
+    Eigen::VectorXd U3 = MatrixMaker5(3,4,5,0,0,0.5,0.5,0);
+    Eigen::VectorXd U4 = MatrixMaker5(3,4,5,1,0,1,1.6,0);
+    Eigen::VectorXd U5 = MatrixMaker6(3,4,5,M_PI/2,0,M_PI/2,0,0,0);
+    Eigen::VectorXd U6 = MatrixMaker4(5,9,0.5,0,0,0);
 
-        Eigen::MatrixXd matrixIK(9,6);
+    Eigen::MatrixXd matrixIK(9,6);
+    double tool_position_rz, tool_position_y, tool_position_z;
+    double tool_velo_rz, tool_velo_y, tool_velo_z;
+    double tool_acce_rz, tool_acce_y, tool_acce_z;  
+  
     for (double t = 0; t <= 9; t += 0.05) {
 
         matrixIK <<   1,0,U1(0)+U1(1)*pow(t,1)+U1(2)*pow(t,2)+U1(3)*pow(t,3),0,M_PI/2,0,
@@ -104,10 +108,79 @@ int main(int argc, char **argv)
 
         // VLozenie bodu do trajektorie
         trajectory.joint_trajectory.points.push_back(point);
+        
+        if(t<=1){
+            tool_position_rz = 0;
+            tool_velo_rz = 0; 
+            tool_acce_rz = 0;
+
+            tool_position_y = 0; 
+            tool_velo_y = 0;
+            tool_acce_y = 0;
+
+            tool_position_z = U1(0)+U1(1)*pow(t,1)+U1(2)*pow(t,2)+U1(3)*pow(t,3);
+            tool_velo_z = U1(1)+2*U1(2)*t+3*U1(3)*pow(t,2);
+            tool_acce_z = 2*U1(2)+6*U1(3)*t;  
+        }else if(t<=2){
+            tool_position_rz = U2(0)+U2(1)*pow(t,1)+U2(2)*pow(t,2)+U2(3)*pow(t,3);
+            tool_velo_rz = U2(1)+2*U2(2)*t+3*U2(3)*pow(t,2); 
+            tool_acce_rz = 2*U2(2)+6*U2(3)*t; ;
+
+            tool_position_y = 0; 
+            tool_velo_y = 0;
+            tool_acce_y = 0;
+
+            tool_position_z = 0;
+            tool_velo_z = 1;
+            tool_acce_z = 0;  
+        }else if(t<=3){
+            tool_position_rz = M_PI/2;
+            tool_velo_rz = 0; 
+            tool_acce_rz = 0;
+
+            tool_position_y = 0; 
+            tool_velo_y = 0;
+            tool_acce_y = 0;
+
+            tool_position_z = 0;
+            tool_velo_z = 1;
+            tool_acce_z = 0;  
+        }else if(t<=5){
+            tool_position_rz = U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3)+U5(4)*pow(t,4)+U5(5)*pow(t,5);
+            tool_velo_rz = U5(1)+2*U5(2)*t+3*U5(3)*pow(t,2)+4*U5(4)*pow(t,3)+5*U5(5)*pow(t,4); 
+            tool_acce_rz = 2*U5(2)+6*U5(3)*t+12*U5(4)*pow(t,2)+20*U5(5)*pow(t,3);
+
+            tool_position_y = U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2)+U3(3)*pow(t,3)+U3(4)*pow(t,4); 
+            tool_velo_y = U3(1)+2*U3(2)*t+3*U3(3)*pow(t,2)+4*U3(4)*pow(t,3);
+            tool_acce_y = U3(2)+3*U3(3)t+12*U3(4)*pow(t,2);
+
+            tool_position_z = U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2)+U4(3)*pow(t,3)+U4(4)*pow(t,4);
+            tool_velo_z = U4(1)+2*U4(2)*t+3*U4(3)*pow(t,2)+4*U4(4)*pow(t,3);
+            tool_acce_z = 2*U4(2)+6*U4(3)*t+12*U4(4)*pow(t,2);   
+        }else{
+            tool_position_rz = 0;
+            tool_velo_rz = 0; 
+            tool_acce_rz = 0;
+
+            tool_position_y = U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3); 
+            tool_velo_y = U6(1)+2*U6(2)*t+3*U6(3)*pow(t,2);
+            tool_acce_y = 2*U6(2)+6*U6(3)*t;
+
+            tool_position_z = 0;
+            tool_velo_z = 1.6;
+            tool_acce_z = 0;  
+        }
 
         myfile << t << ";";
-        myfile << point.positions[0] << ";";
-        myfile << point.positions[2] << ";";
+        myfile << tool_position_y << ";";
+        myfile << tool_velo_y << ";";
+        myfile << tool_acce_y << ";";
+        myfile << tool_position_z << ";";
+        myfile << tool_velo_z << ";";
+        myfile << tool_acce_z << ";";
+        myfile << tool_position_rz << ";";
+        myfile << tool_velo_rz << ";";
+        myfile << tool_acce_rz << ";";
         myfile << "\n";
     }
 

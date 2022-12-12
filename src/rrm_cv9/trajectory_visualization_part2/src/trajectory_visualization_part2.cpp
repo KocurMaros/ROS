@@ -44,7 +44,8 @@ int main(int argc, char **argv)
         Eigen::VectorXd U4 = MatrixMaker3_2(4,5,1,1.6,0);
         // Eigen::VectorXd U3 = MatrixMaker5(3,4,5,0,0,0.5,0.5,0);
         // Eigen::VectorXd U4 = MatrixMaker5(3,4,5,1,0,1,1.6,0);
-        Eigen::VectorXd U5 = MatrixMaker6(3,5,M_PI/2,0,M_PI/2,0,0,0);
+        Eigen::VectorXd U4 = MatrixMaker4(4,5,M_PI/2,0,0,0);
+        // Eigen::VectorXd U5 = MatrixMaker6(3,5,M_PI/2,0,M_PI/2,0,0,0);
         Eigen::VectorXd U6 = MatrixMaker4(5,9,0.5,0,0,0);
 
         Eigen::MatrixXd matrixIK(9,6);
@@ -53,8 +54,8 @@ int main(int argc, char **argv)
         matrixIK <<   1,0,U1(0)+U1(1)*pow(t,1)+U1(2)*pow(t,2)+U1(3)*pow(t,3),0,M_PI/2,0,
                   1,0,1,0,M_PI/2,U2(0)+U2(1)*pow(t,1)+U2(2)*pow(t,2)+U2(3)*pow(t,3),
                   1,0,1,0,M_PI/2,M_PI/2,
-                  1,U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2),1,0,M_PI/2,U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3)+U5(4)*pow(t,4)+U5(5)*pow(t,5),
-                  1,0.5,U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2),0,M_PI/2,U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3)+U5(4)*pow(t,4)+U5(5)*pow(t,5),
+                  1,U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2),1,0,M_PI/2,M_PI/2,
+                  1,0.5,U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2),0,M_PI/2,U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3),
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,

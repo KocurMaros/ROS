@@ -156,7 +156,7 @@ Eigen::VectorXd MatrixMaker5(float tn, float tn1, float tn2, float con1, float c
 
     return vector;
 }
-Eigen::VectorXd MatrixMaker6(float tn, float tn1, float con1, float con2, float con3, float con4, float con5, float con6) {
+Eigen::VectorXd MatrixMaker6(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5, float con6) {
     Eigen::VectorXd vector(6);
     vector << con1, con2, con3, con4, con5, con6;
 

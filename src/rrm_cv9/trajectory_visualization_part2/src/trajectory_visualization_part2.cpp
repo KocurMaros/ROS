@@ -183,6 +183,7 @@ int main(int argc, char **argv)
         myfile << tool_acce_rz << ";";
         myfile << "\n";
     }
+    myfile.close();
 
     // Sprava pre vizualizaciu
     moveit_msgs::DisplayTrajectory display_trajectory;
@@ -199,7 +200,6 @@ int main(int argc, char **argv)
         publisher.publish(display_trajectory);
         loop_rate.sleep();
     }
-    myfile.close();
     return 0;
 }
 Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float con3, float con4) {

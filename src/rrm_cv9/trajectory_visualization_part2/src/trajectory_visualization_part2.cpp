@@ -145,7 +145,7 @@ Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float 
 
     return vector;
 }
-Eigen::VectorXd MatrixMaker3(float tn, float tn1, float tn2, float con1, float con2, float con3) {
+Eigen::VectorXd MatrixMaker3(float tn, float tn2, float con1, float con2, float con3) {
     Eigen::VectorXd vector(3);
     vector << con1, con2, con3;
 
@@ -157,7 +157,7 @@ Eigen::VectorXd MatrixMaker3(float tn, float tn1, float tn2, float con1, float c
 
     return vector;
 }
-Eigen::VectorXd MatrixMaker3_2(float tn, float tn1, float tn2, float con1, float con2, float con3) {
+Eigen::VectorXd MatrixMaker3_2(float tn,float tn2, float con1, float con2, float con3) {
     Eigen::VectorXd vector(3);
     vector << con1, con2, con3;
 

@@ -111,11 +111,11 @@ int main(int argc, char **argv)
 
         myfile << t << ";";
         myfile << point.positions[0] << ";";
-        myfile << point.velocities[0] << ";";
-        myfile << point.accelerations[0] << ";";
+        // myfile << point.velocities[0] << ";";
+        // myfile << point.accelerations[0] << ";";
         myfile << point.positions[2] << ";";
-        myfile << point.velocities[2] << ";";
-        myfile << point.accelerations[2] << ";";
+        // myfile << point.velocities[2] << ";";
+        // myfile << point.accelerations[2] << ";";
         myfile << "\n";
     }
 

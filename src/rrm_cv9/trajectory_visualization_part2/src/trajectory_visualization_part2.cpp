@@ -44,7 +44,7 @@ int main(int argc, char **argv)
         Eigen::VectorXd U4 = MatrixMaker3_2(4,5,1,1.6,0);
         // Eigen::VectorXd U3 = MatrixMaker5(3,4,5,0,0,0.5,0.5,0);
         // Eigen::VectorXd U4 = MatrixMaker5(3,4,5,1,0,1,1.6,0);
-        Eigen::VectorXd U4 = MatrixMaker4(4,5,M_PI/2,0,0,0);
+        Eigen::VectorXd U5 = MatrixMaker4(4,5,M_PI/2,0,0,0);
         // Eigen::VectorXd U5 = MatrixMaker6(3,5,M_PI/2,0,M_PI/2,0,0,0);
         Eigen::VectorXd U6 = MatrixMaker4(5,9,0.5,0,0,0);
 

@@ -164,8 +164,8 @@ Eigen::VectorXd MatrixMaker6(float tn, float tn1, float con1, float con2, float 
             0,  1,              2*pow(tn,1),    3*pow(tn,2),    4*pow(tn,3),  5*pow(tn,4),
             1,  pow(tn1,1),pow(tn1,2),    pow(tn1,3),     pow(tn1,4),   pow(tn1,5),
             0,  1,              2*pow(tn1,1),   3*pow(tn1,2),   4*pow(tn1,3), 5*pow(tn1,4),
-            1,  pow(tn2,1),pow(tn2,2),    pow(tn2,3),     pow(tn2,4),   pow(tn2,5),
-            0,  1,              2*pow(tn2,1),   3*pow(tn2,2),   4*pow(tn2,3), 5*pow(tn2,4);
+            1,  pow(tn1,1),pow(tn1,2),    pow(tn1,3),     pow(tn1,4),   pow(tn1,5),
+            0,  1,              2*pow(tn1,1),   3*pow(tn1,2),   4*pow(tn1,3), 5*pow(tn1,4);
             vector = (m6.inverse() * vector);
 
     return vector;

@@ -13,6 +13,8 @@
 #include <moveit/robot_model_loader/robot_model_loader.h>
 
 Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float con3, float con4);
+Eigen::VectorXd MatrixMaker3(float tn, float tn1, float con1, float con2, float con3);
+Eigen::VectorXd MatrixMaker3_2(float tn, float tn1, float con1, float con2, float con3);
 Eigen::VectorXd MatrixMaker5(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5);
 Eigen::VectorXd MatrixMaker6(float tn, float tn1, float con1, float con2, float con3, float con4, float con5, float con6);
 std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double rx, double ry, double rz);

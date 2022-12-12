@@ -13,8 +13,6 @@
 #include <moveit/robot_model_loader/robot_model_loader.h>
 
 Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float con3, float con4);
-Eigen::VectorXd MatrixMaker3(float tn, float tn1, float con1, float con2, float con3);
-Eigen::VectorXd MatrixMaker3_2(float tn, float tn1, float con1, float con2, float con3);
 Eigen::VectorXd MatrixMaker5(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5);
 Eigen::VectorXd MatrixMaker6(float tn, float tn1, float con1, float con2, float con3, float con4, float con5, float con6);
 std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double rx, double ry, double rz);
@@ -40,12 +38,9 @@ int main(int argc, char **argv)
 
         Eigen::VectorXd U1 = MatrixMaker4(0,1,1.6,0,1,0);
         Eigen::VectorXd U2 = MatrixMaker4(1,2,0,0,M_PI/2,0);
-        Eigen::VectorXd U3 = MatrixMaker3(3,4,0,0,0.5);
-        Eigen::VectorXd U4 = MatrixMaker3_2(4,5,1,1.6,0);
-        // Eigen::VectorXd U3 = MatrixMaker5(3,4,5,0,0,0.5,0.5,0);
-        // Eigen::VectorXd U4 = MatrixMaker5(3,4,5,1,0,1,1.6,0);
-        Eigen::VectorXd U5 = MatrixMaker4(4,5,M_PI/2,0,0,0);
-        // Eigen::VectorXd U5 = MatrixMaker6(3,5,M_PI/2,0,M_PI/2,0,0,0);
+        Eigen::VectorXd U3 = MatrixMaker5(3,4,5,0,0,0.5,0.5,0);
+        Eigen::VectorXd U4 = MatrixMaker5(3,4,5,1,0,1,1.6,0);
+        Eigen::VectorXd U5 = MatrixMaker6(3,5,M_PI/2,0,M_PI/2,0,0,0);
         Eigen::VectorXd U6 = MatrixMaker4(5,9,0.5,0,0,0);
 
         Eigen::MatrixXd matrixIK(9,6);
@@ -54,8 +49,8 @@ int main(int argc, char **argv)
         matrixIK <<   1,0,U1(0)+U1(1)*pow(t,1)+U1(2)*pow(t,2)+U1(3)*pow(t,3),0,M_PI/2,0,
                   1,0,1,0,M_PI/2,U2(0)+U2(1)*pow(t,1)+U2(2)*pow(t,2)+U2(3)*pow(t,3),
                   1,0,1,0,M_PI/2,M_PI/2,
-                  1,U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2),1,0,M_PI/2,M_PI/2,
-                  1,0.5,U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2),0,M_PI/2,U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3),
+                  1,U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2)+U3(3)*pow(t,3)+U3(4)*pow(t,4),U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2)+U4(3)*pow(t,3)+U4(4)*pow(t,4),0,M_PI/2,U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3)+U5(4)*pow(t,4)+U5(5)*pow(t,5),
+                  1,U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2)+U3(3)*pow(t,3)+U3(4)*pow(t,4),U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2)+U4(3)*pow(t,3)+U4(4)*pow(t,4),0,M_PI/2,U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3)+U5(4)*pow(t,4)+U5(5)*pow(t,5),
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
@@ -146,30 +141,6 @@ Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float 
 
     return vector;
 }
-Eigen::VectorXd MatrixMaker3(float tn, float tn2, float con1, float con2, float con3) {
-    Eigen::VectorXd vector(3);
-    vector << con1, con2, con3;
-
-    Eigen::MatrixXd m5(3,3);
-    m5 <<   1, pow(tn,1), pow(tn,2),
-            0, 1,               2*pow(tn,1),
-            1, pow(tn2,1),pow(tn2,2);
-            vector = (m5.inverse() * vector);
-
-    return vector;
-}
-Eigen::VectorXd MatrixMaker3_2(float tn,float tn2, float con1, float con2, float con3) {
-    Eigen::VectorXd vector(3);
-    vector << con1, con2, con3;
-
-    Eigen::MatrixXd m5(3,3);
-    m5 <<   1, pow(tn,1), pow(tn,2),  
-            1, pow(tn2,1),pow(tn2,2), 
-            0, 1,               2*pow(tn2,1);
-            vector = (m5.inverse() * vector);
-
-    return vector;
-}
 Eigen::VectorXd MatrixMaker5(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5) {
     Eigen::VectorXd vector(5);
     vector << con1, con2, con3, con4, con5;
@@ -191,10 +162,10 @@ Eigen::VectorXd MatrixMaker6(float tn, float tn1, float con1, float con2, float 
     Eigen::MatrixXd m6(6,6);
     m6 <<   1,  pow(tn,1),pow(tn,2),      pow(tn,3),      pow(tn,4),    pow(tn,5),
             0,  1,              2*pow(tn,1),    3*pow(tn,2),    4*pow(tn,3),  5*pow(tn,4),
-            0,  0,              2,                    6*pow(tn,1),  12*pow(tn,2),   20*pow(tn,3),
             1,  pow(tn1,1),pow(tn1,2),    pow(tn1,3),     pow(tn1,4),   pow(tn1,5),
             0,  1,              2*pow(tn1,1),   3*pow(tn1,2),   4*pow(tn1,3), 5*pow(tn1,4),
-            0,  0,              2,                    6*pow(tn1,1), 12*pow(tn1,2),  20*pow(tn1,3);
+            1,  pow(tn2,1),pow(tn2,2),    pow(tn2,3),     pow(tn2,4),   pow(tn2,5),
+            0,  1,              2*pow(tn2,1),   3*pow(tn2,2),   4*pow(tn2,3), 5*pow(tn2,4);
             vector = (m6.inverse() * vector);
 
     return vector;

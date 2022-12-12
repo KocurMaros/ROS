@@ -170,7 +170,7 @@ int main(int argc, char **argv)
             tool_velo_z = 1.6;
             tool_acce_z = 0;  
         }
-        std::cout << t << " " << tool_position_y << " " << tool_velo_y << " " tool_acce_y << endl;
+        std::cout << t << " " << tool_position_y << " " << tool_velo_y << " " << tool_acce_y << endl;
         myfile << t << ";";
         myfile << tool_position_y << ";";
         myfile << tool_velo_y << ";";

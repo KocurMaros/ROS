@@ -150,9 +150,9 @@ Eigen::VectorXd MatrixMaker3(float tn, float tn2, float con1, float con2, float 
     vector << con1, con2, con3;
 
     Eigen::MatrixXd m5(3,3);
-    m5 <<   1, pow(tn,1), pow(tn,2),   pow(tn,3),
-            0, 1,               2*pow(tn,1), 3*pow(tn,2),
-            1, pow(tn2,1),pow(tn2,2),  pow(tn2,3);
+    m5 <<   1, pow(tn,1), pow(tn,2),
+            0, 1,               2*pow(tn,1),
+            1, pow(tn2,1),pow(tn2,2);
             vector = (m5.inverse() * vector);
 
     return vector;
@@ -162,9 +162,9 @@ Eigen::VectorXd MatrixMaker3_2(float tn,float tn2, float con1, float con2, float
     vector << con1, con2, con3;
 
     Eigen::MatrixXd m5(3,3);
-    m5 <<   1, pow(tn,1), pow(tn,2),   pow(tn,3),  
-            1, pow(tn2,1),pow(tn2,2),  pow(tn2,3), 
-            0, 1,               2*pow(tn2,1), 3*pow(tn2,2);
+    m5 <<   1, pow(tn,1), pow(tn,2),  
+            1, pow(tn2,1),pow(tn2,2), 
+            0, 1,               2*pow(tn2,1);
             vector = (m5.inverse() * vector);
 
     return vector;

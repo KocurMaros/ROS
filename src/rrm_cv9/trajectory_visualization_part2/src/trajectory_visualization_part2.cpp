@@ -283,12 +283,12 @@ std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double
     }
 
     // Vypis riesenii
-    for (const auto &solution: solutions) {
-        // ROS_INFO("Solution found: ");
-        for (const auto &joint : solution) {
-            // ROS_INFO_STREAM(std::to_string(joint));
-        }
-    }
+    // for (const auto &solution: solutions) {
+    //     ROS_INFO("Solution found: ");
+    //     for (const auto &joint : solution) {
+    //         ROS_INFO_STREAM(std::to_string(joint));
+    //     }
+    // }
 
     return solutions;
 }

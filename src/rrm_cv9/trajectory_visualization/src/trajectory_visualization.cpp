@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
 	std::ofstream myfile;
-     myfile.open ("example.txt");
+     myfile.open ("part1.txt");
     // Vytvorenie node a publishera
     ros::init(argc, argv, "trajectory_visualization");
     ros::NodeHandle n;

@@ -1,6 +1,3 @@
-//
-// Created by david on 5.12.2022.
-//
 #include <ros/ros.h>
 
 #include <Eigen/Core>
@@ -8,20 +5,19 @@
 #include <moveit_msgs/DisplayTrajectory.h>
 #include <cmath>
 #include <fstream>
-#include <ros/ros.h>
 #include <eigen_conversions/eigen_msg.h>
 #include <moveit/robot_model_loader/robot_model_loader.h>
 
-Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float con3, float con4);
-Eigen::VectorXd MatrixMaker5(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5);
-Eigen::VectorXd MatrixMaker6(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5, float con6);
+Eigen::VectorXd makeM4(float tn, float tn1, float con1, float con2, float con3, float con4);
+Eigen::VectorXd makeM5(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5);
+Eigen::VectorXd makeM6(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5, float con6);
 
-std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double rx, double ry, double rz);
+std::vector<std::vector<double>> IKsolver(double x, double y, double z, double rx, double ry, double rz);
 
 int main(int argc, char **argv)
 {
     std::ofstream myfile;
-    myfile.open ("example.txt");
+    myfile.open ("part2.txt");
     // Vytvorenie node a publishera
     ros::init(argc, argv, "trajectory_visualization_part2");
     ros::NodeHandle n;
@@ -37,12 +33,12 @@ int main(int argc, char **argv)
     float A1[6] = {0, 0, 0, 0, 0, 0};
     float A3[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-    Eigen::VectorXd U1 = MatrixMaker4(0,1,1.6,0,1,0);
-    Eigen::VectorXd U2 = MatrixMaker4(1,2,0,0,M_PI/2,0);
-    Eigen::VectorXd U3 = MatrixMaker5(3,4,5,0,0,0.5,0.5,0);
-    Eigen::VectorXd U4 = MatrixMaker5(3,4,5,1,0,1,1.6,0);
-    Eigen::VectorXd U5 = MatrixMaker6(3,4,5,M_PI/2,0,M_PI/2,0,0,0);
-    Eigen::VectorXd U6 = MatrixMaker4(5,9,0.5,0,0,0);
+    Eigen::VectorXd U1 = makeM4(0,1,1.6,0,1,0);
+    Eigen::VectorXd U2 = makeM4(1,2,0,0,M_PI/2,0);
+    Eigen::VectorXd U3 = makeM5(3,4,5,0,0,0.5,0.5,0);
+    Eigen::VectorXd U4 = makeM5(3,4,5,1,0,1,1.6,0);
+    Eigen::VectorXd U5 = makeM6(3,4,5,M_PI/2,0,M_PI/2,0,0,0);
+    Eigen::VectorXd U6 = makeM4(5,9,0.5,0,0,0);
 
     Eigen::MatrixXd matrixIK(9,6);
     double tool_position_rz, tool_position_y, tool_position_z;
@@ -62,7 +58,7 @@ int main(int argc, char **argv)
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0;
         // ROS_INFO_STREAM("matrixIK:\n" << matrixIK);
 
-        solutions = IKEAsolver(matrixIK(t-0.04,0),matrixIK(t-0.04,1),matrixIK(t-0.04,2),matrixIK(t-0.04,3),matrixIK(t-0.04,4),matrixIK(t-0.04,5));
+        solutions = IKsolver(matrixIK(t-0.04,0),matrixIK(t-0.04,1),matrixIK(t-0.04,2),matrixIK(t-0.04,3),matrixIK(t-0.04,4),matrixIK(t-0.04,5));
 
         double actual_sum =0, best_sum = 0;
         int best_sum_pos = 0;
@@ -204,7 +200,7 @@ int main(int argc, char **argv)
     }
     return 0;
 }
-Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float con3, float con4) {
+Eigen::VectorXd makeM4(float tn, float tn1, float con1, float con2, float con3, float con4) {
     Eigen::VectorXd vector(4);
     vector << con1, con2, con3, con4;
 
@@ -218,7 +214,7 @@ Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float 
 
     return vector;
 }
-Eigen::VectorXd MatrixMaker5(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5) {
+Eigen::VectorXd makeM5(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5) {
     Eigen::VectorXd vector(5);
     vector << con1, con2, con3, con4, con5;
 
@@ -232,7 +228,7 @@ Eigen::VectorXd MatrixMaker5(float tn, float tn1, float tn2, float con1, float c
 
     return vector;
 }
-Eigen::VectorXd MatrixMaker6(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5, float con6) {
+Eigen::VectorXd makeM6(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5, float con6) {
     Eigen::VectorXd vector(6);
     vector << con1, con2, con3, con4, con5, con6;
 
@@ -247,7 +243,7 @@ Eigen::VectorXd MatrixMaker6(float tn, float tn1, float tn2, float con1, float c
 
     return vector;
 }
-std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double rx, double ry, double rz) {
+std::vector<std::vector<double>> IKsolver(double x, double y, double z, double rx, double ry, double rz) {
     ros::NodeHandle n;
     //x,Eigen::VectorXd y,Eigen::VectorXd z,Eigen::VectorXd dx,Eigen::VectorXd dy, Eigen::VectorXd dz
 

@@ -213,6 +213,7 @@ Eigen::VectorXd MatrixMaker4(float tn, float tn1, float con1, float con2, float 
             0,  1,                  2*pow(tn,1),    3*pow(tn,2),
             1,  pow(tn1,1),   pow(tn1,2),     pow(tn1,3),
             0,  1,                  2*pow(tn1,1),   3*pow(tn1,2);
+    std::cout << "M1 inverse " << m4.inverse() << std::endl;
     vector = (m4.inverse() * vector);
 
     return vector;
@@ -254,7 +255,8 @@ std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double
     robot_model_loader::RobotModelLoader loader("robot_description");
 
     // Vyber move group a IK algoritmu
-    robot_state::JointModelGroup* joint_model_group = loader.getModel()->getJointModelGroup("robot");
+    robot_state::JointModelGroup* joint_model_group = loader.get
+    xModel()->getJointModelGroup("robot");
     const kinematics::KinematicsBaseConstPtr& solver = joint_model_group->getSolverInstance();
 
 

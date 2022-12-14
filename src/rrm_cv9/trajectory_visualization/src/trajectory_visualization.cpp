@@ -85,7 +85,7 @@ int main(int argc, char **argv)
         // Klb 3
         point.positions[2] = v2[0] + v2[1] * pow(t,1) + v2[2] * pow(t,2) + v2[3] * pow(t,3) + v2[4] * pow(t,4) + v2[5] * pow(t,5) + v2[6] * pow(t,6);// + v2[7] * pow(t,7) + v2[8] * pow(t,8);
         point.velocities[2] =  v2[1] + 2*v2[2]* pow(t,1) + 3*v2[3] * pow(t,2) + 4*v2[4] * pow(t,3) + 5*v2[5]*pow(t,4) + 6*v2[6] * pow(t,5);// + 7*v2[7] * pow(t,6) +8*v2[8] * pow(t,7);
-        point.accelerations[2] =  2*v2[2]* pow(t,1) + 6 * v2[3]* pow(t,1) + 12 * v2[4] * pow(t,2) + 20 * v2[5] * pow(t,3);// + 30*v2[6] * pow(t,4) + 42*v2[7] * pow(t,5) + 56*v2[8] * pow(t,6);
+        point.accelerations[2] =  2*v2[2] + 6 * v2[3]* pow(t,1) + 12 * v2[4] * pow(t,2) + 20 * v2[5] * pow(t,3) + 30*v2[6] * pow(t,4)// + 42*v2[7] * pow(t,5) + 56*v2[8] * pow(t,6);
 
         // Klb 4
         point.positions[3] = 0;
@@ -112,9 +112,11 @@ int main(int argc, char **argv)
         myfile << point.positions[0] << ";";
         myfile << point.velocities[0] << ";";
         myfile << point.accelerations[0] << ";";
+        myfile << 6*v1[3] + 24*v1[4]*pow(t,1) + 60*v1[5]*pow(t,2) <<";";
         myfile << point.positions[2] << ";";
         myfile << point.velocities[2] << ";";
         myfile << point.accelerations[2] << ";";
+        myfile << 6 * v2[3] + 24 * v2[4] * pow(t,1) + 60 * v2[5] * pow(t,2) + 120*v2[6] * pow(t,3) << ";"
         myfile << "\n";
     }
 

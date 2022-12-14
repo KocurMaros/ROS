@@ -255,7 +255,7 @@ std::vector<std::vector<double>> IKEAsolver(double x, double y, double z, double
     robot_model_loader::RobotModelLoader loader("robot_description");
 
     // Vyber move group a IK algoritmu
-    robot_state::JointModelGroup* joint_model_group = loader.get
+    robot_state::JointModelGroup* joint_model_group = loader.getModel()->getJointModelGroup("robot");
     xModel()->getJointModelGroup("robot");
     const kinematics::KinematicsBaseConstPtr& solver = joint_model_group->getSolverInstance();
 

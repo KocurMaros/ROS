@@ -164,8 +164,8 @@ int main(int argc, char **argv)
             tool_velo_y = U6(1)+2*U6(2)*t+3*U6(3)*pow(t,2);
             tool_acce_y = 2*U6(2)+6*U6(3)*t;
 
-            tool_position_z = 0;
-            tool_velo_z = 1.6;
+            tool_position_z = 1.6;
+            tool_velo_z = 0;
             tool_acce_z = 0;  
         }
 

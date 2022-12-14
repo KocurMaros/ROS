@@ -116,7 +116,7 @@ int main(int argc, char **argv)
         myfile << point.positions[2] << ";";
         myfile << point.velocities[2] << ";";
         myfile << point.accelerations[2] << ";";
-        myfile << 6 * v2[3] + 24 * v2[4] * pow(t,1) + 60 * v2[5] * pow(t,2) + 120*v2[6] * pow(t,3) << ";"
+        myfile << 6 * v2[3] + 24 * v2[4] * pow(t,1) + 60 * v2[5] * pow(t,2) + 120*v2[6] * pow(t,3) << ";";
         myfile << "\n";
     }
 

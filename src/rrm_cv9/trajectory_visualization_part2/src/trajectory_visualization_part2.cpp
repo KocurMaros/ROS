@@ -150,7 +150,7 @@ int main(int argc, char **argv)
 
             tool_position_y = U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2)+U3(3)*pow(t,3)+U3(4)*pow(t,4); 
             tool_velo_y = U3(1)+2*U3(2)*t+3*U3(3)*pow(t,2)+4*U3(4)*pow(t,3);
-            tool_acce_y = U3(2)+3*U3(3)*t+12*U3(4)*pow(t,2);
+            tool_acce_y = 2*U3(2)+6*U3(3)*t+12*U3(4)*pow(t,2);
 
             tool_position_z = U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2)+U4(3)*pow(t,3)+U4(4)*pow(t,4);
             tool_velo_z = U4(1)+2*U4(2)*t+3*U4(3)*pow(t,2)+4*U4(4)*pow(t,3);

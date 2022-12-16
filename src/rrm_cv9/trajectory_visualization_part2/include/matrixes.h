@@ -3,8 +3,10 @@
 
 #include <Eigen/Core>
 #include <Eigen/Geometry>
+#include <eigen3/Eigen/Dense>
 #include <cmath>
 #include <eigen_conversions/eigen_msg.h>
+
 
 namespace matrixes {
     Eigen::VectorXd makeM4(float tn, float tn1, float con1, float con2, float con3, float con4);

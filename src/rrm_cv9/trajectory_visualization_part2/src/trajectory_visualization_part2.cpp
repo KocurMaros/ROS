@@ -16,7 +16,7 @@
 // Eigen::VectorXd makeM6(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5, float con6);
 
 // std::vector<std::vector<double>> IKsolver(double x, double y, double z, double rx, double ry, double rz);
-
+using namespace matrixes;
 int main(int argc, char **argv)
 {
     std::ofstream myfile;
@@ -36,12 +36,12 @@ int main(int argc, char **argv)
     float A1[6] = {0, 0, 0, 0, 0, 0};
     float A3[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-    Eigen::VectorXd U1 = matrixes::makeM4(0,1,1.6,0,1,0);
-    Eigen::VectorXd U2 = matrixes::makeM4(1,2,0,0,M_PI/2,0);
-    Eigen::VectorXd U3 = matrixes::makeM5(3,4,5,0,0,0.5,0.5,0);
-    Eigen::VectorXd U4 = matrixes::makeM5(3,4,5,1,0,1,1.6,0);
-    Eigen::VectorXd U5 = matrixes::makeM6(3,4,5,M_PI/2,0,M_PI/2,0,0,0);
-    Eigen::VectorXd U6 = matrixes::makeM4(5,9,0.5,0,0,0);
+    Eigen::VectorXd U1 = makeM4(0,1,1.6,0,1,0);
+    Eigen::VectorXd U2 = makeM4(1,2,0,0,M_PI/2,0);
+    Eigen::VectorXd U3 = makeM5(3,4,5,0,0,0.5,0.5,0);
+    Eigen::VectorXd U4 = makeM5(3,4,5,1,0,1,1.6,0);
+    Eigen::VectorXd U5 = makeM6(3,4,5,M_PI/2,0,M_PI/2,0,0,0);
+    Eigen::VectorXd U6 = makeM4(5,9,0.5,0,0,0);
 
     Eigen::MatrixXd matrixIK(9,6);
     double tool_position_rz, tool_position_y, tool_position_z;

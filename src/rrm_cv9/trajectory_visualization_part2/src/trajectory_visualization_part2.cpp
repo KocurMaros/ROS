@@ -61,7 +61,7 @@ int main(int argc, char **argv)
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0;
         // ROS_INFO_STREAM("matrixIK:\n" << matrixIK);
 
-        solutions = IK_Solver::IKsolver(matrixIK(t-0.04,0),matrixIK(t-0.04,1),matrixIK(t-0.04,2),matrixIK(t-0.04,3),matrixIK(t-0.04,4),matrixIK(t-0.04,5));
+        solutions = iksolver::IKsolver(matrixIK(t-0.04,0),matrixIK(t-0.04,1),matrixIK(t-0.04,2),matrixIK(t-0.04,3),matrixIK(t-0.04,4),matrixIK(t-0.04,5));
 
         double actual_sum =0, best_sum = 0;
         int best_sum_pos = 0;

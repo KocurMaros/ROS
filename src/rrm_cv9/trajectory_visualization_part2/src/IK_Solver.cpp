@@ -1,6 +1,6 @@
 #include "rrm_cv9/IK_Solver.h"
 
-namespace IK_Solver{
+namespace iksolver{
     std::vector<std::vector<double>> IKsolver(double x, double y, double z, double rx, double ry, double rz) {
         ros::NodeHandle n;
         //x,Eigen::VectorXd y,Eigen::VectorXd z,Eigen::VectorXd dx,Eigen::VectorXd dy, Eigen::VectorXd dz

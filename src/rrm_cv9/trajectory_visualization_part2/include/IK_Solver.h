@@ -1,5 +1,5 @@
-// #ifndef IK_SOLVER_H
-// #define IK_SOLVER_H
+#ifndef IK_SOLVER_H
+#define IK_SOLVER_H
 
 #include <ros/ros.h>
 #include <Eigen/Geometry>
@@ -11,3 +11,5 @@ namespace iksolver {
     std::vector<std::vector<double>> IKsolver(double x, double y, double z, double rx, double ry, double rz);
 
 }
+
+#endif

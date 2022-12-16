@@ -140,7 +140,7 @@ int main(int argc, char **argv)
             tool_velo_y = 0;
             tool_acce_y = 0;
 
-            tool_position_z = 0;
+            tool_position_z = 1;
             tool_velo_z = 0;
             tool_acce_z = 0;  
         }else if(t<=5){

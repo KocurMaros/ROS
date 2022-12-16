@@ -128,8 +128,8 @@ int main(int argc, char **argv)
             tool_velo_y = 0;
             tool_acce_y = 0;
 
-            tool_position_z = 0;
-            tool_velo_z = 1;
+            tool_position_z = 1;
+            tool_velo_z = 0;
             tool_acce_z = 0;  
         }else if(t<=3){
             tool_position_rz = M_PI/2;
@@ -141,7 +141,7 @@ int main(int argc, char **argv)
             tool_acce_y = 0;
 
             tool_position_z = 0;
-            tool_velo_z = 1;
+            tool_velo_z = 0;
             tool_acce_z = 0;  
         }else if(t<=5){
             tool_position_rz = U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3)+U5(4)*pow(t,4)+U5(5)*pow(t,5);

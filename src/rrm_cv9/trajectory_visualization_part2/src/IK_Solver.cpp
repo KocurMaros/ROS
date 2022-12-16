@@ -1,4 +1,4 @@
-#include "rrm_cv9/IK_Solver.h"
+#include "IK_Solver.h"
 
 namespace iksolver{
     std::vector<std::vector<double>> IKsolver(double x, double y, double z, double rx, double ry, double rz) {

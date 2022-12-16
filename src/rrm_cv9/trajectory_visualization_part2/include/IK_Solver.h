@@ -1,5 +1,6 @@
 #ifndef IK_SOLVER_H
 #define IK_SOLVER_H
+#include "IK_Solver.h"
 
 #include <ros/ros.h>
 #include <Eigen/Geometry>

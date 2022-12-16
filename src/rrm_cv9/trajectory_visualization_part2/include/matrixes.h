@@ -9,7 +9,7 @@
 
 
 namespace matrixes {
-    VectorXd makeM4(float tn, float tn1, float con1, float con2, float con3, float con4);
+    Eigen::VectorXd makeM4(float tn, float tn1, float con1, float con2, float con3, float con4);
     Eigen::VectorXd makeM5(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5);
     Eigen::VectorXd makeM6(float tn, float tn1, float tn2, float con1, float con2, float con3, float con4, float con5, float con6);
 }   
